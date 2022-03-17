@@ -3,9 +3,13 @@
 ## Members
 
 Igor Diniz      --up202000162@edu.fe.up.pt
+
 Inês Cardoso    --up202005435@edu.fe.up.pt
+
 Joana Santos    --up202006279@edu.fe.up.pt
+
 João Matos      --up202006280@edu.fe.up.pt
+
 Marina Carvalho --up202007620@edu.fe.up.pt
 
 
