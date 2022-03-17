@@ -19,9 +19,10 @@ Marina Carvalho --up202007620@edu.fe.up.pt
 To do (see the Product vision template here: https://uxstudioteam.com/ux-blog/product-vision/)
 
 ## Main Features
- - Feature 1 - Short description
- - Feature 2 - Short description
-...
+ - Feature 1 - Visualizar o menu e os pratos do dia dos locais de alimentação que a feup oferece;
+ - Feature 2 - Visualizar a localização dos locais de alimentação;
+ - Feature 3 - Ver e avaliar o raiting dos restairantes/café;
+ - Feature 4 - Ver horários ms movimentados
 
 ## Required API's
 - Student timetable from sigarra
