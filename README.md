@@ -1,5 +1,5 @@
 # 2LEIC02T4
-<div align="center">
+<div>
     <img src="https://i.imgur.com/vFwijSi.png">
 <div>
 
