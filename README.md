@@ -72,7 +72,7 @@ Such product would be very valuable to college community, since that improves th
     
 # Requirements
 ## Use Case Model
-   ![](https://i.imgur.com/9Qcbag8.png)
+   ![](https://i.imgur.com/a1JFiJa.png)
 
 
 <br>
