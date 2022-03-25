@@ -72,17 +72,48 @@ Such product would be very valuable to college community, since that improves th
     
 # Requirements
 ## Use Case Model
-   ![](https://i.imgur.com/kFLmI0w.png)
+   ![](https://i.imgur.com/9Qcbag8.png)
+
+
+<br>
+
     
 |||
 | --- | --- |
-| *Name* | EAT@FEUP Application |
+| *Name* | View dining place options at FEUP's campus |
 | *Actor* |  User | 
-| *Description* | The user has access to information about different restaurants/bars/coffes and they can see the corresponding menu and daily meals-!-, the busiest hours and a map of the location of the dining places. |
-| *Preconditions* | - The user has the app installed and a connection to the Internet. <br> - There are available dining options on FEUP's campus. |
+| *Description* | The user sees a list with the different dining places options at FEUP's campus.  |
+| *Preconditions* | - The user has the app installed and a connection to the Internet. <br> - There are available dining options on FEUP's campus. <br> - Sigarra has information about the menus of the dining places. |
+| *Postconditions* | - The user knows what dining options are available at FEUP's campus and is able to see their location.|
+| *Normal flow* | 1. The user accesses the application **EAT@FEUP**.<br> 2. The system shows a list of restaurants that when selected can show their info, and a button to see them on a map.
+    
+<br>
+<br> 
+    
+    
+    
+|||
+| --- | --- |
+| *Name* | View the dining places on a map |
+| *Actor* |  User | 
+| *Description* | The user has access to information about the different dining places location.|
+| *Preconditions* | - The user selected the option on the main page. <br> <div align="center"> OR </div> - The user selected the option on the restaurant page. |
+| *Postconditions* | - The user views the dining places on a map. |
+| *Normal flow* | 1. The user sees the different locations of the restaurants.<br> 2. When selecting a restaurant the address and working hours is shown.<br> |
+| *Alternative flows and exceptions* | 1. When the user opens the map in the restaurant's page, that restaurant is already selected on the map|
+  
+<br>
+<br> 
+    
+|||
+| --- | --- |
+| *Name* | View the dining place's menu, busiest hours and working hours |
+| *Actor* |  User | 
+| *Description* | The user has access to information about the selected restaurants/bars/coffes and they can see the corresponding menu and daily meals as well as the time of busiest hours|
+| *Preconditions* | - The user selected the restaurant on the main page |
 | *Postconditions* | - The user finds a good option to have their meal. |
-| *Normal flow* | 1. The user accesses the application **EAT@FEUP**.<br> 2. The system shows a list of restaurants arround FEUP and a map with all their locations.<br> 3. The user selects a restaurant.<br> 4. The menu and the daily meals appear to the user.<br> 5. The system also shows the busiest hours.<br> 6. The system also allows the user to open the map to see the location.|
-| *Alternative flows and exceptions* | 1. If in step 4, the necessary information is unable to be retrieved from Sigarra an error message appears.|
+| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to acess the map to see the restaurants location.|
+| *Alternative flows and exceptions* | 1. In step 2 you can choose to see the menu of a specific day and the type of meal you want to eat: meat, vegetarian, fish or diet <br>2. In option 3 you can choose the day in which to see the the busiest hour|
 
  
     
