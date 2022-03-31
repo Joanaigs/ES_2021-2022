@@ -72,7 +72,8 @@ Such product would be very valuable to college community, since that improves th
     
 # Requirements
 ## Use Case Model
-   ![](https://i.imgur.com/a1JFiJa.png)
+![Use Case Diagram](https://user-images.githubusercontent.com/78430365/161042218-ca2c2faa-7b06-418c-a20a-ab207ac4a75d.jpg)
+
 
 
 <br>
