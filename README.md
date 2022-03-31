@@ -41,7 +41,7 @@ Mariana Carvalho -- up202007620@edu.fe.up.pt
 ### Vision Statement
 
     
-The **EAT@FEUP** app helps you find the best place for a quick meal at FEUP's campus, avoiding wasting your time on Sigarra's messy website and making your days more productive.
+The **EAT@FEUP** app helps you find the best place for a quick meal at FEUP's campus, avoiding wasting your time on multiple websites and making your days more productive.
         
 ### Target Group
 **EAT@FEUP's** target group is all of FEUP's community that has to search for a place to eat.
