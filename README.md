@@ -99,7 +99,7 @@ Such product would be very valuable to college community, since that improves th
 | *Description* | The user has access to information about the different dining places location.|
 | *Preconditions* | - The user selected the option on the main page. <br> <div align="center"> OR </div> - The user selected the option on the dining place's page. |
 | *Postconditions* | - The user views the dining places on a map. |
-| *Normal flow* | 1. The user sees the different locations of the dining places.<br> 2. When selecting a place to eat its address and working hours are shown.<br> |
+| *Normal flow* | 1. The user sees the location of the different dining places.<br> 2. When selecting a place to eat its address and working hours are shown.<br> |
 | *Alternative flows and exceptions* | 1. When the user opens the map in the dining place's page, that restaurant is already selected on the map|
   
 <br>
