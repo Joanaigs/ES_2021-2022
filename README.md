@@ -48,11 +48,11 @@ The **EAT@FEUP** app helps you find the best place for a quick meal at FEUP's ca
     
 ### Needs
 
-Finding information about FEUP's dining places is not very accessible and there needs to be a little bit of research to find about all the options.
+Finding information about FEUP's eating places is not very accessible and there needs to be a little bit of research to find about all the options.
 
-The location of the dining places, the cost of the meal can't even be found in Sigarra.
+The location of the eating places, the cost of the meal can't even be found in Sigarra.
 
-Sometimes, especially for students, due to their short lunch period it's useful to know what are the less and busiest hours in the dining places. If someone is short on time, knowing that information can help them make the smartest choice. This details aren't disclosed in Sigarra.
+Sometimes, especially for students, due to their short lunch period it's useful to know what are the less and busiest hours in the eating places. If someone is short on time, knowing that information can help them make the smartest choice. This details aren't disclosed in Sigarra.
 
 ### Product & Business Goals
 
@@ -62,8 +62,8 @@ Such product would be very valuable to college community, since that improves th
 
 
 ## Main Features
- - Feature 1 - View the menu and the dish of the day of the dining places that FEUP offers;
- - Feature 2 - View the location of those dining places;
+ - Feature 1 - View the menu and the dish of the day of the eating places that FEUP offers;
+ - Feature 2 - View the location of those eating places;
  - Feature 3 - View the busiest hours.
 
 ## Assumptions and Dependencies
@@ -80,11 +80,11 @@ Such product would be very valuable to college community, since that improves th
     
 |||
 | --- | --- |
-| *Name* | View dining place options at FEUP's campus |
+| *Name* | View eating place options at FEUP's campus |
 | *Actor* |  User | 
-| *Description* | The user sees a list with the different dining places options at FEUP's campus.  |
-| *Preconditions* | - The user has the app installed and a connection to the Internet. <br> - There are available dining options on FEUP's campus. <br> - Sigarra has information about the menus of the dining places. |
-| *Postconditions* | - The user knows what dining options are available at FEUP's campus and is able to see their location.|
+| *Description* | The user sees a list with the different eating places options at FEUP's campus.  |
+| *Preconditions* | - The user has the app installed and a connection to the Internet. <br> - There are available eating options on FEUP's campus. <br> - Sigarra has information about the menus of the eating places. |
+| *Postconditions* | - The user knows what eating options are available at FEUP's campus and is able to see their location.|
 | *Normal flow* | 1. The user accesses the application **EAT@FEUP**.<br> 2. The system shows a list of restaurants that when selected can show their info, and a button to see them on a map.
     
 <br>
@@ -94,25 +94,25 @@ Such product would be very valuable to college community, since that improves th
     
 |||
 | --- | --- |
-| *Name* | View the dining places on a map |
+| *Name* | View the eating places on a map |
 | *Actor* |  User | 
 | *Description* | The user has access to information about the different dining places location.|
 | *Preconditions* | - The user selected the option on the main page. <br> <div align="center"> OR </div> - The user selected the option on the dining place's page. |
-| *Postconditions* | - The user views the dining places on a map. |
-| *Normal flow* | 1. The user sees the location of the different dining places.<br> 2. When selecting a place to eat its address and working hours are shown.<br> |
-| *Alternative flows and exceptions* | 1. When the user opens the map in the dining place's page, that restaurant is already selected on the map|
+| *Postconditions* | - The user views the eating places on a map. |
+| *Normal flow* | 1. The user sees the location of the different eating places.<br> 2. When selecting a place to eat its address and working hours are shown.<br> |
+| *Alternative flows and exceptions* | 1. When the user opens the map on the eating place's page, that restaurant is already selected on the map|
   
 <br>
 <br> 
     
 |||
 | --- | --- |
-| *Name* | View the dining place's menu, busiest hours and working hours |
+| *Name* | View the eating place's menu, busiest hours and working hours |
 | *Actor* |  User | 
 | *Description* | The user has access to information about the selected restaurants/bars/coffes and they can see the corresponding menu and daily meals as well as the time of busiest hours|
-| *Preconditions* | - The user selected the dining place on the main page |
+| *Preconditions* | - The user selected the eating place on the main page |
 | *Postconditions* | - The user finds a good option to have their meal. |
-| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the dining place's location.|
+| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the eating place's location.|
 | *Alternative flows and exceptions* | 1. In step 2 you can choose to see the menu of a specific day and the type of meal you want to eat: meat, vegetarian, fish or diet <br>2. In option 3 you can choose the day in which to see the the busiest hour|
 
  
