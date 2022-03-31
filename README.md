@@ -112,7 +112,7 @@ Such product would be very valuable to college community, since that improves th
 | *Description* | The user has access to information about the selected restaurants/bars/coffes and they can see the corresponding menu and daily meals as well as the time of busiest hours|
 | *Preconditions* | - The user selected the restaurant on the main page |
 | *Postconditions* | - The user finds a good option to have their meal. |
-| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to acess the map to see the restaurants location.|
+| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the restaurants location.|
 | *Alternative flows and exceptions* | 1. In step 2 you can choose to see the menu of a specific day and the type of meal you want to eat: meat, vegetarian, fish or diet <br>2. In option 3 you can choose the day in which to see the the busiest hour|
 
  
