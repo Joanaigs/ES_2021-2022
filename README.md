@@ -97,10 +97,10 @@ Such product would be very valuable to college community, since that improves th
 | *Name* | View the dining places on a map |
 | *Actor* |  User | 
 | *Description* | The user has access to information about the different dining places location.|
-| *Preconditions* | - The user selected the option on the main page. <br> <div align="center"> OR </div> - The user selected the option on the restaurant page. |
+| *Preconditions* | - The user selected the option on the main page. <br> <div align="center"> OR </div> - The user selected the option on the dining place's page. |
 | *Postconditions* | - The user views the dining places on a map. |
-| *Normal flow* | 1. The user sees the different locations of the restaurants.<br> 2. When selecting a restaurant the address and working hours is shown.<br> |
-| *Alternative flows and exceptions* | 1. When the user opens the map in the restaurant's page, that restaurant is already selected on the map|
+| *Normal flow* | 1. The user sees the different locations of the dining placess.<br> 2. When selecting a place to eat its address and working hours are shown.<br> |
+| *Alternative flows and exceptions* | 1. When the user opens the map in the dining place's page, that restaurant is already selected on the map|
   
 <br>
 <br> 
@@ -110,9 +110,9 @@ Such product would be very valuable to college community, since that improves th
 | *Name* | View the dining place's menu, busiest hours and working hours |
 | *Actor* |  User | 
 | *Description* | The user has access to information about the selected restaurants/bars/coffes and they can see the corresponding menu and daily meals as well as the time of busiest hours|
-| *Preconditions* | - The user selected the restaurant on the main page |
+| *Preconditions* | - The user selected the dining place on the main page |
 | *Postconditions* | - The user finds a good option to have their meal. |
-| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the restaurants location.|
+| *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the dining place's location.|
 | *Alternative flows and exceptions* | 1. In step 2 you can choose to see the menu of a specific day and the type of meal you want to eat: meat, vegetarian, fish or diet <br>2. In option 3 you can choose the day in which to see the the busiest hour|
 
  
