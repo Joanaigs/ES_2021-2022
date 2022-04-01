@@ -125,9 +125,13 @@ Such product would be very valuable to college community, since that improves th
 - [As a user, I want to see the busiest hours of the eating places, so that I can eat a quick meal.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/4)
 - [As a user, I want to select different dates or days of the week, so that I can see the menu available on those days.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/5)
 - [As a user, with an eating restriction, I want to know the different types of meals available, so that I can eat accordingly to my restrictions.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/6)
+- [As a user, I want to see the working hours of an eating place, so that I know when I can go there.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/7)
+- [As a user, I want to see lunch or dinner meals, so that I know whats available at different hours of the day.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/8) 
     
-## Domain model
-
-
- 
+## Domain Model
     
+There are eating places, which have a name, a location, a menu and a working schedule. They can accept card payments or not. The menu has a description, a cost and takes into account some restrictions like: meat, fish, diet, or vegetarian. There are busy periods that represent the typical affluence each day of the eating place. The meals can be served at lunch or dinner, depending on the place.
+    
+<br>
+    
+![](https://i.imgur.com/phRR4K1.jpg)
