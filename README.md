@@ -18,7 +18,8 @@
         - [Assumptions and Dependencies](#assumptions-and-dependencies)
 - [Requirements](#requirements)
     - [Use Case Model](#use-case-model)
-
+    - [User stories](#user-stories)
+    - [Domain model](#domain-model)
 ## Members
 
 Igor Diniz       -- up202000162@edu.fe.up.pt
@@ -115,6 +116,18 @@ Such product would be very valuable to college community, since that improves th
 | *Postconditions* | - The user finds a good option to have their meal. |
 | *Normal flow* |1. The working hours appear to the user<br> 2. The menu and the daily meals appear to the user.<br> 3. The system also shows the busiest hours.<br>4. There is a button to access the map to see the eating place's location.|
 | *Alternative flows and exceptions* | 1. In step 2 you can choose to see the menu of a specific day and the type of meal you want to eat: meat, vegetarian, fish or diet <br>2. In option 3 you can choose the day in which to see the the busiest hour|
+
+
+## User stories
+- [As a user, I want to know the eating places at FEUP's campus, so that I can choose where to eat.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/1)
+- [As a user, I want to see the location of the eating places at FEUP's campus, so that I can get there.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/2)
+- [As a user, I want to know eating places's meal menus at FEUP's campus, so that I can choose what to eat.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/3)
+- [As a user, I want to see the busiest hours of the eating places, so that I can eat a quick meal.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/4)
+- [As a user, I want to select different dates or days of the week, so that I can see the menu available on those days.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/5)
+- [As a user, with an eating restriction, I want to know the different types of meals available, so that I can eat accordingly to my restrictions.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/6)
+    
+## Domain model
+
 
  
     
