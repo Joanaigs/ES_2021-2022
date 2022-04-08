@@ -135,3 +135,17 @@ There are eating places, which have a name, a location, a menu and a working sch
 <br>
     
 ![](https://i.imgur.com/phRR4K1.jpg)
+
+    
+# Architeture and Design
+    
+## Logical Architecture
+    
+![package-Page-1 drawio (1)](https://user-images.githubusercontent.com/78430365/162484009-c6aca516-1132-44c5-8b87-2981cefa8682.png)
+    
+    
+## Physical Architecture
+    
+![deployment drawio](https://user-images.githubusercontent.com/78430365/162483865-cf36e57b-9bfa-4d7f-b21d-d8c7e675dbab.png)
+
+    
