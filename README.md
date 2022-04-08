@@ -20,6 +20,10 @@
     - [Use Case Model](#use-case-model)
     - [User stories](#user-stories)
     - [Domain model](#domain-model)
+- [Architecture and Design](#architecture-and-design)
+    - [Logical Architecture](#logical-architecture)
+    - [Physical Architecture](#physical-architecture)
+    
 ## Members
 
 Igor Diniz       -- up202000162@edu.fe.up.pt
@@ -137,7 +141,7 @@ There are eating places, which have a name, a location, a menu and a working sch
 ![](https://i.imgur.com/phRR4K1.jpg)
 
     
-# Architeture and Design
+# Architecture and Design
     
 ## Logical Architecture
     
