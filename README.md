@@ -147,9 +147,18 @@ There are eating places, which have a name, a location, a menu and a working sch
     
 ![package-Page-1 drawio (1)](https://user-images.githubusercontent.com/78430365/162484009-c6aca516-1132-44c5-8b87-2981cefa8682.png)
     
+<br>
+    
+**User Interface Package**: This package represents the view of the application. It's components are the pages that the user will be able to access: the Home Page, the Map Page and the pages of each different eating place. 
+ 
+**Application Tier**: The application package stores all the relevant information about the eating places and their location and manages the information that the view gets to access. It works with the lower layer Data to gather this information and then processes it to show it to the user. This layer is also responsible for managing the logics behind the data, for example filters or variations like what restaurants are opened during the day or at night.
+    
+**Data Tier**: The data, which is provided through an API, is managed and processed by the Application tier and later displayed to the user.
     
 ## Physical Architecture
     
 ![deployment drawio](https://user-images.githubusercontent.com/78430365/162483865-cf36e57b-9bfa-4d7f-b21d-d8c7e675dbab.png)
-
+    
+    
+In the user's phone, the user accesses Eat@Feup (developed in the Flutter framework) as a part of the uni4all app. Eat@Feup then uses the uni4all backend to reach Sigarra's information about the menus. It also accesses Google Maps to get the location of the eating places. Google Maps was chosen because it shows the busiest hours of the places and it is a familiar tool to the user.
     
