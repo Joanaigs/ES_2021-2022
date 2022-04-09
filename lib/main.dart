@@ -1,3 +1,4 @@
+import 'package:eat_feup/Display/homePage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
@@ -17,24 +18,9 @@ class MyApp extends StatelessWidget {
             primarySwatch : Colors.grey,
             fontFamily: ''
         ),
-      home: Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-          title:  Image.asset('assets/icon.png', fit: BoxFit.cover),
-          leading: GestureDetector(
-            onTap: () { /* Write listener code here */ },
-            child: Icon(
-              Icons.menu,  // add custom icons also
-            ),
-          ),
-        ),
-
-        body: const Center(
-          child: Text('WELCOME'),
-
-        ),
-      ),
-    );
+      home:
+      MyHomePage(),
+        );
   }
 }
 /*
