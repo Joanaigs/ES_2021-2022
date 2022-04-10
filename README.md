@@ -149,11 +149,11 @@ There are eating places, which have a name, a location, a menu and a working sch
     
 <br>
     
-**User Interface Package**: This package represents the view of the application. It's components are the pages that the user will be able to access: the Home Page, the Map Page and the pages of each different eating place. 
+**User Interface Package:** This package represents the view of the application. It's components are the pages that the user will be able to access: the Home Page, the Map Page and the pages of each different eating place. 
  
-**Application Tier**: The application package stores all the relevant information about the eating places and their location and manages the information that the view gets to access. It works with the lower layer Data to gather this information and then processes it to show it to the user. This layer is also responsible for managing the logics behind the data, for example filters or variations like what restaurants are opened during the day or at night.
+**Application Tier:** The application package stores all the relevant information about the eating places and their location and manages the information that the view gets to access. It works with the lower layer Data to gather this information and then processes it to show it to the user. This layer is also responsible for managing the logics behind the data, for example filters or variations like what restaurants are opened during the day or at night.
     
-**Data Tier**: The data, which is provided through an API, is managed and processed by the Application tier and later displayed to the user.
+**Data Tier:** The data, which is provided through an API, is managed and processed by the Application tier and later displayed to the user.
     
 ## Physical Architecture
     
