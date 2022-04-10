@@ -1,7 +1,8 @@
 # 2LEIC02T4
 <div>
-    <img src="https://i.imgur.com/vFwijSi.png">
+    <img src="https://i.imgur.com/6PUjSP1.png">
 <div>
+
 
 
 
@@ -142,6 +143,7 @@ There are eating places, which have a name, a location, a menu and a working sch
 
     
 # Architecture and Design
+Our project follows a layered architecture as it is structured with different levels of abstraction. The following *UML package diagram* and the *UML deployment diagram* describe how we decided to structure our application.
     
 ## Logical Architecture
     
@@ -149,16 +151,18 @@ There are eating places, which have a name, a location, a menu and a working sch
     
 <br>
     
-**User Interface Package:** This package represents the view of the application. It's components are the pages that the user will be able to access: the Home Page, the Map Page and the pages of each different eating place. 
+**User Interface**: This package represents the view of the application. It's components are the pages that the user will be able to access: the `Home Page`, the `Map Page` and the pages of each different `eating place`. 
  
-**Application Tier:** The application package stores all the relevant information about the eating places and their location and manages the information that the view gets to access. It works with the lower layer Data to gather this information and then processes it to show it to the user. This layer is also responsible for managing the logics behind the data, for example filters or variations like what restaurants are opened during the day or at night.
+**Application Tier**: The application package stores all the relevant information about the `eating places` and their location with the help of a `Map` and manages the information that the view gets to access. It works with the lower layer Data to gather this information and then processes it to show it to the user. This layer is also responsible for managing the logics behind the data, for example filters or variations like what restaurants are opened during the day or at night.
     
-**Data Tier:** The data, which is provided through an API, is managed and processed by the Application tier and later displayed to the user.
+**Data Tier**: The data, in this case the information regarding the `Menus`, which is provided through an API, is managed and processed by the Application Tier and later displayed to the user.
     
 ## Physical Architecture
     
 ![deployment drawio](https://user-images.githubusercontent.com/78430365/162483865-cf36e57b-9bfa-4d7f-b21d-d8c7e675dbab.png)
     
     
-In the user's phone, the user accesses Eat@Feup (developed in the Flutter framework) as a part of the uni4all app. Eat@Feup then uses the uni4all backend to reach Sigarra's information about the menus. It also accesses Google Maps to get the location of the eating places. Google Maps was chosen because it shows the busiest hours of the places and it is a familiar tool to the user.
+In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter framework) as a part of the `uni4all` app. Eat@Feup then uses the `uni4all backend` to reach `Sigarra`'s information about the menus. It also accesses `Google Maps` to get the location of the eating places. 
+- Flutter was chosen as the framework to the develop the app beacuse it is easy to learn and to use and has good documentation.
+- Google Maps was chosen because it shows the busiest hours of the places and it is a familiar tool to the user.
     
