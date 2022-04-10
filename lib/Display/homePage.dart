@@ -13,6 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar:  AppBar(
         backgroundColor: Colors.white,
+          centerTitle: true,
         title:  Image.asset('assets/images/icon.png', fit: BoxFit.cover),
         leading: GestureDetector(
           onTap: () { /* Write listener code here */ },
