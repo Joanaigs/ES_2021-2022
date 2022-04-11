@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: EdgeInsets.all(10.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/Grill.jpg',
+                child: Image.asset('assets/images/grill.png',
                   width: 600.0,
                   height: 300.0,
                   fit: BoxFit.cover,),
