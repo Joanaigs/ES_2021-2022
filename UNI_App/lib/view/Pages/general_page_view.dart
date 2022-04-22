@@ -106,6 +106,7 @@ abstract class GeneralPageViewState extends State<StatefulWidget> {
               'assets/images/logo_dark.svg',
               height: queryData.size.height / 25,
             ),
+
           )),
       actions: <Widget>[
         getTopRightButton(context),
