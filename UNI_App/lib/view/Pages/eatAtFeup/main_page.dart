@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uni/view/Pages/general_page_view.dart';
+import 'package:uni/model/entities/eating_places_map.dart';
 import 'package:uni/view/Widgets/eatAtFeup/eating_place_card.dart';
 
 import 'eat_at_feup_general_page_view.dart';
@@ -59,14 +59,19 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset(
-                  'assets/images/mapa.jpg',
-                  width: 600.0,
-                  height: 100.0,
-                  fit: BoxFit.cover,
-                ),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>EatingPlacesMap()));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(17.0),
+                  child: Image.asset(
+                    'assets/images/mapa.jpg',
+                    width: 600.0,
+                    height: 100.0,
+                    fit: BoxFit.cover,
+                  ),
+                )
               ),
             ),
             buildRestaurantCard('ae.jpg', 'ae'),
