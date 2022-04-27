@@ -97,7 +97,7 @@ class MyAppState extends State<MyApp> {
                     page: BusStopNextArrivalsPage(), settings: settings);
               case '/' + Constants.eatAtFeup:
                 return PageTransition.makePageTransition(
-                    page: MyHomePage(), settings: settings);
+                    page: EatAtFeupMainPage(), settings: settings); //eat@feup
               case '/' + Constants.navAbout:
                 return PageTransition.makePageTransition(
                     page: AboutPageView(), settings: settings);

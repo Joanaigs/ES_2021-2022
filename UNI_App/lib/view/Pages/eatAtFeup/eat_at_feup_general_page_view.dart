@@ -13,7 +13,7 @@ import 'package:uni/view/Widgets/navigation_drawer.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
 /// Manages the  section inside the user's personal area.
-abstract class GeneralPageViewState extends State<StatefulWidget> {
+abstract class EatAtFeupGeneralPageViewState extends State<StatefulWidget> {
   final double borderMargin = 18.0;
   static FileImage decorageImage;
 
@@ -110,7 +110,13 @@ abstract class GeneralPageViewState extends State<StatefulWidget> {
 
           )),
             actions: <Widget>[
+              IconButton(
+                icon: Image.asset('assets/images/icon.png'),
+                iconSize: 100,
+                onPressed: () {  },
+              ),
         getTopRightButton(context),
+
       ],
     );
   }

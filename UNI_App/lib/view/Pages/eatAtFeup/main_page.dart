@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uni/view/Pages/general_page_view.dart';
+import 'package:uni/view/Widgets/eatAtFeup/eating_place_card.dart';
 
+import 'eat_at_feup_general_page_view.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({ Key key}) : super(key: key);
+class EatAtFeupMainPage extends StatefulWidget {
+  const EatAtFeupMainPage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _EatAtFeupMainPageState createState() => _EatAtFeupMainPageState();
 }
 
 // @override
@@ -35,10 +37,11 @@ class MyHomePage extends StatefulWidget {
 //     ],
 //   );
 // }
-class _MyHomePageState extends GeneralPageViewState {
+class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
   @override
   Widget getBody(BuildContext context) {
     return Scaffold(
+      /*
       appBar:  AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -50,6 +53,7 @@ class _MyHomePageState extends GeneralPageViewState {
           ),
         ),
       ),
+       */
       body: Center(
         child: ListView(
           children: <Widget>[
@@ -57,64 +61,20 @@ class _MyHomePageState extends GeneralPageViewState {
               margin: EdgeInsets.all(10.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/mapa.jpg',
+                child: Image.asset(
+                  'assets/images/mapa.jpg',
                   width: 600.0,
                   height: 100.0,
-                  fit: BoxFit.cover,),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/ae.jpg',
-                  width: 600.0,
-                  height: 300.0,
-                  fit: BoxFit.cover,),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/cantina.jpg',
-                  width: 600.0,
-                  height: 300.0,
-                  fit: BoxFit.cover,),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/grill.png',
-                  width: 600.0,
-                  height: 300.0,
-                  fit: BoxFit.cover,),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.0),
-                child: Image.asset('assets/images/minas.jpg',
-                  width: 600.0,
-                  height: 300.0,
-                  fit: BoxFit.cover,),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10.0),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(17.0),
-                  child: Image.asset('assets/images/biblioteca.jpg',
-                    width: 600.0,
-                    height: 300.0,
-                    fit: BoxFit.cover,)
-              ),
-            ),
+            buildRestaurantCard('ae.jpg', 'ae'),
+            buildRestaurantCard('cantina.jpg', 'cantina'),
+            buildRestaurantCard('grill.png', 'grill'),
+            buildRestaurantCard('biblioteca.jpg', 'biblioteca'),
+            buildRestaurantCard('minas.jpg', 'minas'),
           ],
-
         ),
       ),
     );
