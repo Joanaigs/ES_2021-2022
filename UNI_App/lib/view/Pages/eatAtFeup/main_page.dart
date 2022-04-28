@@ -11,32 +11,7 @@ class EatAtFeupMainPage extends StatefulWidget {
   _EatAtFeupMainPageState createState() => _EatAtFeupMainPageState();
 }
 
-// @override
-// Widget getBody(BuildContext context) {
-//   final MediaQueryData queryData = MediaQuery.of(context);
-//   return ListView(
-//     children: <Widget>[
-//       Container(
-//           child: SvgPicture.asset(
-//             'assets/images/ni_logo.svg',
-//             color: Theme.of(context).accentColor,
-//             width: queryData.size.height / 7,
-//             height: queryData.size.height / 7,
-//           )),
-//       Center(
-//           child: Padding(
-//             padding: EdgeInsets.only(
-//                 left: queryData.size.width / 12,
-//                 right: queryData.size.width / 12,
-//                 top: queryData.size.width / 12,
-//                 bottom: queryData.size.width / 12),
-//             child: Column(children: <Widget>[
-//               TermsAndConditions(),
-//             ]),
-//           ))
-//     ],
-//   );
-// }
+
 class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
   @override
   Widget getBody(BuildContext context) {
@@ -74,11 +49,11 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
                 )
               ),
             ),
-            buildRestaurantCard('ae.jpg', 'ae'),
-            buildRestaurantCard('cantina.jpg', 'cantina'),
-            buildRestaurantCard('grill.png', 'grill'),
-            buildRestaurantCard('biblioteca.jpg', 'biblioteca'),
-            buildRestaurantCard('minas.jpg', 'minas'),
+            buildRestaurantCard(context, 'ae.jpg', 'Associação de Estudantes'),
+            buildRestaurantCard(context, 'cantina.jpg', 'Cantina'),
+            buildRestaurantCard(context, 'grill.png', 'Grill'),
+            buildRestaurantCard(context, 'biblioteca.jpg', 'Bar da Biblioteca'),
+            buildRestaurantCard(context, 'minas.jpg', 'Bar de Minas'),
           ],
         ),
       ),
