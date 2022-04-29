@@ -7,7 +7,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends GeneralPageViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
