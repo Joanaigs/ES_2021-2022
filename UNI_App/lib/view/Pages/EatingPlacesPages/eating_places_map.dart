@@ -22,10 +22,10 @@ class EatingPlacesMap extends StatelessWidget {
 }
 */
 import 'package:flutter/material.dart';
-import 'package:uni/view/Pages/eatAtFeup/eat_at_feup_back_button_page.dart';
+import 'package:uni/view/Pages/EatingPlacesPages/eat_at_feup_back_button_page.dart';
 import 'package:uni/view/Pages/unnamed_page_view.dart';
 
-import '../../../view/Pages/eatAtFeup/eat_at_feup_general_page_view.dart';
+import 'eat_at_feup_general_page_view.dart';
 import 'general_eating_place_page.dart';
 
 class EatingPlacesMap extends StatefulWidget {

@@ -20,7 +20,7 @@ class _AeState extends GeneralEatingPlacePageState {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Associação de Estudantes',
+                'AE',
                 style: Theme.of(context)
                     .textTheme
                     .headline6
