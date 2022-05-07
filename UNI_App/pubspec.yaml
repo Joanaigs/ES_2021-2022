@@ -18,6 +18,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  dio: ^4.0.0
+  flutter_polyline_points: ^0.2.6
+  google_maps_flutter: ^2.0.2
+
   html: ^0.15.0
   flutter_redux: ^0.7.0
   redux_thunk: ^0.3.0
