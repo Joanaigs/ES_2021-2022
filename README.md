@@ -139,7 +139,8 @@ There are eating places, which have a name, a location, a menu and a working sch
     
 <br>
     
-![](https://i.imgur.com/phRR4K1.jpg)
+![](https://i.imgur.com/yxv9buZ.png)
+
 
     
 # Architecture and Design

@@ -4,11 +4,15 @@ import 'package:uni/View/Pages/EatingPlacesPages/bar_biblioteca.dart';
 import 'package:uni/View/Pages/EatingPlacesPages/bar_minas.dart';
 import 'package:uni/View/Pages/EatingPlacesPages/cantina.dart';
 import 'package:uni/View/Pages/EatingPlacesPages/grill.dart';
+import 'package:uni/view/Pages/EatingPlacesPages/eating_place_page.dart';
+import 'package:uni/model/entities/eating_place.dart';
+import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/entities/exam.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tuple/tuple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uni/model/utils/day_of_week.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 import 'package:uni/view/Widgets/date_rectangle.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
@@ -24,23 +28,31 @@ import '../../../View/Pages/EatingPlacesPages/eating_places_map.dart';
 
 Widget buildRestaurantCard(BuildContext context, String photoName, String name){
   dynamic eatingPlacePage;
+  EatingPlace eatingPlace;
+  Map<DayOfWeek, TimeInterval> workingHours = {};
+
+  DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+  workingHours[day] = TimeInterval('9:00', '18:00');
+
   switch(name){
     case 'AE':
-      eatingPlacePage = Ae();
+      eatingPlace = EatingPlace(1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'CANTINA':
-      eatingPlacePage = Cantina();
+      eatingPlace = EatingPlace(2, 'CANTINA', 'cantina.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'BAR DA BIBLIOTECA':
-      eatingPlacePage = BarBiblioteca();
+      eatingPlace = EatingPlace(3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'GRILL':
-      eatingPlacePage = Grill();
+      eatingPlace = EatingPlace(4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'BAR DE MINAS':
-      eatingPlacePage = BarMinas();
+      eatingPlace = EatingPlace(5, 'BAR DE MINAS', 'minas.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
   }
+  eatingPlace.meals = EatingPlace.getTestMeals();
+  eatingPlacePage = EatingPlacePage(eatingPlace);
 
   return Container(
     margin: EdgeInsets.all(10.0),
