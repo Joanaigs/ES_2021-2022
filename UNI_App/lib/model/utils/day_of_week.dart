@@ -10,19 +10,19 @@ enum DayOfWeek {
 
 DayOfWeek parseDayOfWeek(String str){
   str = str.replaceAll(' ', '').toLowerCase();
-  if(str == 'segunda-feira') {
+  if(str == 'segunda-feira'  || str == 'monday') {
     return DayOfWeek.monday;
-  } else if(str == 'terça-feira') {
+  } else if(str == 'terça-feira' || str == 'tuesday') {
     return DayOfWeek.tuesday;
-  } else if(str == 'quarta-feira' ) {
+  } else if(str == 'quarta-feira' || str == 'wednesday' ) {
     return DayOfWeek.wednesday;
-  } else if(str == 'quinta-feira') {
+  } else if(str == 'quinta-feira' || str == 'thursday') {
     return DayOfWeek.thursday;
-  } else if(str == 'sexta-feira') {
+  } else if(str == 'sexta-feira' || str == 'friday') {
     return DayOfWeek.friday;
-  } else if(str == 'sábado' || str == 'sabado') {
+  } else if(str == 'sábado' || str == 'sabado' || str == 'saturday') {
     return DayOfWeek.saturday;
-  } else if(str == 'domingo') {
+  } else if(str == 'domingo' || str == 'sunday') {
     return DayOfWeek.sunday;
   } else {
     return null;

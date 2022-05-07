@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:uni/model/utils/day_of_week.dart';
 
@@ -8,6 +11,43 @@ enum FoodType{
   Dieta
 }
 
+Image getFoodTypeIcon(FoodType type){
+
+  return Image.asset('assets/images/' + foodTypeToString(type) + '.png');
+}
+
+FoodType parseFoodType(String str){
+  str = str.replaceAll(' ', '').toLowerCase();
+  if(str == 'carne') {
+    return FoodType.Carne;
+  } else if(str == 'vegetariano') {
+    return FoodType.Vegetariano;
+  } else if(str == 'dieta' ) {
+    return FoodType.Dieta;
+  } else if(str == 'peixe') {
+    return FoodType.Peixe;
+  }
+  else {
+    return null;
+  }
+}
+
+
+String foodTypeToString(FoodType type) {
+  switch (type) {
+    case FoodType.Carne:
+      return 'Carne';
+    case FoodType.Peixe:
+      return 'Peixe';
+    case FoodType.Vegetariano:
+      return 'Vegetariano';
+    case FoodType.Dieta:
+      return 'Dieta';
+  }
+  return null;
+}
+
+
 class Meal_{
   final FoodType foodType;
   final String description;
@@ -15,12 +55,9 @@ class Meal_{
   double cost;
 
   //final DateTime date;
-  //final DayOfWeek dayOfWeek; //??
+  //final Meal_ dayOfWeek; //??
 
   Meal_(this.foodType, this.description, this.isLunch, this.cost);
-
-
-
 
 
   /*

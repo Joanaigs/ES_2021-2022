@@ -3,12 +3,16 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/EatingPlacesPages/bar_biblioteca.dart';
 import 'package:uni/model/entities/EatingPlacesPages/bar_minas.dart';
 import 'package:uni/model/entities/EatingPlacesPages/cantina.dart';
+import 'package:uni/model/entities/EatingPlacesPages/eating_place_page.dart';
 import 'package:uni/model/entities/EatingPlacesPages/grill.dart';
+import 'package:uni/model/entities/eating_place.dart';
+import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/entities/exam.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tuple/tuple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uni/model/utils/day_of_week.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 import 'package:uni/view/Widgets/date_rectangle.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
@@ -24,23 +28,32 @@ import '../../../model/entities/EatingPlacesPages/eating_places_map.dart';
 
 Widget buildRestaurantCard(BuildContext context, String photoName, String name){
   dynamic eatingPlacePage;
+  EatingPlace eatingPlace;
+  Map<DayOfWeek, TimeInterval> workingHours = {};
+
+  DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+  workingHours[day] = TimeInterval('9:00', '18:00');
+
   switch(name){
     case 'Associação de Estudantes':
-      eatingPlacePage = Ae();
+
+      eatingPlace = EatingPlace(1, 'Associação de Estudantes', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'Cantina':
-      eatingPlacePage = Cantina();
+      eatingPlace = EatingPlace(2, 'Cantina', 'cantina.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'Bar da Biblioteca':
-      eatingPlacePage = BarBiblioteca();
+      eatingPlace = EatingPlace(3, 'Bar da Biblioteca', 'biblioteca.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'Grill':
-      eatingPlacePage = Grill();
+      eatingPlace = EatingPlace(4, 'Grill', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
     case 'Bar de Minas':
-      eatingPlacePage = BarMinas();
+      eatingPlace = EatingPlace(5, 'Bar de Minas', 'minas.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
   }
+  eatingPlace.meals = EatingPlace.getTestMeals();
+  eatingPlacePage = EatingPlacePage(eatingPlace);
 
   return Container(
     margin: EdgeInsets.all(10.0),

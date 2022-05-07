@@ -51,7 +51,7 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
             ),
             buildRestaurantCard(context, 'ae.jpg', 'Associação de Estudantes'),
             buildRestaurantCard(context, 'cantina.jpg', 'Cantina'),
-            buildRestaurantCard(context, 'grill.png', 'Grill'),
+            buildRestaurantCard(context, 'grill.jpg', 'Grill'),
             buildRestaurantCard(context, 'biblioteca.jpg', 'Bar da Biblioteca'),
             buildRestaurantCard(context, 'minas.jpg', 'Bar de Minas'),
           ],

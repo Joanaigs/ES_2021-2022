@@ -9,8 +9,8 @@ class EatingPlace{
   final String name;
   final String photoName;
   final bool acceptsCard;
-  List<WeekTime> workingHours;
-  List<WeekTime> busyTime;
+  Map<DayOfWeek, TimeInterval> workingHours;
+  Map<DayOfWeek, TimeInterval> busyTime;
   MapCoordinates location;
   Map<DayOfWeek, List<Meal_>> meals;
   //final String reference; // Used only in html parser
@@ -24,6 +24,26 @@ class EatingPlace{
       this.workingHours,
       this.acceptsCard,
       this.location);
+
+
+
+  static Map<DayOfWeek, List<Meal_>> getTestMeals(){
+    Map<DayOfWeek, List<Meal_>> testMeals = {};
+    DayOfWeek.values.forEach((i){
+      testMeals[i] = [];
+    });
+
+    for(var day in DayOfWeek.values){
+      if(day == DayOfWeek.sunday || day == DayOfWeek.tuesday) continue;
+      testMeals[day].add(Meal_(FoodType.Carne, 'Porco assado', true, 2.75));
+      testMeals[day].add(Meal_(FoodType.Carne, 'Frango assado', false, 2.75));
+      testMeals[day].add(Meal_(FoodType.Peixe, 'Robalo assado', true, 2.75));
+      testMeals[day].add(Meal_(FoodType.Vegetariano, 'Grão assado', true, 2.75));
+      testMeals[day].add(Meal_(FoodType.Dieta, 'Peru assado', true, 2.75));
+    }
+
+    return testMeals;
+  }
 
 
 
@@ -54,10 +74,13 @@ class EatingPlace{
 class MapCoordinates {
   double latitude;
   double longitude;
+
+  MapCoordinates(this.latitude, this.longitude);
 }
 
-class WeekTime {
-  DayOfWeek day;
+class TimeInterval {
   String startTime;
   String endTime;
+
+  TimeInterval(this.startTime, this.endTime);
 }
