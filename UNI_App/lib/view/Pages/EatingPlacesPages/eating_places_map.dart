@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eat_at_feup_back_button_page.dart';
 import 'package:uni/view/Pages/unnamed_page_view.dart';
@@ -20,14 +18,64 @@ class EatingPlacesMap extends StatefulWidget {
 
 class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
   static const _initialCameraPosition = CameraPosition(
-    target: LatLng(37.773972, -122.431297),
-    zoom: 11.5,
+    target: LatLng(41.1776779, -8.5949166),
+    zoom: 18,
   );
 
   GoogleMapController _googleMapController;
-  Marker _origin;
-  Marker _destination;
+  List<Marker> eatingPlaceMarkers = [];
   Directions _info;
+
+  @override
+  void initState() {
+    super.initState();
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('Cantina FEUP'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "Cantina da FEUP",
+          snippet: "Tv. de Lamas 22, Porto",
+        ),
+        position: LatLng(41.1760238,-8.5954212)));
+
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('Bar da Biblioteca FEUP'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "Bar da Biblioteca",
+          snippet: "R. Dr. Roberto Frias, 4200-465 Porto",
+        ),
+        position: LatLng(41.1775456,-8.5949561)));
+
+    eatingPlaceMarkers.add(Marker(
+      position: LatLng(41.1784152,-8.5973929),
+      markerId: MarkerId('Bar de Minas'),
+      infoWindow: InfoWindow(
+        title: "Bar de Minas",
+        snippet: "Tv. de Lamas 22, Porto",
+      ),
+      draggable: false,
+
+    ));
+
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('Grill'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "Grill",
+          snippet: "Tv. de Lamas 22, Porto",
+        ),
+        position: LatLng(41.1762857,-8.5952363)));
+
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('AE FEUP'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "AE FEUP",
+          snippet: "R. Dr. Júlio de Matos 882, 4200-365 Porto",
+        ),
+        position: LatLng(41.1762243,-8.5969001)));
+  }
 
   @override
   void dispose() {
@@ -40,43 +88,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text('Google Maps'),
-        actions: [
-          if (_origin != null)
-            TextButton(
-              onPressed: () => _googleMapController.animateCamera(
-                CameraUpdate.newCameraPosition(
-                  CameraPosition(
-                    target: _origin.position,
-                    zoom: 14.5,
-                    tilt: 50.0,
-                  ),
-                ),
-              ),
-              style: TextButton.styleFrom(
-                primary: Colors.green,
-                textStyle: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              child: const Text('ORIGIN'),
-            ),
-          if (_destination != null)
-            TextButton(
-              onPressed: () => _googleMapController.animateCamera(
-                CameraUpdate.newCameraPosition(
-                  CameraPosition(
-                    target: _destination.position,
-                    zoom: 14.5,
-                    tilt: 50.0,
-                  ),
-                ),
-              ),
-              style: TextButton.styleFrom(
-                primary: Colors.blue,
-                textStyle: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              child: const Text('DEST'),
-            )
-        ],
+        title: const Text('Eating Places Map'),
       ),
       body: Stack(
         alignment: Alignment.center,
@@ -86,23 +98,9 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
             zoomControlsEnabled: false,
             initialCameraPosition: _initialCameraPosition,
             onMapCreated: (controller) => _googleMapController = controller,
-            markers: {
-              if (_origin != null) _origin,
-              if (_destination != null) _destination
-            },
-            polylines: {
-              if (_info != null)
-                Polyline(
-                  polylineId: const PolylineId('overview_polyline'),
-                  color: Colors.red,
-                  width: 5,
-                  points: _info.polylinePoints
-                      .map((e) => LatLng(e.latitude, e.longitude))
-                      .toList(),
-                ),
-            },
-            onLongPress: _addMarker,
+            markers: Set.from(eatingPlaceMarkers),
           ),
+
           if (_info != null)
             Positioned(
               top: 20.0,
@@ -122,13 +120,6 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
                     )
                   ],
                 ),
-                child: Text(
-                  '${_info.totalDistance}, ${_info.totalDuration}',
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
               ),
             ),
         ],
@@ -144,43 +135,6 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
         child: const Icon(Icons.center_focus_strong),
       ),
     );
-  }
-
-  void _addMarker(LatLng pos) async {
-    if (_origin == null || (_origin != null && _destination != null)) {
-      // Origin is not set OR Origin/Destination are both set
-      // Set origin
-      setState(() {
-        _origin = Marker(
-          markerId: const MarkerId('origin'),
-          infoWindow: const InfoWindow(title: 'Origin'),
-          icon:
-          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-          position: pos,
-        );
-        // Reset destination
-        _destination = null;
-
-        // Reset info
-        _info = null;
-      });
-    } else {
-      // Origin is already set
-      // Set destination
-      setState(() {
-        _destination = Marker(
-          markerId: const MarkerId('destination'),
-          infoWindow: const InfoWindow(title: 'Destination'),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-          position: pos,
-        );
-      });
-
-      // Get directions
-      final directions = await DirectionsRepository()
-          .getDirections(origin: _origin.position, destination: pos);
-      setState(() => _info = directions);
-    }
   }
 }
 
