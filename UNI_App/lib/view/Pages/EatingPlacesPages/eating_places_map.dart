@@ -89,6 +89,8 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
       appBar: AppBar(
         centerTitle: false,
         title: const Text('Eating Places Map'),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
       ),
       body: Stack(
         alignment: Alignment.center,
