@@ -8,10 +8,9 @@ import '../../../model/directions_model.dart';
 class EatingPlacesMap extends StatefulWidget {
   static String name;
 
-   EatingPlacesMap(String nome){
+  EatingPlacesMap(String nome){
     name = nome;
   }
-
   @override
   _EatingPlacesMapState createState() => _EatingPlacesMapState();
 
