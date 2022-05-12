@@ -106,7 +106,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "INESC TEC",
           snippet: "R. Dr. Roberto Frias, Porto",
         ),
-        position: LatLng(41.1795119,-8.5964987)));
+        position: LatLng(41.179365, -8.595428)));
 
     eatingPlaceMarkers.add(Marker(
         markerId: MarkerId('INEGI'),
@@ -115,7 +115,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "INEGI",
           snippet: "R. Dr. Roberto Frias 400, 4200-465 Porto",
         ),
-        position: LatLng(41.1794368,-8.5948767)));
+        position: LatLng(41.179331, -8.594340)));
   }
 
   @override
