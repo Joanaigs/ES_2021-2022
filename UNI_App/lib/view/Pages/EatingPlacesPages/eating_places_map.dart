@@ -73,6 +73,24 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           snippet: "R. Dr. Júlio de Matos 882, 4200-365 Porto",
         ),
         position: LatLng(41.1762243,-8.5969001)));
+
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('INESC TEC'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "INESC TEC",
+          snippet: "R. Dr. Roberto Frias, Porto",
+        ),
+        position: LatLng(41.1795119,-8.5964987)));
+
+    eatingPlaceMarkers.add(Marker(
+        markerId: MarkerId('INEGI'),
+        draggable: false,
+        infoWindow: InfoWindow(
+          title: "INEGI",
+          snippet: "R. Dr. Roberto Frias 400, 4200-465 Porto",
+        ),
+        position: LatLng(41.1794368,-8.5948767)));
   }
 
   @override
