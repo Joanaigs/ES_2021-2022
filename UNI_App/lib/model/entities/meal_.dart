@@ -4,81 +4,60 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:uni/model/utils/day_of_week.dart';
 
-<<<<<<< HEAD
 enum FoodType{
   Carne,
   Peixe,
   Vegetariano,
   Dieta,
+  Bebida,
   Outro
 }
 
 Image getFoodTypeIcon(FoodType type){
-=======
-enum FoodType { Carne, Peixe, Vegetariano, Dieta, Bebida, Outros }
->>>>>>> main
 
-Image getFoodTypeIcon(FoodType type) {
-  return Image.asset('assets/images/' + foodTypeToString(type) + '.png');
-}
-
-<<<<<<< HEAD
-FoodType parseFoodType(String str){
-  str = str.replaceAll(' ', '').replaceAll('\n', '').replaceAll('\r', '').toLowerCase();
-  if(str == 'carne') {
-=======
-FoodType parseFoodType(String str) {
-  str = str.replaceAll(' ', '').toLowerCase();
-  if (str == 'carne') {
->>>>>>> main
-    return FoodType.Carne;
-  } else if (str == 'vegetariano') {
-    return FoodType.Vegetariano;
-  } else if (str == 'dieta') {
-    return FoodType.Dieta;
-  } else if (str == 'peixe') {
-    return FoodType.Peixe;
-<<<<<<< HEAD
-  }else if(str == 'outro') {
-    return FoodType.Outro;
+  Image getFoodTypeIcon(FoodType type) {
+    return Image.asset('assets/images/' + foodTypeToString(type) + '.png');
   }
-  else {
-    print(str);
-=======
-  } else if (str == 'bebida') {
-    return FoodType.Bebida;
-  } else if (str == 'outros') {
-    return FoodType.Outros;
-  } else {
->>>>>>> main
+  FoodType parseFoodType(String str){
+    str = str.replaceAll(' ', '').replaceAll('\n', '').replaceAll('\r', '').toLowerCase();
+    if(str == 'carne') {
+      return FoodType.Carne;
+    } else if (str == 'vegetariano') {
+      return FoodType.Vegetariano;
+    } else if (str == 'dieta') {
+      return FoodType.Dieta;
+    } else if (str == 'peixe') {
+      return FoodType.Peixe;
+    }else if(str == 'outro') {
+      return FoodType.Outro;
+    }else if (str == 'bebida') {
+      return FoodType.Bebida;
+    }
+    else {
+      print(str);
+      return null;
+    }
+  }
+
+  String foodTypeToString(FoodType type) {
+    switch (type) {
+      case FoodType.Carne:
+        return 'Carne';
+      case FoodType.Peixe:
+        return 'Peixe';
+      case FoodType.Vegetariano:
+        return 'Vegetariano';
+      case FoodType.Dieta:
+        return 'Dieta';
+      case FoodType.Outro:
+        return 'Outro';
+      case FoodType.Bebida:
+        return 'Bebida';
+    }
     return null;
   }
-}
 
-String foodTypeToString(FoodType type) {
-  switch (type) {
-    case FoodType.Carne:
-      return 'Carne';
-    case FoodType.Peixe:
-      return 'Peixe';
-    case FoodType.Vegetariano:
-      return 'Vegetariano';
-    case FoodType.Dieta:
-      return 'Dieta';
-<<<<<<< HEAD
-    case FoodType.Outro:
-      return 'Outro';
-=======
-    case FoodType.Bebida:
-      return 'Bebida';
-    case FoodType.Outros:
-      return 'Outros';
->>>>>>> main
-  }
-  return null;
-}
-
-class Meal_ {
+  class Meal_ {
   final FoodType foodType;
   final String description;
   bool isLunch;
@@ -102,4 +81,4 @@ class Meal_ {
   }
   */
 
-}
+  }
