@@ -17,7 +17,7 @@ class TapRestaurant extends Given1WithWorld<String, FlutterWorld> {
   @override
   Future<void> executeStep(String input1) async {
     final restaurant = find.byValueKey(input1);
-    await FlutterDriverUtils.tap(world.driver, restaurant);
+    await FlutterDriverUtils.isPresent(world.driver, restaurant);
   }
 
   @override
@@ -32,5 +32,5 @@ class AtRestaurant extends Given1WithWorld<String, FlutterWorld> {
   }
 
   @override
-  RegExp get pattern => RegExp(r"I am on the {string} page");
+  RegExp get pattern => RegExp(r"I am on the {string} screen");
 }

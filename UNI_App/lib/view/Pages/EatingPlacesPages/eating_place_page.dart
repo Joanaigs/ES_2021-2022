@@ -44,7 +44,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     _meals = filterMeals(allMeals);
 
     return Scaffold(
-        key: Key(eatingPlace.name),
+        key: Key("restaurantPage"),
         body: SingleChildScrollView(
             physics: ScrollPhysics(),
       child: Column(children: <Widget>[
