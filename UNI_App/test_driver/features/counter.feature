@@ -3,6 +3,6 @@ Feature: Post
 
   Scenario: Select restaurant
     Given I'm the on the "eat@feup" mainpage
-    When I tap the "AE" button
-    Then I see the "AE" screen
+    When I tap the "restaurant" image
+    Then I am on the "restaurant" page
 

@@ -74,13 +74,14 @@ class BuildRestaurantCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(17.0),
           child: Stack(children: <Widget>[
             GestureDetector(
+                key:Key("restaurant"),
                 onTap: () {
                   Navigator.push(context,
+
                       MaterialPageRoute(builder: (context) => eatingPlacePage));
                 },
                 child: Image.asset(
                   'assets/images/' + photoName,
-                  key: Key(name),
                   width: 600.0,
                   height: 300.0,
                   fit: BoxFit.cover,
@@ -111,7 +112,6 @@ class BuildRestaurantCard extends StatelessWidget {
                 child:
                 Center(
                     child: Text(name,
-                      key: Key(name),
                       style: TextStyle(
                         fontFamily: 'Raleway',
                         fontWeight: FontWeight.bold,

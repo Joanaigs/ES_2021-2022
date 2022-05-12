@@ -30,6 +30,7 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
       ),
        */
       body: Center(
+        key: Key('eat@feup'),
         child: ListView(
           children: <Widget>[
             Container(
