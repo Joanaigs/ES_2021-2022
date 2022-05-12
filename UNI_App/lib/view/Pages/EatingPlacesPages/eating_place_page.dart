@@ -65,7 +65,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EatingPlacesMap()));
+                          builder: (context) => EatingPlacesMap(eatingPlace.name)));
                 }, //mudar que não é bem o suposto
               ),
             ],

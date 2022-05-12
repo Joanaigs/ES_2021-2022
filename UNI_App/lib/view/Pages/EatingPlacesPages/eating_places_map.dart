@@ -10,11 +10,13 @@ import 'eat_at_feup_general_page_view.dart';
 import 'general_eating_place_page.dart';
 
 class EatingPlacesMap extends StatefulWidget {
-  const EatingPlacesMap({Key key}) : super(key: key);
+  const EatingPlacesMap(this.name);
 
   @override
   _EatingPlacesMapState createState() => _EatingPlacesMapState();
+  final String name;
 }
+
 
 class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
   static const _initialCameraPosition = CameraPosition(

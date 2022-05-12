@@ -36,7 +36,7 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
               margin: EdgeInsets.all(10.0),
               child: GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>EatingPlacesMap()));
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>EatingPlacesMap("")));
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(17.0),
