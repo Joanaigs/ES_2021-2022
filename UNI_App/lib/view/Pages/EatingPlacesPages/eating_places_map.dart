@@ -11,22 +11,47 @@ import 'general_eating_place_page.dart';
 
 class EatingPlacesMap extends StatefulWidget {
   const EatingPlacesMap(this.name);
+  final String name;
+  static String nome;
+
+   String namePlace(){
+    switch(name){
+      case 'AE':
+        return'AE';
+  }
+  nome = namePlace();
+}
 
   @override
   _EatingPlacesMapState createState() => _EatingPlacesMapState();
-  final String name;
+
+
 }
 
 
 class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
-  static const _initialCameraPosition = CameraPosition(
-    target: LatLng(41.1776779, -8.5949166),
-    zoom: 18,
-  );
+
+  static CameraPosition choosePosition()  {
+    switch (EatingPlacesMap.nome) {
+      case 'AE':
+        return CameraPosition(
+          target: LatLng(41.1762243,-8.5969001),
+          zoom: 18,
+        );
+        break;
+      default:
+        return CameraPosition(
+          target: LatLng(41.1776779, -8.5949166),
+          zoom: 18,
+        );
+    }
+  }
+
 
   GoogleMapController _googleMapController;
   List<Marker> eatingPlaceMarkers = [];
   Directions _info;
+
 
   @override
   void initState() {
@@ -100,7 +125,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           GoogleMap(
             myLocationButtonEnabled: false,
             zoomControlsEnabled: false,
-            initialCameraPosition: _initialCameraPosition,
+            initialCameraPosition: choosePosition(),
             onMapCreated: (controller) => _googleMapController = controller,
             markers: Set.from(eatingPlaceMarkers),
           ),
@@ -134,7 +159,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
         onPressed: () => _googleMapController.animateCamera(
           _info != null
               ? CameraUpdate.newLatLngBounds(_info.bounds, 100.0)
-              : CameraUpdate.newCameraPosition(_initialCameraPosition),
+              : CameraUpdate.newCameraPosition(choosePosition()),
         ),
         child: const Icon(Icons.center_focus_strong),
       ),
