@@ -11,7 +11,6 @@ class EatingPlacesMap extends StatefulWidget {
   EatingPlacesMap(String nome){
     name = nome;
   }
-
   @override
   _EatingPlacesMapState createState() => _EatingPlacesMapState();
 
