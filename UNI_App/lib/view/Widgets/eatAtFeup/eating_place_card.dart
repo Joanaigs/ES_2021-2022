@@ -1,27 +1,11 @@
-import 'package:uni/controller/exam.dart';
-import 'package:uni/model/app_state.dart';
-import 'package:uni/View/Pages/EatingPlacesPages/bar_biblioteca.dart';
-import 'package:uni/View/Pages/EatingPlacesPages/bar_minas.dart';
-import 'package:uni/View/Pages/EatingPlacesPages/cantina.dart';
-import 'package:uni/View/Pages/EatingPlacesPages/grill.dart';
+import 'package:uni/controller/load_nenu.dart';
+import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eating_place_page.dart';
 import 'package:uni/model/entities/eating_place.dart';
-import 'package:uni/model/entities/meal_.dart';
-import 'package:uni/model/entities/exam.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tuple/tuple.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/utils/day_of_week.dart';
-import 'package:uni/utils/constants.dart' as Constants;
-import 'package:uni/view/Widgets/date_rectangle.dart';
-import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
-import 'package:uni/view/Widgets/row_container.dart';
-import 'package:uni/view/Widgets/schedule_event_rectangle.dart';
-import 'package:uni/view/Widgets/schedule_row.dart';
 
-import '../../../View/Pages/EatingPlacesPages/ae.dart';
-import '../../../View/Pages/EatingPlacesPages/eating_places_map.dart';
 
 
 class BuildRestaurantCard extends StatelessWidget {
@@ -41,38 +25,44 @@ class BuildRestaurantCard extends StatelessWidget {
       case 'AE':
         eatingPlace = EatingPlace(
             1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
+        getMealsAE("ae_ementa.txt").then((value){eatingPlace.meals=value;});
         break;
       case 'CANTINA':
         eatingPlace = EatingPlace(
             2, 'CANTINA', 'cantina.jpg', workingHours, false,
             MapCoordinates(1, 1));
+        eatingPlace.meals=EatingPlace.getTestMeals();
         break;
       case 'BAR DA BIBLIOTECA':
         eatingPlace = EatingPlace(
             3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false,
             MapCoordinates(1, 1));
+        getMealsAE("biblio_ementa.txt").then((value){eatingPlace.meals=value;});
         break;
       case 'GRILL':
         eatingPlace = EatingPlace(
             4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
+        eatingPlace.meals=EatingPlace.getTestMeals();
         break;
       case 'BAR DE MINAS':
         eatingPlace = EatingPlace(
             5, 'BAR DE MINAS', 'minas.jpg', workingHours, false,
             MapCoordinates(1, 1));
+        eatingPlace.meals=EatingPlace.getTestMeals();
         break;
       case 'RESTAURANTE INEGI':
         eatingPlace = EatingPlace(
             6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false,
             MapCoordinates(1, 1));
+        eatingPlace.meals=EatingPlace.getTestMeals();
         break;
       case 'BAR INESC TEC':
         eatingPlace = EatingPlace(
             7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false,
             MapCoordinates(1, 1));
+        eatingPlace.meals=EatingPlace.getTestMeals();
         break;
     }
-    eatingPlace.meals = EatingPlace.getTestMeals();
     eatingPlacePage = EatingPlacePage(eatingPlace);
 
     return Container(

@@ -366,6 +366,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  gherkin:
+    dependency: "direct main"
+    description:
+      name: gherkin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.8"
   glob:
     dependency: transitive
     description:

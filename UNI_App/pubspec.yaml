@@ -18,7 +18,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  gherkin: ^2.0.8
   dio: ^4.0.0
   flutter_polyline_points: ^0.2.6
   google_maps_flutter: ^2.0.2
@@ -113,7 +113,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/env/
     - assets/text/
 
   # An image asset can refer to one or more resolution-specific "variants", see
