@@ -2,12 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eat_at_feup_back_button_page.dart';
-import 'package:uni/view/Pages/unnamed_page_view.dart';
 
 import '../../../model/directions_model.dart';
-import '../../../model/directions_repository.dart';
-import 'eat_at_feup_general_page_view.dart';
-import 'general_eating_place_page.dart';
 
 class EatingPlacesMap extends StatefulWidget {
   const EatingPlacesMap(this.name);

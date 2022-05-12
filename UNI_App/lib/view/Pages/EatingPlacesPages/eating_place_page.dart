@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
-import 'package:intl/intl.dart';
 
 class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
@@ -43,6 +44,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
 
     return Scaffold(
         body: SingleChildScrollView(
+            physics: ScrollPhysics(),
       child: Column(children: <Widget>[
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -143,7 +145,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
         ),
         SizedBox(height: 10),
-        MealsMenu(_meals),
+        Container(child:MealsMenu(_meals)),
         SizedBox(height: 10),
         Text(
           'Horas Populares',
@@ -173,9 +175,10 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
         return !m.isLunch;
       }
     }).toList();
-    for (var meal in meals) {
+    /*for (var meal in meals) {
       print(meal.description);
     }
+     */
     return meals;
   }
 }
@@ -213,6 +216,7 @@ class MealsMenuState extends State<MealsMenu> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: ScrollPhysics(),
         shrinkWrap: true,
         itemCount: widget.meals.length,
         itemBuilder: (context, index) {
@@ -224,7 +228,6 @@ class MealsMenuState extends State<MealsMenu> {
             leading: getFoodTypeIcon(item.foodType),
           );
         },
-
     );
   }
 }

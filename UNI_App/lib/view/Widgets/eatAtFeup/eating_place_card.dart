@@ -5,7 +5,10 @@ import 'package:uni/model/entities/eating_place.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+import 'package:uni/utils/constants.dart' as Constants;
 
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
 
 
 class BuildRestaurantCard extends StatelessWidget {

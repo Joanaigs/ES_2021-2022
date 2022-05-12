@@ -1,16 +1,15 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'dart:io';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uni/controller/load_info.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/profile_page_model.dart';
-import 'package:uni/view/Widgets/navigation_drawer.dart';
 import 'package:uni/utils/constants.dart' as Constants;
+import 'package:uni/view/Widgets/navigation_drawer.dart';
 
 /// Manages the  section inside the user's personal area.
 abstract class EatAtFeupGeneralPageViewState extends State<StatefulWidget> {
