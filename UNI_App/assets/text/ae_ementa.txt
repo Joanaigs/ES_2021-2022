@@ -1,41 +1,41 @@
-Bowl Estruturas | Ovo, atum, quijo, feta;3.50
-Bowl Minas | Atum;3.50
-Bowl Orgânica | Camarão, fruta;3.50
-Bowl Gestão Industrial | Presunto, fruta;3.50
-Bowl Química | Salmão;3.50
-Bowl Biofisica | Salmão;3.50
-Bowl Informatica | Queijo fresco;3.50
-Bioengenharia | Vegan;3.50
-Cachorro especial c/ molho francesinha;2.65
-Francesinha;4.50
-Hambúrger Metalúrgica | no caco c/batata e molho aioli;4.20
-Hambúrger Civil | c/queijo, fiambre, batata e molho aioli(no pão|no prato);4.20
-Hambúrger Eletrotécnica e computadores | c/ovo, presunto, requeijão, alheira, tomate,  batata e molho aioli(no pão|no prato);4.20
-Hambúrger Ambiente | vegetarino(quinoa, batata doce, feijão preto e aveia) c/batata e molho aioli(no pão|no prato);4.20
-Hambúrger Mecânica | c/chourição, queijo, rúcula, tomate, compota de cebola roxa, batata e molho aioli(no pão|no prato);4.20
-Omelete c/batata(no prato/no pão);3.50
-Panado c/batata(no prato);4.00
-Sopa(sem batata);1.10
-Sopa XL;1.20
-Wraps;2.20
-Dose Batata Frita;1.00
-Ovo extra;1.00
-Tapa do dia;1.50
-Baguete Americana;2.30
-Baguete atum;2.30
-Baguete com manteiga;1.00
-Baguete mista;1.70
-Baguete queijo fresco;2.30
-Baguete vegetatiana;1.50
-Tosta americana em pão saloio;2.70
-Tosta de atum em pão saloio;2.70
-Tosta de frango em pão saloio;2.70
-Tosta de queijo fresco em pão saloio;2.70
-Tosta delicias;2.70
-Tosta italiana em pão saloio;2.70
-Pack 1 |Sopa + Prato do dia + Bebida + café;4.10
-Pack 2 |Sopa + Prato do dia + café;3.30
-Pack 3 |Francesinha + Refrigerante;5.00
-Pack 4 |Hambúrger + Refrigerante;5.30
-Pack 5 |Sopa + Prato do dia;3.10
-Prato do dia;2.90
+Bowl Estruturas | Ovo, atum, quijo, feta;3.50;peixe
+Bowl Minas | Atum;3.50;peixe
+Bowl Orgânica | Camarão, fruta;3.50;peixe
+Bowl Gestão Industrial | Presunto, fruta;3.50;carne
+Bowl Química | Salmão;3.50;peixe
+Bowl Biofisica | Frango;3.50;carne
+Bowl Informatica | Queijo fresco;3.50;vegetariano
+Bioengenharia | Vegan;3.50;vegetariano
+Cachorro especial c/ molho francesinha;2.65;carne
+Francesinha;4.50;carne
+Hambúrger Metalúrgica | no caco c/batata e molho aioli;4.20;carne
+Hambúrger Civil | c/queijo, fiambre, batata e molho aioli(no pão|no prato);4.20;carne
+Hambúrger Eletrotécnica e computadores | c/ovo, presunto, requeijão, alheira, tomate,  batata e molho aioli(no pão|no prato);4.20;carne
+Hambúrger Ambiente | vegetariano(quinoa, batata doce, feijão preto e aveia) c/batata e molho aioli(no pão|no prato);4.20;vegetariano
+Hambúrger Mecânica | c/chourição, queijo, rúcula, tomate, compota de cebola roxa, batata e molho aioli(no pão|no prato);4.20;carne
+Omelete c/batata(no prato/no pão);3.50;vegetariano
+Panado c/batata(no prato);4.00;carne
+Sopa(sem batata);1.10;outro
+Sopa XL;1.20;outro
+Wraps;2.20;outro
+Dose Batata Frita;1.00;outro
+Ovo extra;1.00;outro
+Tapa do dia;1.50;outro
+Baguete Americana;2.30;carne
+Baguete atum;2.30;peixe
+Baguete com manteiga;1.00;vegetariano
+Baguete mista;1.70;carne
+Baguete queijo fresco;2.30;vegetariano
+Baguete vegetatiana;1.50;vegetariano
+Tosta americana em pão saloio;2.70;carne
+Tosta de atum em pão saloio;2.70;peixe
+Tosta de frango em pão saloio;2.70;carne
+Tosta de queijo fresco em pão saloio;2.70;vegetariano
+Tosta delicias;2.70;peixe
+Tosta italiana em pão saloio;2.70;carne
+Pack 1 |Sopa + Prato do dia + Bebida + café;4.10;outro
+Pack 2 |Sopa + Prato do dia + café;3.30;outro
+Pack 3 |Francesinha + Refrigerante;5.00;outro
+Pack 4 |Hambúrger + Refrigerante;5.30;outro
+Pack 5 |Sopa + Prato do dia;3.10;outro
+Prato do dia;2.90;outro

@@ -18,7 +18,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_gherkin: ^2.0.0
+  glob: ^2.0.2
+  test: ^1.19.5
+  integration_test: ^0.8.1
   dio: ^4.0.0
   flutter_polyline_points: ^0.2.6
   google_maps_flutter: ^2.0.2
@@ -58,12 +61,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  test: any
+  flutter_driver:
+    sdk: flutter
+  test:
   mockito:
   build_runner:
   flutter_launcher_icons: ^0.9.0
   flutter_native_splash: ^1.0.3
 
+  glob:
 flutter_icons:
   android: true
   ios: true
@@ -113,7 +119,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/env/
     - assets/text/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
-import 'package:intl/intl.dart';
 
 class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
@@ -21,6 +22,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Peixe',
     'Vegetariano',
     'Dieta',
+    'Outro',
   ];
   var typeOfMealItems = ['Almoço', 'Jantar'];
   var dayOfWeekItems = [
@@ -35,7 +37,6 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
 
   _EatingPlacePageState(this.eatingPlace);
 
-
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
@@ -44,6 +45,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
 
     return Scaffold(
         body: SingleChildScrollView(
+            physics: ScrollPhysics(),
       child: Column(children: <Widget>[
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -65,7 +67,8 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EatingPlacesMap(eatingPlace.name)));
+                          builder: (context) =>
+                              EatingPlacesMap(eatingPlace.name)));
                 }, //mudar que não é bem o suposto
               ),
             ],
@@ -143,7 +146,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
         ),
         SizedBox(height: 10),
-        MealsMenu(_meals),
+        Container(child:MealsMenu(_meals)),
         SizedBox(height: 10),
         Text(
           'Horas Populares',
@@ -157,29 +160,33 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
   }
 
   List<Meal_> filterMeals(Map<DayOfWeek, List<Meal_>> allMeals) {
-    List<Meal_> meals = allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
+    List<Meal_> meals =
+        allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
       if (dropdownvalue_typeOfMeal == 'Almoço') {
         if (dropdownvalue_foodType != 'Tudo') {
-          return m.isLunch && (foodTypeToString(m.foodType) == dropdownvalue_foodType);
+          return m.isLunch &&
+              (foodTypeToString(m.foodType) == dropdownvalue_foodType);
         }
         return m.isLunch;
       } else {
         if (dropdownvalue_foodType != 'Tudo') {
-          return !m.isLunch && (m.foodType  == parseFoodType(dropdownvalue_foodType));
+          return !m.isLunch &&
+              (m.foodType == parseFoodType(dropdownvalue_foodType));
         }
         return !m.isLunch;
       }
     }).toList();
-    for(var meal in meals){
+    /*for (var meal in meals) {
       print(meal.description);
     }
+     */
     return meals;
   }
-
 }
 
 class EatingPlacePage extends StatefulWidget {
   final EatingPlace eatingPlace;
+
   const EatingPlacePage(this.eatingPlace);
 
   //const EatingPlacePage({Key key, this.eatingPlace}) : super(key: key);
@@ -188,13 +195,13 @@ class EatingPlacePage extends StatefulWidget {
   _EatingPlacePageState createState() => _EatingPlacePageState(eatingPlace);
 }
 
-
-class MealsMenu extends StatefulWidget{
+class MealsMenu extends StatefulWidget {
   final List<Meal_> meals;
+
   MealsMenu(this.meals);
 
   @override
-  MealsMenuState createState(){
+  MealsMenuState createState() {
     return MealsMenuState();
   }
 }
@@ -209,18 +216,19 @@ class MealsMenuState extends State<MealsMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[ ListView.builder(
-          shrinkWrap: true,
-          itemCount: widget.meals.length,
-          itemBuilder: (context, index) {
-            final item = widget.meals[index];
-            return ListTile(
-              title: Text(foodTypeToString(item.foodType)),
-              subtitle: Text(item.description),
-              leading: getFoodTypeIcon(item.foodType),
-            );
-          },
-        )]);
+    return ListView.builder(
+      physics: ScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: widget.meals.length,
+        itemBuilder: (context, index) {
+          final item = widget.meals[index];
+          return ListTile(
+
+            title: Text(item.description),
+            subtitle: Text(item.cost.toStringAsFixed(2)+'€'),
+            leading: getFoodTypeIcon(item.foodType),
+          );
+        },
+    );
   }
 }
