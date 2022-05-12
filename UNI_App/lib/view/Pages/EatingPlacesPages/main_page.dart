@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni/view/Widgets/eatAtFeup/eating_place_card.dart';
 
-import '../../Widgets/restaurant_card.dart';
 import '../EatingPlacesPages/eating_places_map.dart';
 import 'eat_at_feup_general_page_view.dart';
 
