@@ -21,6 +21,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Peixe',
     'Vegetariano',
     'Dieta',
+    'Outro',
   ];
   var typeOfMealItems = ['Almoço', 'Jantar'];
   var dayOfWeekItems = [

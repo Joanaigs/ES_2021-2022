@@ -19,7 +19,7 @@ Future<Map<DayOfWeek, List<Meal_>>> getMealsAE(String file) async{
     var words=line.split(';');
     for(var day in DayOfWeek.values)
     {
-      meals[day].add(Meal_(FoodType.Carne, words[0], true, double.parse(words[1])));
+      meals[day].add(Meal_(parseFoodType(words[2]), words[0], true, double.parse(words[1])));
     }
   }
   return meals;

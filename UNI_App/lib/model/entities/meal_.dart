@@ -8,7 +8,8 @@ enum FoodType{
   Carne,
   Peixe,
   Vegetariano,
-  Dieta
+  Dieta,
+  Outro
 }
 
 Image getFoodTypeIcon(FoodType type){
@@ -17,7 +18,7 @@ Image getFoodTypeIcon(FoodType type){
 }
 
 FoodType parseFoodType(String str){
-  str = str.replaceAll(' ', '').toLowerCase();
+  str = str.replaceAll(' ', '').replaceAll('\n', '').replaceAll('\r', '').toLowerCase();
   if(str == 'carne') {
     return FoodType.Carne;
   } else if(str == 'vegetariano') {
@@ -26,8 +27,11 @@ FoodType parseFoodType(String str){
     return FoodType.Dieta;
   } else if(str == 'peixe') {
     return FoodType.Peixe;
+  }else if(str == 'outro') {
+    return FoodType.Outro;
   }
   else {
+    print(str);
     return null;
   }
 }
@@ -43,6 +47,8 @@ String foodTypeToString(FoodType type) {
       return 'Vegetariano';
     case FoodType.Dieta:
       return 'Dieta';
+    case FoodType.Outro:
+      return 'Outro';
   }
   return null;
 }

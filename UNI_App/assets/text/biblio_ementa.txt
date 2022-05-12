@@ -1,21 +1,21 @@
-Baguete Bifana;2.70
-Baguete Delicias;2.60
-Baguete Pasta de Atum;2.60
-Baguete Americana;2.60
-Baguete Pasta de Frango;2.60
-Baguete Cachorro c/batata;2.60
-Baguete Presunto;2.80
-Baguete Queijo Fresco;2.80
-Baguete Perú Fumado;2.80
-Baguete Panado;2.90
-Baguete Hamburger;2.90
-Baguete simples;0.45
-Cada ingrediente a mais;0.20
-Baguete mista;1.45
-1/2 Baguete mista;0.85
-Baguete c/manteiga;0.80
-1/2 Baguete c/manteiga;0.60
-Baguete c/fiambre;1.25
-1/2 Baguete c/fiambre;0.70
-Baguete c/queijo;1.50
-1/2 Baguete c/quijo;0.85
+Baguete Bifana;2.70;carne
+Baguete Delicias;2.60;peixe
+Baguete Pasta de Atum;2.60;peixe
+Baguete Americana;2.60;carne
+Baguete Pasta de Frango;2.60;carne
+Baguete Cachorro c/batata;2.60;carne
+Baguete Presunto;2.80;carne
+Baguete Queijo Fresco;2.60;vegetariano
+Baguete Perú Fumado;2.80;carne
+Baguete Panado;2.90;carne
+Baguete Hamburger;2.90;carne
+Baguete simples;0.45;outro
+Cada ingrediente a mais;0.20;outro
+Baguete mista;1.45;carne
+1/2 Baguete mista;0.85;carne
+Baguete c/manteiga;0.80;outro
+1/2 Baguete c/manteiga;0.60;outro
+Baguete c/fiambre;1.25;carne
+1/2 Baguete c/fiambre;0.70;carne
+Baguete c/queijo;1.50;outro
+1/2 Baguete c/queijo;0.85;outro
