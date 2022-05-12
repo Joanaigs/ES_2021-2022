@@ -24,84 +24,110 @@ import '../../../View/Pages/EatingPlacesPages/ae.dart';
 import '../../../View/Pages/EatingPlacesPages/eating_places_map.dart';
 
 
+class BuildRestaurantCard extends StatelessWidget {
+  String name, photoName;
 
+  BuildRestaurantCard({Key key, @required this.photoName, @required this.name}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    dynamic eatingPlacePage;
+    EatingPlace eatingPlace;
+    Map<DayOfWeek, TimeInterval> workingHours = {};
 
-Widget buildRestaurantCard(BuildContext context, String photoName, String name){
-  dynamic eatingPlacePage;
-  EatingPlace eatingPlace;
-  Map<DayOfWeek, TimeInterval> workingHours = {};
+    DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+    workingHours[day] = TimeInterval('9:00', '18:00');
 
-  DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-  workingHours[day] = TimeInterval('9:00', '18:00');
+    switch (name) {
+      case 'AE':
+        eatingPlace = EatingPlace(
+            1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
+        break;
+      case 'CANTINA':
+        eatingPlace = EatingPlace(
+            2, 'CANTINA', 'cantina.jpg', workingHours, false,
+            MapCoordinates(1, 1));
+        break;
+      case 'BAR DA BIBLIOTECA':
+        eatingPlace = EatingPlace(
+            3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false,
+            MapCoordinates(1, 1));
+        break;
+      case 'GRILL':
+        eatingPlace = EatingPlace(
+            4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
+        break;
+      case 'BAR DE MINAS':
+        eatingPlace = EatingPlace(
+            5, 'BAR DE MINAS', 'minas.jpg', workingHours, false,
+            MapCoordinates(1, 1));
+        break;
+      case 'RESTAURANTE INEGI':
+        eatingPlace = EatingPlace(
+            6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false,
+            MapCoordinates(1, 1));
+        break;
+      case 'BAR INESC TEC':
+        eatingPlace = EatingPlace(
+            7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false,
+            MapCoordinates(1, 1));
+        break;
+    }
+    eatingPlace.meals = EatingPlace.getTestMeals();
+    eatingPlacePage = EatingPlacePage(eatingPlace);
 
-  switch(name){
-    case 'AE':
-      eatingPlace = EatingPlace(1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'CANTINA':
-      eatingPlace = EatingPlace(2, 'CANTINA', 'cantina.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'BAR DA BIBLIOTECA':
-      eatingPlace = EatingPlace(3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'GRILL':
-      eatingPlace = EatingPlace(4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'BAR DE MINAS':
-      eatingPlace = EatingPlace(5, 'BAR DE MINAS', 'minas.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'RESTAURANTE INEGI':
-      eatingPlace = EatingPlace(6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-    case 'BAR INESC TEC':
-      eatingPlace = EatingPlace(7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false, MapCoordinates(1, 1));
-      break;
-  }
-  eatingPlace.meals = EatingPlace.getTestMeals();
-  eatingPlacePage = EatingPlacePage(eatingPlace);
-
-  return Container(
-    margin: EdgeInsets.all(10.0),
-    child: ClipRRect(
-        borderRadius: BorderRadius.circular(17.0),
-        child: Stack(children: <Widget>[
-          GestureDetector(
-            onTap: () {Navigator.push(context, MaterialPageRoute(builder:(context)=>eatingPlacePage));},
-          child: Image.asset(
-            'assets/images/' + photoName,
-            width: 600.0,
-            height: 300.0,
-            fit: BoxFit.cover,
-          )),
-          GestureDetector(
-              onTap: () {Navigator.push(context, MaterialPageRoute(builder:(context)=>eatingPlacePage));},
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(17.0),
+          child: Stack(children: <Widget>[
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => eatingPlacePage));
+                },
+                child: Image.asset(
+                  'assets/images/' + photoName,
+                  width: 600.0,
+                  height: 300.0,
+                  fit: BoxFit.cover,
+                )),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => eatingPlacePage));
+              },
               child:
-            Center(
-                child: Text(name,
-                    style: TextStyle(
-                      fontFamily: 'Raleway',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35,
-                      height: 5.5,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 4
-                        ..color = Color.fromARGB(230, 117, 23, 30),
-                    ))),),
-        GestureDetector(
-        onTap: () {Navigator.push(context, MaterialPageRoute(builder:(context)=>eatingPlacePage));},
-        child:
-          Center(
-              child: Text(name,
-                style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 35,
-                  color: Colors.grey[100],
-                  height: 5.5,
-                ),
-              )))
-        ])
-    ),
-  );
+              Center(
+                  child: Text(name,
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        height: 5.5,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 4
+                          ..color = Color.fromARGB(230, 117, 23, 30),
+                      ))),),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => eatingPlacePage));
+                },
+                child:
+                Center(
+                    child: Text(name,
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        color: Colors.grey[100],
+                        height: 5.5,
+                      ),
+                    )))
+          ])
+      ),
+    );
+  }
+
 }

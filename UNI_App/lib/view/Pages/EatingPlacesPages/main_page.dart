@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni/view/Widgets/eatAtFeup/eating_place_card.dart';
 
+import '../../Widgets/restaurant_card.dart';
 import '../EatingPlacesPages/eating_places_map.dart';
 import 'eat_at_feup_general_page_view.dart';
 
@@ -49,13 +50,13 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
                 )
               ),
             ),
-            buildRestaurantCard(context, 'ae.jpg', 'AE'),
-            buildRestaurantCard(context, 'cantina.jpg', 'CANTINA'),
-            buildRestaurantCard(context, 'grill.png', 'GRILL'),
-            buildRestaurantCard(context, 'biblioteca.jpg', 'BAR DA BIBLIOTECA'),
-            buildRestaurantCard(context, 'minas.jpg', 'BAR DE MINAS'),
-            buildRestaurantCard(context, 'inegi.jpg', 'RESTAURANTE INEGI'),
-            buildRestaurantCard(context, 'inesc.jpg', 'BAR INESC TEC'),
+            BuildRestaurantCard(photoName: 'ae.jpg', name: 'AE'),
+            BuildRestaurantCard(photoName:'cantina.jpg', name:'CANTINA'),
+            BuildRestaurantCard(photoName:'grill.png', name:'GRILL'),
+            BuildRestaurantCard(photoName:'biblioteca.jpg', name:'BAR DA BIBLIOTECA'),
+            BuildRestaurantCard(photoName:'minas.jpg', name:'BAR DE MINAS'),
+            BuildRestaurantCard(photoName:'inegi.jpg', name:'RESTAURANTE INEGI'),
+            BuildRestaurantCard(photoName:'inesc.jpg', name:'BAR INESC TEC'),
           ],
         ),
       ),
