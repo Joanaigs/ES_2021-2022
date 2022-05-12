@@ -80,6 +80,7 @@ class BuildRestaurantCard extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/' + photoName,
+                  key: Key(name),
                   width: 600.0,
                   height: 300.0,
                   fit: BoxFit.cover,
@@ -110,6 +111,7 @@ class BuildRestaurantCard extends StatelessWidget {
                 child:
                 Center(
                     child: Text(name,
+                      key: Key(name),
                       style: TextStyle(
                         fontFamily: 'Raleway',
                         fontWeight: FontWeight.bold,
