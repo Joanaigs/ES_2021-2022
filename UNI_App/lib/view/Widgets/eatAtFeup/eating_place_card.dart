@@ -50,6 +50,12 @@ Widget buildRestaurantCard(BuildContext context, String photoName, String name){
     case 'BAR DE MINAS':
       eatingPlace = EatingPlace(5, 'BAR DE MINAS', 'minas.jpg', workingHours, false, MapCoordinates(1, 1));
       break;
+    case 'RESTAURANTE INEGI':
+      eatingPlace = EatingPlace(6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false, MapCoordinates(1, 1));
+      break;
+    case 'BAR INESC TEC':
+      eatingPlace = EatingPlace(7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false, MapCoordinates(1, 1));
+      break;
   }
   eatingPlace.meals = EatingPlace.getTestMeals();
   eatingPlacePage = EatingPlacePage(eatingPlace);
@@ -75,7 +81,7 @@ Widget buildRestaurantCard(BuildContext context, String photoName, String name){
                     style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
-                      fontSize: 38,
+                      fontSize: 35,
                       height: 5.5,
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
@@ -90,7 +96,7 @@ Widget buildRestaurantCard(BuildContext context, String photoName, String name){
                 style: TextStyle(
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.bold,
-                  fontSize: 38,
+                  fontSize: 35,
                   color: Colors.grey[100],
                   height: 5.5,
                 ),
