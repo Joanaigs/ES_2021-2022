@@ -176,10 +176,6 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
         return !m.isLunch;
       }
     }).toList();
-    /*for (var meal in meals) {
-      print(meal.description);
-    }
-     */
     return meals;
   }
 }
