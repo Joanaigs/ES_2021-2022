@@ -148,6 +148,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: Key('map'),
       appBar: AppBar(
         centerTitle: false,
         title: Text(EatingPlacesMap.name),

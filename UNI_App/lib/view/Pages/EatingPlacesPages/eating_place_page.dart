@@ -62,6 +62,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                     .apply(fontSizeDelta: 7),
               ),
               IconButton(
+                key: Key('map'),
                 icon: Image.asset('assets/images/map_pin.png'),
                 iconSize: 40,
                 onPressed: () {
