@@ -16,5 +16,12 @@ void main(){
         zoom: 18,
       ));
     });
+
+    test('List of markers should have 7 markers', (){
+      EatingPlacesMap eatingPlacesMap = EatingPlacesMap('Eating Places Map');
+      EatingPlacesMapState eatingPlacesMapState = eatingPlacesMap.createState();
+      eatingPlacesMapState.initState();
+      expect(eatingPlacesMapState.eatingPlaceMarkers.length, 7);
+    });
   });
 }
