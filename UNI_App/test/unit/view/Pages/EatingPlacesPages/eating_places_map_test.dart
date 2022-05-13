@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eating_places_map.dart';
+
+import '../../../../testable_widget.dart';
 
 
 void main(){
@@ -22,6 +25,13 @@ void main(){
       EatingPlacesMapState eatingPlacesMapState = eatingPlacesMap.createState();
       eatingPlacesMapState.initState();
       expect(eatingPlacesMapState.eatingPlaceMarkers.length, 7);
+    });
+
+    testWidgets('At the map page', (WidgetTester tester) async {
+      final widget = makeTestableWidget(
+          child:EatingPlacesMap(''));
+      await tester.pumpWidget(widget);
+      expect(find.byType(Container), findsNWidgets(1));
     });
   });
 }
