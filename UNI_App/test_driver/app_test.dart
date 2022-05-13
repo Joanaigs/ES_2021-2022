@@ -4,6 +4,7 @@ import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
 
 import 'steps/tap_restaurant_button.dart';
+import 'steps/tap_map_button_step.dart';
 
 
 Future<void> main() {
@@ -16,7 +17,10 @@ Future<void> main() {
     ]
     ..stepDefinitions = [TapRestaurant(),
     AtMainPage(),
-    AtRestaurant()]
+    AtRestaurant(),
+    MainPage(),
+    TapMap(),
+    AtMapPage()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = 'test_driver/app.dart';

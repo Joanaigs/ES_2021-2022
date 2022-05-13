@@ -1,4 +1,4 @@
-import 'package:uni/controller/load_nenu.dart';
+import 'package:uni/controller/load_menus.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:uni/model/entities/exam.dart';
 import 'package:flutter_test/flutter_test.dart';
