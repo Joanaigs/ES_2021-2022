@@ -174,7 +174,5 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
 **Release management:** [v1.0.0](https://github.com/LEIC-ES-2021-22/2LEIC02T4/releases/tag/v1.0.0);
     
 **Iteration 1 planning and retrospectives:**
-<br>
-    **- plans:** screenshots of Github Projects board at begin and end of each iteration;
-<br>
-    **- retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for next iteration we will focus more on the correct GitHub Flow.
+- **plans:** screenshots of Github Projects board at begin and end of each iteration;
+- **retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for next iteration we will focus more on the correct GitHub Flow.
