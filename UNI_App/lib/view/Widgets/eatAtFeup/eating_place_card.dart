@@ -70,12 +70,12 @@ class BuildRestaurantCard extends StatelessWidget {
     eatingPlacePage = EatingPlacePage(eatingPlace);
 
     return Container(
+      key:Key('restaurant'),
       margin: EdgeInsets.all(10.0),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(17.0),
           child: Stack(children: <Widget>[
             GestureDetector(
-                key:Key("restaurant"),
                 onTap: () {
                   Navigator.push(context,
 
