@@ -4,34 +4,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:uni/model/utils/day_of_week.dart';
 
-enum FoodType{
-  Carne,
-  Peixe,
-  Vegetariano,
-  Dieta,
-  Bebida,
-  Outro
-}
+enum FoodType { Carne, Peixe, Vegetariano, Dieta, Bebida, Outro }
 
 Image getFoodTypeIcon(FoodType type) {
   return Image.asset('assets/images/' + foodTypeToString(type) + '.png');
 }
-FoodType parseFoodType(String str){
-  str = str.replaceAll(' ', '').replaceAll('\n', '').replaceAll('\r', '').toLowerCase();
-  if(str == 'carne') {
+
+FoodType parseFoodType(String str) {
+  str = str
+      .replaceAll(' ', '')
+      .replaceAll('\n', '')
+      .replaceAll('\r', '')
+      .toLowerCase();
+  if (str == 'carne' || str == 'pratodecarne') {
     return FoodType.Carne;
-  } else if (str == 'vegetariano') {
+  } else if (str == 'vegetariano' || str == 'pratovegetariano') {
     return FoodType.Vegetariano;
-  } else if (str == 'dieta') {
+  } else if (str == 'dieta' ||
+      str == 'pratodieta' ||
+      str == 'pratodedieta') {
     return FoodType.Dieta;
-  } else if (str == 'peixe') {
+  } else if (str == 'peixe' || str == 'pratodepeixe') {
     return FoodType.Peixe;
-  }else if(str == 'outro') {
+  } else if (str == 'outro') {
     return FoodType.Outro;
-  }else if (str == 'bebida') {
+  } else if (str == 'bebida') {
     return FoodType.Bebida;
-  }
-  else {
+  } else {
     print(str);
     return null;
   }
@@ -56,15 +55,15 @@ String foodTypeToString(FoodType type) {
 }
 
 class Meal_ {
-final FoodType foodType;
-final String description;
-bool isLunch;
-double cost;
+  final FoodType foodType;
+  final String description;
+  bool isLunch;
+  double cost;
 
 //final DateTime date;
 //final Meal_ dayOfWeek; //??
 
-Meal_(this.foodType, this.description, this.isLunch, this.cost);
+  Meal_(this.foodType, this.description, this.isLunch, this.cost);
 
 /*
 Map<String, dynamic> toMap(restaurantId) {

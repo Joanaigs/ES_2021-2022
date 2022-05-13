@@ -1,4 +1,4 @@
-import 'package:uni/controller/load_nenu.dart';
+import 'package:uni/controller/load_menus.dart';
 import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eating_place_page.dart';
 import 'package:uni/model/entities/eating_place.dart';
@@ -34,18 +34,19 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             2, 'CANTINA', 'cantina.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        eatingPlace.meals=EatingPlace.getTestMeals();
+        getMealsWeb('canteen', 2.75).then((value){eatingPlace.meals = value;});
         break;
       case 'BAR DA BIBLIOTECA':
         eatingPlace = EatingPlace(
             3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        getMealsAE("biblio_ementa.txt").then((value){eatingPlace.meals=value;});
+        getMealsAE('biblio_ementa.txt').then((value){eatingPlace.meals=value;});
         break;
       case 'GRILL':
         eatingPlace = EatingPlace(
             4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
-        eatingPlace.meals=EatingPlace.getTestMeals();
+        //eatingPlace.meals=EatingPlace.getTestMeals();
+        getMealsWeb('grill', 4.00).then((value){eatingPlace.meals = value;});
         break;
       case 'BAR DE MINAS':
         eatingPlace = EatingPlace(
@@ -57,13 +58,13 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        eatingPlace.meals=EatingPlace.getTestMeals();
+        getMealsWeb('inegi', 0.00).then((value){eatingPlace.meals = value;});
         break;
       case 'BAR INESC TEC':
         eatingPlace = EatingPlace(
             7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        eatingPlace.meals=EatingPlace.getTestMeals();
+        getMealsWeb('inesctec', 0.00).then((value){eatingPlace.meals = value;});
         break;
     }
     eatingPlacePage = EatingPlacePage(eatingPlace);
