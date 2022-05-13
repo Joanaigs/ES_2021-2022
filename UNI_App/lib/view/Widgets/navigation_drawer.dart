@@ -100,6 +100,7 @@ class NavigationDrawerState extends State<NavigationDrawer> {
           dense: true,
           contentPadding: EdgeInsets.all(0.0),
           selected: d == getCurrentRoute(),
+          key:Key('nav'),
           onTap: () => drawerItems[d](d),
         ));
   }
