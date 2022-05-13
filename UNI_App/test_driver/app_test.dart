@@ -14,7 +14,9 @@ Future<void> main() {
       TestRunSummaryReporter(),
       JsonReporter(path: './report.json')
     ]
-    ..stepDefinitions = [TapRestaurant()]
+    ..stepDefinitions = [TapRestaurant(),
+    AtMainPage(),
+    AtRestaurant()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = 'test_driver/app.dart';

@@ -6,23 +6,69 @@ import 'package:uni/view/Pages/EatingPlacesPages/eat_at_feup_back_button_page.da
 import '../../../model/directions_model.dart';
 
 class EatingPlacesMap extends StatefulWidget {
-  const EatingPlacesMap(this.name);
+  static String name;
 
+  EatingPlacesMap(String nome){
+    name = nome;
+  }
   @override
   _EatingPlacesMapState createState() => _EatingPlacesMapState();
-  final String name;
+
 }
 
 
 class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
-  static const _initialCameraPosition = CameraPosition(
-    target: LatLng(41.1776779, -8.5949166),
-    zoom: 18,
-  );
+
+  static CameraPosition choosePosition()  {
+    switch (EatingPlacesMap.name) {
+      case 'AE':
+        return CameraPosition(
+          target: LatLng(41.1762243,-8.5969001),
+          zoom: 18,
+        );
+      case 'CANTINA':
+        return CameraPosition(
+          target: LatLng(41.1760238,-8.5954212),
+          zoom: 18,
+        );
+      case 'GRILL':
+        return CameraPosition(
+          target: LatLng(41.1762857,-8.5952363),
+          zoom: 18,
+        );
+      case 'BAR DA BIBLIOTECA':
+        return CameraPosition(
+          target: LatLng(41.1774396,-8.5951459),
+          zoom: 18,
+        );
+      case 'BAR DE MINAS':
+        return CameraPosition(
+          target: LatLng(41.178455, -8.597464),
+          zoom: 18,
+        );
+      case 'RESTAURANTE INEGI':
+        return CameraPosition(
+          target: LatLng(41.179331, -8.594340),
+          zoom: 18,
+        );
+      case 'BAR INESC TEC':
+        return CameraPosition(
+          target: LatLng(41.179365, -8.595428),
+          zoom: 18,
+        );
+      default:
+        return CameraPosition(
+          target: LatLng(41.1776779, -8.5949166),
+          zoom: 18,
+        );
+    }
+  }
+
 
   GoogleMapController _googleMapController;
   List<Marker> eatingPlaceMarkers = [];
   Directions _info;
+
 
   @override
   void initState() {
@@ -34,7 +80,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "Cantina da FEUP",
           snippet: "Tv. de Lamas 22, Porto",
         ),
-        position: LatLng(41.1760238,-8.5954212)));
+        position: LatLng(41.176277, -8.595305)));
 
     eatingPlaceMarkers.add(Marker(
         markerId: MarkerId('Bar da Biblioteca FEUP'),
@@ -43,10 +89,10 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "Bar da Biblioteca",
           snippet: "R. Dr. Roberto Frias, 4200-465 Porto",
         ),
-        position: LatLng(41.1775456,-8.5949561)));
+        position: LatLng(41.1774130,-8.5948360)));
 
     eatingPlaceMarkers.add(Marker(
-      position: LatLng(41.1784152,-8.5973929),
+      position: LatLng(41.178455, -8.597464),
       markerId: MarkerId('Bar de Minas'),
       infoWindow: InfoWindow(
         title: "Bar de Minas",
@@ -63,7 +109,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "Grill",
           snippet: "Tv. de Lamas 22, Porto",
         ),
-        position: LatLng(41.1762857,-8.5952363)));
+        position: LatLng(41.176492, -8.595777)));
 
     eatingPlaceMarkers.add(Marker(
         markerId: MarkerId('AE FEUP'),
@@ -72,7 +118,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "AE FEUP",
           snippet: "R. Dr. Júlio de Matos 882, 4200-365 Porto",
         ),
-        position: LatLng(41.1762243,-8.5969001)));
+        position: LatLng(41.176127, -8.596888)));
 
     eatingPlaceMarkers.add(Marker(
         markerId: MarkerId('INESC TEC'),
@@ -81,7 +127,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "INESC TEC",
           snippet: "R. Dr. Roberto Frias, Porto",
         ),
-        position: LatLng(41.1795119,-8.5964987)));
+        position: LatLng(41.179365, -8.595428)));
 
     eatingPlaceMarkers.add(Marker(
         markerId: MarkerId('INEGI'),
@@ -90,7 +136,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           title: "INEGI",
           snippet: "R. Dr. Roberto Frias 400, 4200-465 Porto",
         ),
-        position: LatLng(41.1794368,-8.5948767)));
+        position: LatLng(41.179331, -8.594340)));
   }
 
   @override
@@ -104,7 +150,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text('Eating Places Map'),
+        title: Text(EatingPlacesMap.name),
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
@@ -114,7 +160,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
           GoogleMap(
             myLocationButtonEnabled: false,
             zoomControlsEnabled: false,
-            initialCameraPosition: _initialCameraPosition,
+            initialCameraPosition: choosePosition(),
             onMapCreated: (controller) => _googleMapController = controller,
             markers: Set.from(eatingPlaceMarkers),
           ),
@@ -148,7 +194,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
         onPressed: () => _googleMapController.animateCamera(
           _info != null
               ? CameraUpdate.newLatLngBounds(_info.bounds, 100.0)
-              : CameraUpdate.newCameraPosition(_initialCameraPosition),
+              : CameraUpdate.newCameraPosition(choosePosition()),
         ),
         child: const Icon(Icons.center_focus_strong),
       ),
