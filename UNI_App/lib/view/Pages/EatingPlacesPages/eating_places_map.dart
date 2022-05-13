@@ -12,12 +12,12 @@ class EatingPlacesMap extends StatefulWidget {
     name = nome;
   }
   @override
-  _EatingPlacesMapState createState() => _EatingPlacesMapState();
+  EatingPlacesMapState createState() => EatingPlacesMapState();
 
 }
 
 
-class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
+class EatingPlacesMapState extends EatAtFeupBackButtonPageState {
 
   static CameraPosition choosePosition()  {
     switch (EatingPlacesMap.name) {
