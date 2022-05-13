@@ -29,6 +29,7 @@ class MainCardsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:Key('uni'),
       body: BackButtonExitWrapper(
         context: context,
         child: createScrollableCardView(context),

@@ -32,5 +32,5 @@ class AtMapPage extends Given1WithWorld<String, FlutterWorld> {
   }
 
   @override
-  RegExp get pattern => RegExp(r"I am on the {string} screen");
+  RegExp get pattern => RegExp(r'I am on the {string} screen');
 }
