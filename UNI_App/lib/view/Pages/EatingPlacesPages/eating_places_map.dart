@@ -159,6 +159,7 @@ class _EatingPlacesMapState extends EatAtFeupBackButtonPageState {
         alignment: Alignment.center,
         children: [
           GoogleMap(
+            key: Key('marker'),
             myLocationButtonEnabled: false,
             zoomControlsEnabled: false,
             initialCameraPosition: choosePosition(),
