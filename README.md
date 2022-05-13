@@ -167,3 +167,14 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
 - Flutter was chosen as the framework to the develop the app beacuse it is easy to learn and to use and has good documentation.
 - Google Maps was chosen because it shows the busiest hours of the places and it is a familiar tool to the user.
     
+# Project Management
+   
+**Backlog management:** Product backlog and Iteration backlog in a [Github Projects board](https://github.com/LEIC-ES-2021-22/2LEIC02T4/projects/1);
+    
+**Release management:** [v1.0.0](https://github.com/LEIC-ES-2021-22/2LEIC02T4/releases/tag/v1.0.0);
+    
+**Iteration 1 planning and retrospectives:**
+<br>
+    **- plans:** screenshots of Github Projects board at begin and end of each iteration;
+<br>
+    **- retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for next iteration we will focus more on the correct GitHub Flow.
