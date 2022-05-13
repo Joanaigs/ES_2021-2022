@@ -18,15 +18,15 @@ Future<void> main() {
       JsonReporter(path: './report.json')
     ]
     ..stepDefinitions = [TapRestaurant(),
-    AtMainPage(),
-    AtRestaurant(),
-    MainPage(),
-    TapMap(),
-    AtMapPage(),
-    AtMap(),
-    TapMarker(),
-    InfoWindow(),
-    AtAEPage(), TapNav(), AtNav(),AtEatAtFeupPage()]
+      AtMainPage(),
+      AtRestaurant(),
+      MainPage(),
+      TapMap(),
+      AtMapPage(),
+      AtMap(),
+      TapMarker(),
+      InfoWindow(),
+      AtAEPage(), TapNav(), AtNav(),AtEatAtFeupPage()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = 'test_driver/app.dart';
