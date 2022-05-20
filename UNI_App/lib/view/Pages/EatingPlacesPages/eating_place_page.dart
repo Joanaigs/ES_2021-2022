@@ -15,6 +15,9 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
     var _meals; // = allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)];
+    String dropdownvalue_typeOfMeal = 'Almoço';
+
+    var typeOfMealItems = ['Almoço', 'Jantar'];
 
     return Scaffold(
         key: Key("restaurantPage"),
@@ -57,6 +60,21 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
             //mainAxisAlignment: MainAxisAlignment.space,
             children: <Widget>[
               SizedBox(width: 30),
+              DropdownButton(
+                  value: dropdownvalue_typeOfMeal,
+                  items: typeOfMealItems.map((String typeOfMealItems) {
+                    return DropdownMenuItem(
+                      value: typeOfMealItems,
+                      child: Text(typeOfMealItems),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownvalue_typeOfMeal = newValue;
+
+                      _meals = filterMeals(allMeals);
+                    });
+                  }),
 
             ]),
         SizedBox(height: 10),
