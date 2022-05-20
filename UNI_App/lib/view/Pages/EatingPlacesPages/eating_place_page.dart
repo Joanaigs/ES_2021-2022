@@ -11,10 +11,8 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
 
   String dropdownvalue_foodType = 'Tudo';
-  _EatingPlacePageState(this.eatingPlace);
-
-
-
+  String dropdownvalue_dayOfWeek =
+  toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
 
   var foodTypeItems = [
     'Tudo',
@@ -24,6 +22,21 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Dieta',
     'Outro',
   ];
+  
+  
+  var dayOfWeekItems = [
+    'Segunda-feira',
+    'Terça-feira',
+    'Quarta-feira',
+    'Quinta-feira',
+    'Sexta-feira',
+    'Sábado',
+    'Domingo'
+  ];
+
+
+  _EatingPlacePageState(this.eatingPlace);
+
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
@@ -64,7 +77,16 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
         ),
         Stack(children: <Widget>[
           //stack não foi necessária..
-
+          Text(
+            'Aberto ' +
+                eatingPlace.workingHours[DayOfWeek.friday].startTime +
+                ' - ' +
+                eatingPlace.workingHours[DayOfWeek.friday].endTime, //
+            style:
+            //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+            Theme.of(context).textTheme.headline6.apply(
+                fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
+          ),
         ]),
         Row(
             //mainAxisAlignment: MainAxisAlignment.space,
@@ -81,6 +103,20 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   onChanged: (String newValue) {
                     setState(() {
                       dropdownvalue_foodType = newValue;
+                      _meals = filterMeals(allMeals);
+                    });
+                  }),
+               DropdownButton(
+                  value: dropdownvalue_dayOfWeek,
+                  items: dayOfWeekItems.map((String dayOfWeekItems) {
+                    return DropdownMenuItem(
+                      value: dayOfWeekItems,
+                      child: Text(dayOfWeekItems),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownvalue_dayOfWeek = newValue;
 
                       _meals = filterMeals(allMeals);
                     });
