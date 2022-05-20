@@ -7,6 +7,7 @@ import 'steps/tap_marker_map_step.dart';
 import 'steps/tap_map_button_step.dart';
 import 'steps/main_page.dart';
 import 'steps/restaurant_page.dart';
+import 'steps/mealFilter.dart';
 
 
 Future<void> main() {
@@ -26,7 +27,8 @@ Future<void> main() {
       AtMap(),
       TapMarker(),
       InfoWindow(),
-      AtAEPage(), TapNav(), AtNav(),AtEatAtFeupPage()]
+      AtAEPage(), TapNav(), AtNav(),AtEatAtFeupPage(),
+    AtRestaurantPage(), TapFilter(), TapOption(), FoodFiltered()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = 'test_driver/app.dart';
