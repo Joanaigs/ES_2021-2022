@@ -94,9 +94,11 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
             children: <Widget>[
               SizedBox(width: 30),
               DropdownButton(
+                  key:Key("firstFilter"),
                   value: dropdownvalue_foodType,
                   items: foodTypeItems.map((String foodTypeItems) {
                     return DropdownMenuItem(
+                      key: Key("option"),
                       value: foodTypeItems,
                       child: Text(foodTypeItems),
                     );
