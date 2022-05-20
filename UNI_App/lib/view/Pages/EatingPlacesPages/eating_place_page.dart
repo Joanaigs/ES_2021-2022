@@ -11,8 +11,10 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
 
   String dropdownvalue_foodType = 'Tudo';
+  String dropdownvalue_typeOfMeal = 'Almoço';
+
   String dropdownvalue_dayOfWeek =
-  toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
+      toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
 
   var foodTypeItems = [
     'Tudo',
@@ -22,8 +24,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Dieta',
     'Outro',
   ];
-  
-  
+  var typeOfMealItems = ['Almoço', 'Jantar'];
   var dayOfWeekItems = [
     'Segunda-feira',
     'Terça-feira',
@@ -34,13 +35,13 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Domingo'
   ];
 
-
   _EatingPlacePageState(this.eatingPlace);
 
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
     var _meals; // = allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)];
+    _meals = filterMeals(allMeals);
 
     return Scaffold(
         key: Key("restaurantPage"),
@@ -83,9 +84,9 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                 ' - ' +
                 eatingPlace.workingHours[DayOfWeek.friday].endTime, //
             style:
-            //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
-            Theme.of(context).textTheme.headline6.apply(
-                fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
+                //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+                Theme.of(context).textTheme.headline6.apply(
+                    fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
           ),
         ]),
         Row(
@@ -103,10 +104,26 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
                   onChanged: (String newValue) {
                     setState(() {
                       dropdownvalue_foodType = newValue;
+
                       _meals = filterMeals(allMeals);
                     });
                   }),
-               DropdownButton(
+              DropdownButton(
+                  value: dropdownvalue_typeOfMeal,
+                  items: typeOfMealItems.map((String typeOfMealItems) {
+                    return DropdownMenuItem(
+                      value: typeOfMealItems,
+                      child: Text(typeOfMealItems),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownvalue_typeOfMeal = newValue;
+
+                      _meals = filterMeals(allMeals);
+                    });
+                  }),
+              DropdownButton(
                   value: dropdownvalue_dayOfWeek,
                   items: dayOfWeekItems.map((String dayOfWeekItems) {
                     return DropdownMenuItem(
@@ -143,9 +160,10 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
       ]),
     ));
   }
+
   List<Meal_> filterMeals(Map<DayOfWeek, List<Meal_>> allMeals) {
     List<Meal_> meals =
-    allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
+        allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
       if (dropdownvalue_typeOfMeal == 'Almoço') {
         if (dropdownvalue_foodType != 'Tudo') {
           return m.isLunch &&
@@ -162,7 +180,6 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     }).toList();
     return meals;
   }
-
 }
 
 class EatingPlacePage extends StatefulWidget {
