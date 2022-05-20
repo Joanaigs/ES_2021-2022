@@ -8,7 +8,7 @@ import 'package:uni/view/Pages/EatingPlacesPages/eating_place_page.dart';
 
 
 void main() {
-  group('MainPage', () {
+  group('MealFilters', () {
 
     test('foodTypeItems should have 6 types', (){
       Map<DayOfWeek, TimeInterval> workingHours = {};
@@ -20,5 +20,27 @@ void main() {
       EatingPlacePageState eatingPlacesPageState = eatingPlacePage.createState();
       expect(EatingPlacePageState.foodTypeItems.length, 6);
     });
+
+  test('daysOfWeekItems should have 7 days', (){
+    Map<DayOfWeek, TimeInterval> workingHours = {};
+    DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+    workingHours[day] = TimeInterval('9:00', '18:00');
+    EatingPlace eatingPlace= EatingPlace(
+        1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
+    EatingPlacePage eatingPlacePage = EatingPlacePage(eatingPlace);
+    EatingPlacePageState eatingPlacesPageState = eatingPlacePage.createState();
+    expect(EatingPlacePageState.dayOfWeekItems.length, 7);
+  });
+
+    test('typeOfMealItems should have 2 types', (){
+      Map<DayOfWeek, TimeInterval> workingHours = {};
+      DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+      workingHours[day] = TimeInterval('9:00', '18:00');
+      EatingPlace eatingPlace= EatingPlace(
+          1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
+      EatingPlacePage eatingPlacePage = EatingPlacePage(eatingPlace);
+      EatingPlacePageState eatingPlacesPageState = eatingPlacePage.createState();
+      expect(EatingPlacePageState.typeOfMealItems.length, 2);
     });
+  });
 }
