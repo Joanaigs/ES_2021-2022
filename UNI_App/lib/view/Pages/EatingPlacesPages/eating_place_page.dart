@@ -9,8 +9,21 @@ import 'general_eating_place_page.dart';
 
 class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
+
+  String dropdownvalue_foodType = 'Tudo';
   _EatingPlacePageState(this.eatingPlace);
 
+
+
+
+  var foodTypeItems = [
+    'Tudo',
+    'Carne',
+    'Peixe',
+    'Vegetariano',
+    'Dieta',
+    'Outro',
+  ];
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
@@ -57,7 +70,21 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
             //mainAxisAlignment: MainAxisAlignment.space,
             children: <Widget>[
               SizedBox(width: 30),
+              DropdownButton(
+                  value: dropdownvalue_foodType,
+                  items: foodTypeItems.map((String foodTypeItems) {
+                    return DropdownMenuItem(
+                      value: foodTypeItems,
+                      child: Text(foodTypeItems),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownvalue_foodType = newValue;
 
+                      _meals = filterMeals(allMeals);
+                    });
+                  }),
             ]),
         SizedBox(height: 10),
         Text(
@@ -80,7 +107,25 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
       ]),
     ));
   }
-
+  List<Meal_> filterMeals(Map<DayOfWeek, List<Meal_>> allMeals) {
+    List<Meal_> meals =
+    allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
+      if (dropdownvalue_typeOfMeal == 'Almoço') {
+        if (dropdownvalue_foodType != 'Tudo') {
+          return m.isLunch &&
+              (foodTypeToString(m.foodType) == dropdownvalue_foodType);
+        }
+        return m.isLunch;
+      } else {
+        if (dropdownvalue_foodType != 'Tudo') {
+          return !m.isLunch &&
+              (m.foodType == parseFoodType(dropdownvalue_foodType));
+        }
+        return !m.isLunch;
+      }
+    }).toList();
+    return meals;
+  }
 
 }
 
