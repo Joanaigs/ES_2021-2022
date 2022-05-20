@@ -9,6 +9,20 @@ import 'general_eating_place_page.dart';
 
 class _EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
+
+  String dropdownvalue_dayOfWeek =
+  toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
+
+  var dayOfWeekItems = [
+    'Segunda-feira',
+    'Terça-feira',
+    'Quarta-feira',
+    'Quinta-feira',
+    'Sexta-feira',
+    'Sábado',
+    'Domingo'
+  ];
+
   _EatingPlacePageState(this.eatingPlace);
 
   @override
@@ -51,13 +65,36 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
         ),
         Stack(children: <Widget>[
           //stack não foi necessária..
-
+          Text(
+            'Aberto ' +
+                eatingPlace.workingHours[DayOfWeek.friday].startTime +
+                ' - ' +
+                eatingPlace.workingHours[DayOfWeek.friday].endTime, //
+            style:
+            //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+            Theme.of(context).textTheme.headline6.apply(
+                fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
+          ),
         ]),
         Row(
             //mainAxisAlignment: MainAxisAlignment.space,
             children: <Widget>[
               SizedBox(width: 30),
+              DropdownButton(
+                  value: dropdownvalue_dayOfWeek,
+                  items: dayOfWeekItems.map((String dayOfWeekItems) {
+                    return DropdownMenuItem(
+                      value: dayOfWeekItems,
+                      child: Text(dayOfWeekItems),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownvalue_dayOfWeek = newValue;
 
+                      _meals = filterMeals(allMeals);
+                    });
+                  }),
             ]),
         SizedBox(height: 10),
         Text(
