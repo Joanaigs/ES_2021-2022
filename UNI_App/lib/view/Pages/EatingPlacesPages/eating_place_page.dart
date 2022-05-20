@@ -7,7 +7,7 @@ import 'package:uni/model/utils/day_of_week.dart';
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
 
-class _EatingPlacePageState extends GeneralEatingPlacePageState {
+class EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
 
   String dropdownvalue_foodType = 'Tudo';
@@ -16,7 +16,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
   String dropdownvalue_dayOfWeek =
       toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
 
-  var foodTypeItems = [
+  static var foodTypeItems = [
     'Tudo',
     'Carne',
     'Peixe',
@@ -24,8 +24,8 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Dieta',
     'Outro',
   ];
-  var typeOfMealItems = ['Almoço', 'Jantar'];
-  var dayOfWeekItems = [
+  static var typeOfMealItems = ['Almoço', 'Jantar'];
+  static var dayOfWeekItems = [
     'Segunda-feira',
     'Terça-feira',
     'Quarta-feira',
@@ -35,7 +35,7 @@ class _EatingPlacePageState extends GeneralEatingPlacePageState {
     'Domingo'
   ];
 
-  _EatingPlacePageState(this.eatingPlace);
+  EatingPlacePageState(this.eatingPlace);
 
   @override
   getBody(BuildContext context) {
@@ -190,7 +190,7 @@ class EatingPlacePage extends StatefulWidget {
   //const EatingPlacePage({Key key, this.eatingPlace}) : super(key: key);
 
   @override
-  _EatingPlacePageState createState() => _EatingPlacePageState(eatingPlace);
+  EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
 }
 
 class MealsMenu extends StatefulWidget {
