@@ -14,15 +14,13 @@ class BuildRestaurantCard extends StatelessWidget {
   Widget build(BuildContext context) {
     dynamic eatingPlacePage;
     EatingPlace eatingPlace;
-    Map<DayOfWeek, TimeInterval> workingHours = {};
-
-    // DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-    // workingHours[day] = TimeInterval('9:00', '18:00');
+    Map<DayOfWeek, List<TimeInterval>> workingHours = {};
+    for(var day in DayOfWeek.values){
+      workingHours[day] = [];
+    }
 
     switch (name) {
       case 'AE':
-        workingHours[DayOfWeek.friday] = TimeInterval("09:00", "12:00");
-        workingHours[DayOfWeek.wednesday] = TimeInterval("08:00", "17:00");
         eatingPlace = EatingPlace(
             1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
         getMealsAE("ae_ementa.txt").then((value){eatingPlace.meals=value;});
@@ -32,6 +30,7 @@ class BuildRestaurantCard extends StatelessWidget {
             2, 'CANTINA', 'cantina.jpg', workingHours, false,
             MapCoordinates(1, 1));
         getMealsWeb('canteen', 2.75).then((value){eatingPlace.meals = value;});
+        getScheduleWeb('canteen').then( (value){eatingPlace.workingHours = value;});
         break;
       case 'BAR DA BIBLIOTECA':
         eatingPlace = EatingPlace(
@@ -42,8 +41,9 @@ class BuildRestaurantCard extends StatelessWidget {
       case 'GRILL':
         eatingPlace = EatingPlace(
             4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
-        //eatingPlace.meals=EatingPlace.getTestMeals();
         getMealsWeb('grill', 4.00).then((value){eatingPlace.meals = value;});
+        getScheduleWeb('grill').then( (value){eatingPlace.workingHours = value;});
+
         break;
       case 'BAR DE MINAS':
         eatingPlace = EatingPlace(
@@ -56,12 +56,14 @@ class BuildRestaurantCard extends StatelessWidget {
             6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false,
             MapCoordinates(1, 1));
         getMealsWeb('inegi', 0.00).then((value){eatingPlace.meals = value;});
+        // getScheduleWeb('inegi').then( (value){eatingPlace.workingHours = value;});
         break;
       case 'BAR INESC TEC':
         eatingPlace = EatingPlace(
             7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false,
             MapCoordinates(1, 1));
         getMealsWeb('inesctec', 0.00).then((value){eatingPlace.meals = value;});
+        // getScheduleWeb('inesctec').then( (value){eatingPlace.workingHours = value;});
         break;
     }
     eatingPlacePage = EatingPlacePage(eatingPlace);

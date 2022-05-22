@@ -6,13 +6,10 @@ class EatingPlace{
   final String name;
   final String photoName;
   final bool acceptsCard;
-  Map<DayOfWeek, TimeInterval> workingHours;
+  Map<DayOfWeek, List<TimeInterval>> workingHours;
   Map<DayOfWeek, TimeInterval> busyTime;
   MapCoordinates location;
   Map<DayOfWeek, List<Meal_>> meals;
-  //final String reference; // Used only in html parser
-
-
 
   EatingPlace(
       this.id,
