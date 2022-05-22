@@ -8,6 +8,7 @@ import 'steps/tap_map_button_step.dart';
 import 'steps/main_page.dart';
 import 'steps/restaurant_page.dart';
 import 'steps/mealFilter.dart';
+import 'steps/working_hours.dart';
 
 
 Future<void> main() {
@@ -19,8 +20,11 @@ Future<void> main() {
       JsonReporter(path: './report.json')
     ]
     ..stepDefinitions = [TapRestaurant(),
+      TapRestaurantWH(),
       AtMainPage(),
+      AtMainPageWH(),
       AtRestaurant(),
+      AtRestaurantWH(),
       MainPage(),
       TapMap(),
       AtMapPage(),
@@ -28,7 +32,7 @@ Future<void> main() {
       TapMarker(),
       InfoWindow(),
       AtAEPage(), TapNav(), AtNav(),AtEatAtFeupPage(),
-    AtRestaurantPage(), TapFilter(), TapOption(), FoodFiltered()]
+    AtRestaurantPage(), TapFilter(), TapOption(), FoodFiltered(), WorkingHours()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = 'test_driver/app.dart';

@@ -11,6 +11,9 @@ void main() {
   group('MainPage', () {
     Map<DayOfWeek, List<TimeInterval>> workingHours = {};
     DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+    DayOfWeek.values.forEach((i) {
+      workingHours[i] = [];
+    });
     workingHours[day].add(TimeInterval('9:00', '18:00'));
     EatingPlace eatingPlace= EatingPlace(
         1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));

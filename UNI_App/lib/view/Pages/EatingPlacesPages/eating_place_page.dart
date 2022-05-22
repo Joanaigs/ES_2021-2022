@@ -78,7 +78,9 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
                 ],
               ),
             ),
-            Stack(children: <Widget>[
+            Stack(
+                key: Key('workingHours'),
+                children: <Widget>[
               //stack não foi necessária..
               Text(
                 workingHoursText,
@@ -208,8 +210,6 @@ class EatingPlacePage extends StatefulWidget {
   final EatingPlace eatingPlace;
 
   const EatingPlacePage(this.eatingPlace);
-
-  //const EatingPlacePage({Key key, this.eatingPlace}) : super(key: key);
 
   @override
   EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
