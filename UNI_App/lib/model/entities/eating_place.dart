@@ -1,7 +1,4 @@
-import 'dart:collection';
 import 'package:uni/model/utils/day_of_week.dart';
-import 'package:collection/collection.dart';
-import 'meal.dart';
 import 'meal_.dart';
 
 class EatingPlace{
@@ -46,29 +43,10 @@ class EatingPlace{
   }
 
 
-
-  /*EatingPlace(this.id, this.name, this.reference, {List<Meal_> meals = null})
-      : this.meals = meals != null
-      ? groupBy(meals, (meal) => meal.dayOfWeek)
-      : HashMap.identity(){}
-   */
-  /*static EatingPlace fromMap(Map<String, dynamic> map){
-    return EatingPlace(map['id'], map['name'], map['ref'], meals:map['meals']);
-  }
-  */
-
   List<Meal_> getMealsOfDay(DayOfWeek dayOfWeek){
     return meals[dayOfWeek];
   }
 
-  /*Map<String, dynamic> toMap() {
-    return {
-      'id' : id,
-      'name': name,
-      'ref': reference
-    };
-  }
-   */
 }
 
 class MapCoordinates {

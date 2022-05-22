@@ -35,12 +35,15 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
     'Domingo'
   ];
 
+
   EatingPlacePageState(this.eatingPlace);
 
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
-    var _meals; // = allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)];
+    var workingHoursText = createWorkingHoursText();
+
+    var _meals;
     _meals = filterMeals(allMeals);
 
     return Scaffold(
@@ -79,10 +82,7 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
         Stack(children: <Widget>[
           //stack não foi necessária..
           Text(
-            'Aberto ' +
-                eatingPlace.workingHours[DayOfWeek.friday].startTime +
-                ' - ' +
-                eatingPlace.workingHours[DayOfWeek.friday].endTime, //
+            workingHoursText,
             style:
                 //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
                 Theme.of(context).textTheme.headline6.apply(
@@ -138,6 +138,7 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
                       dropdownvalue_dayOfWeek = newValue;
 
                       _meals = filterMeals(allMeals);
+                      workingHoursText = createWorkingHoursText();
                     });
                   }),
             ]),
@@ -163,6 +164,15 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
     ));
   }
 
+  String createWorkingHoursText(){
+    var text =  eatingPlace.workingHours[parseDayOfWeek(dropdownvalue_dayOfWeek)] != null ?
+    'Aberto ' +
+        eatingPlace.workingHours[parseDayOfWeek(dropdownvalue_dayOfWeek)].startTime +
+        ' - ' +
+        eatingPlace.workingHours[parseDayOfWeek(dropdownvalue_dayOfWeek)].endTime : '';
+
+    return text;//
+  }
   List<Meal_> filterMeals(Map<DayOfWeek, List<Meal_>> allMeals) {
     List<Meal_> meals =
         allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {

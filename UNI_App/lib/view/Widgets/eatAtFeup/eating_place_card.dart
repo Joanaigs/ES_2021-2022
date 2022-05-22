@@ -1,14 +1,9 @@
 import 'package:uni/controller/load_menus.dart';
-import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/view/Pages/EatingPlacesPages/eating_place_page.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uni/model/utils/day_of_week.dart';
-import 'package:uni/utils/constants.dart' as Constants;
-
-import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
 
 
 class BuildRestaurantCard extends StatelessWidget {
@@ -21,11 +16,13 @@ class BuildRestaurantCard extends StatelessWidget {
     EatingPlace eatingPlace;
     Map<DayOfWeek, TimeInterval> workingHours = {};
 
-    DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-    workingHours[day] = TimeInterval('9:00', '18:00');
+    // DayOfWeek day = parseDayOfWeek('sexta-feira'); //
+    // workingHours[day] = TimeInterval('9:00', '18:00');
 
     switch (name) {
       case 'AE':
+        workingHours[DayOfWeek.friday] = TimeInterval("09:00", "12:00");
+        workingHours[DayOfWeek.wednesday] = TimeInterval("08:00", "17:00");
         eatingPlace = EatingPlace(
             1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
         getMealsAE("ae_ementa.txt").then((value){eatingPlace.meals=value;});
