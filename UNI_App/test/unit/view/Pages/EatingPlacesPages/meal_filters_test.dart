@@ -11,9 +11,12 @@ void main() {
   group('MealFilters', () {
 
     test('foodTypeItems should have 6 types', (){
-      Map<DayOfWeek, TimeInterval> workingHours = {};
+      Map<DayOfWeek, List<TimeInterval>> workingHours = {};
       DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-      workingHours[day] = TimeInterval('9:00', '18:00');
+      DayOfWeek.values.forEach((i) {
+        workingHours[i] = [];
+      });
+      workingHours[day].add(TimeInterval('9:00', '18:00'));
       EatingPlace eatingPlace= EatingPlace(
           1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
       EatingPlacePage eatingPlacePage = EatingPlacePage(eatingPlace);
@@ -22,9 +25,12 @@ void main() {
     });
 
   test('daysOfWeekItems should have 7 days', (){
-    Map<DayOfWeek, TimeInterval> workingHours = {};
+    Map<DayOfWeek, List<TimeInterval>> workingHours = {};
     DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-    workingHours[day] = TimeInterval('9:00', '18:00');
+    DayOfWeek.values.forEach((i) {
+      workingHours[i] = [];
+    });
+    workingHours[day].add(TimeInterval('9:00', '18:00'));
     EatingPlace eatingPlace= EatingPlace(
         1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
     EatingPlacePage eatingPlacePage = EatingPlacePage(eatingPlace);
@@ -33,9 +39,12 @@ void main() {
   });
 
     test('typeOfMealItems should have 2 types', (){
-      Map<DayOfWeek, TimeInterval> workingHours = {};
+      Map<DayOfWeek, List<TimeInterval>> workingHours = {};
       DayOfWeek day = parseDayOfWeek('sexta-feira'); //
-      workingHours[day] = TimeInterval('9:00', '18:00');
+      DayOfWeek.values.forEach((i) {
+        workingHours[i] = [];
+      });
+      workingHours[day].add(TimeInterval('9:00', '18:00'));
       EatingPlace eatingPlace= EatingPlace(
           1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
       EatingPlacePage eatingPlacePage = EatingPlacePage(eatingPlace);

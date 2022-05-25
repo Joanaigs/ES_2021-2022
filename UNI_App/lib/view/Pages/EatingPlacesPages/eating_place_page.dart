@@ -40,127 +40,149 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
   @override
   getBody(BuildContext context) {
     final allMeals = eatingPlace.meals;
-    var _meals; // = allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)];
+    var workingHoursText = createWorkingHoursText();
+
+    var _meals;
     _meals = filterMeals(allMeals);
 
     return Scaffold(
         key: Key("restaurantPage"),
         body: SingleChildScrollView(
-            physics: ScrollPhysics(),
-      child: Column(children: <Widget>[
-        Container(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+          physics: ScrollPhysics(),
+          child: Column(children: <Widget>[
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    eatingPlace.name, //
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        .apply(fontSizeDelta: 7),
+                  ),
+                  IconButton(
+                    key: Key('map'),
+                    icon: Image.asset('assets/images/map_pin.png'),
+                    iconSize: 40,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EatingPlacesMap(eatingPlace.name)));
+                    }, //mudar que não é bem o suposto
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+                key: Key('workingHours'),
+                children: <Widget>[
+              //stack não foi necessária..
               Text(
-                eatingPlace.name, //
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    .apply(fontSizeDelta: 7),
+                workingHoursText,
+                style:
+                    //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+                    Theme.of(context).textTheme.headline6.apply(
+                        fontSizeDelta: 5,
+                        backgroundColor: Colors.grey.shade300),
               ),
-              IconButton(
-                key: Key('map'),
-                icon: Image.asset('assets/images/map_pin.png'),
-                iconSize: 40,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              EatingPlacesMap(eatingPlace.name)));
-                }, //mudar que não é bem o suposto
-              ),
-            ],
-          ),
-        ),
-        Stack(children: <Widget>[
-          //stack não foi necessária..
-          Text(
-            'Aberto ' +
-                eatingPlace.workingHours[DayOfWeek.friday].startTime +
-                ' - ' +
-                eatingPlace.workingHours[DayOfWeek.friday].endTime, //
-            style:
-                //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
-                Theme.of(context).textTheme.headline6.apply(
-                    fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
-          ),
-        ]),
-        Row(
-            //mainAxisAlignment: MainAxisAlignment.space,
-            children: <Widget>[
-              SizedBox(width: 30),
-              DropdownButton(
-                  key:Key("firstFilter"),
-                  value: dropdownvalue_foodType,
-                  items: foodTypeItems.map((String foodTypeItems) {
-                    return DropdownMenuItem(
-                      key: Key("option"),
-                      value: foodTypeItems,
-                      child: Text(foodTypeItems),
-                    );
-                  }).toList(),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownvalue_foodType = newValue;
-
-                      _meals = filterMeals(allMeals);
-                    });
-                  }),
-              DropdownButton(
-                  value: dropdownvalue_typeOfMeal,
-                  items: typeOfMealItems.map((String typeOfMealItems) {
-                    return DropdownMenuItem(
-                      value: typeOfMealItems,
-                      child: Text(typeOfMealItems),
-                    );
-                  }).toList(),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownvalue_typeOfMeal = newValue;
-
-                      _meals = filterMeals(allMeals);
-                    });
-                  }),
-              DropdownButton(
-                  value: dropdownvalue_dayOfWeek,
-                  items: dayOfWeekItems.map((String dayOfWeekItems) {
-                    return DropdownMenuItem(
-                      value: dayOfWeekItems,
-                      child: Text(dayOfWeekItems),
-                    );
-                  }).toList(),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownvalue_dayOfWeek = newValue;
-
-                      _meals = filterMeals(allMeals);
-                    });
-                  }),
             ]),
-        SizedBox(height: 10),
-        Text(
-          'Menu',
-          style:
-              //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
-              Theme.of(context).textTheme.headline6.apply(
-                  fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
-        ),
-        SizedBox(height: 10),
-        Container(child:MealsMenu(_meals)),
-        SizedBox(height: 10),
-        Text(
-          'Horas Populares',
-          style:
-              //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
-              Theme.of(context).textTheme.headline6.apply(
-                  fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
-        )
-      ]),
-    ));
+            Row(
+                //mainAxisAlignment: MainAxisAlignment.space,
+                children: <Widget>[
+                  SizedBox(width: 30),
+                  DropdownButton(
+                      key: Key("firstFilter"),
+                      value: dropdownvalue_foodType,
+                      items: foodTypeItems.map((String foodTypeItems) {
+                        return DropdownMenuItem(
+                          key: Key("option"),
+                          value: foodTypeItems,
+                          child: Text(foodTypeItems),
+                        );
+                      }).toList(),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownvalue_foodType = newValue;
+
+                          _meals = filterMeals(allMeals);
+                        });
+                      }),
+                  DropdownButton(
+                      value: dropdownvalue_typeOfMeal,
+                      items: typeOfMealItems.map((String typeOfMealItems) {
+                        return DropdownMenuItem(
+                          value: typeOfMealItems,
+                          child: Text(typeOfMealItems),
+                        );
+                      }).toList(),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownvalue_typeOfMeal = newValue;
+
+                          _meals = filterMeals(allMeals);
+                        });
+                      }),
+                  DropdownButton(
+                      value: dropdownvalue_dayOfWeek,
+                      items: dayOfWeekItems.map((String dayOfWeekItems) {
+                        return DropdownMenuItem(
+                          value: dayOfWeekItems,
+                          child: Text(dayOfWeekItems),
+                        );
+                      }).toList(),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownvalue_dayOfWeek = newValue;
+
+                          _meals = filterMeals(allMeals);
+                          workingHoursText = createWorkingHoursText();
+                        });
+                      }),
+                ]),
+            SizedBox(height: 10),
+            Text(
+              'Menu',
+              style:
+                  //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+                  Theme.of(context).textTheme.headline6.apply(
+                      fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
+            ),
+            SizedBox(height: 10),
+            Container(child: MealsMenu(_meals)),
+            SizedBox(height: 10),
+            Text(
+              'Horas Populares',
+              style:
+                  //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
+                  Theme.of(context).textTheme.headline6.apply(
+                      fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
+            )
+          ]),
+        ));
+  }
+
+  String createWorkingHoursText() {
+    var text;
+    final intervals =
+        eatingPlace.workingHours[parseDayOfWeek(dropdownvalue_dayOfWeek)];
+    if (intervals.isEmpty) {
+      text = 'Sem horário';
+    } else {
+      text = 'Aberto ';
+      for (int i = 0; i < intervals.length; i++) {
+        if(i > 0) {
+          text += ' e ' + intervals[i].startTime + ' - ' + intervals[i].endTime;
+        } else {
+          text += intervals[i].startTime + ' - ' + intervals[i].endTime;
+        }
+      }
+    }
+    return text; //
   }
 
   List<Meal_> filterMeals(Map<DayOfWeek, List<Meal_>> allMeals) {
@@ -189,8 +211,6 @@ class EatingPlacePage extends StatefulWidget {
 
   const EatingPlacePage(this.eatingPlace);
 
-  //const EatingPlacePage({Key key, this.eatingPlace}) : super(key: key);
-
   @override
   EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
 }
@@ -218,17 +238,16 @@ class MealsMenuState extends State<MealsMenu> {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: ScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: widget.meals.length,
-        itemBuilder: (context, index) {
-          final item = widget.meals[index];
-          return ListTile(
-
-            title: Text(item.description),
-            subtitle: Text(item.cost.toStringAsFixed(2)+'€'),
-            leading: getFoodTypeIcon(item.foodType),
-          );
-        },
+      shrinkWrap: true,
+      itemCount: widget.meals.length,
+      itemBuilder: (context, index) {
+        final item = widget.meals[index];
+        return ListTile(
+          title: Text(item.description),
+          subtitle: Text(item.cost.toStringAsFixed(2) + '€'),
+          leading: getFoodTypeIcon(item.foodType),
+        );
+      },
     );
   }
 }
