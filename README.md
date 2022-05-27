@@ -24,6 +24,7 @@
 - [Architecture and Design](#architecture-and-design)
     - [Logical Architecture](#logical-architecture)
     - [Physical Architecture](#physical-architecture)
+- [Project Management](#project-management)
     
 ## Members
 
@@ -173,6 +174,18 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
     
 **Release management:** [v0](https://github.com/LEIC-ES-2021-22/2LEIC02T4/releases/tag/v0); [v0.1](https://github.com/LEIC-ES-2021-22/2LEIC02T4/releases/tag/v0.1);
     
-**Iteration 1 planning and retrospectives:**
-- **Plans:** screenshots of Github Projects board at begin and end of each iteration;
-- **Retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for next iteration we will focus more on the correct GitHub Flow.
+### Iteration 1 planning and retrospectives:
+- **Plans:** 
+    - Begining:![](https://i.imgur.com/9EFYRya.png)
+    - In Process: ![](https://i.imgur.com/zXZkmSj.png)
+    - End:![](https://i.imgur.com/EdQz7xL.png)
+
+- **Retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for the next iteration we will focus more on the correct GitHub Flow.
+    
+### Iteration 2 planning and retrospectives:
+- **Plans:** 
+    - Begining:![](https://i.imgur.com/fZCiR6y.png)
+    - In Process: ![](https://i.imgur.com/dHyjnlP.png)
+    - End:![](https://i.imgur.com/4ohUbir.png)
+
+- **Retrospectives:** 
