@@ -24,6 +24,7 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             1, 'AE', 'ae.jpg', workingHours, false, MapCoordinates(1, 1));
         getMealsAE("ae_ementa.txt").then((value){eatingPlace.meals=value;});
+        eatingPlace.workingHours = EatingPlace.createWorkingHours("09h30", '19h00');
         break;
       case 'CANTINA':
         eatingPlace = EatingPlace(
@@ -37,6 +38,7 @@ class BuildRestaurantCard extends StatelessWidget {
             3, 'BAR DA BIBLIOTECA', 'biblioteca.jpg', workingHours, false,
             MapCoordinates(1, 1));
         getMealsAE('biblio_ementa.txt').then((value){eatingPlace.meals=value;});
+        eatingPlace.workingHours = EatingPlace.createWorkingHours('09h00', '18h30');
         break;
       case 'GRILL':
         eatingPlace = EatingPlace(
@@ -50,6 +52,7 @@ class BuildRestaurantCard extends StatelessWidget {
             5, 'BAR DE MINAS', 'minas.jpg', workingHours, false,
             MapCoordinates(1, 1));
         eatingPlace.meals=EatingPlace.getTestMeals();
+        eatingPlace.workingHours = EatingPlace.createWorkingHours('08h00', '20h00');
         break;
       case 'RESTAURANTE INEGI':
         eatingPlace = EatingPlace(
@@ -57,6 +60,7 @@ class BuildRestaurantCard extends StatelessWidget {
             MapCoordinates(1, 1));
         getMealsWeb('inegi', 0.00).then((value){eatingPlace.meals = value;});
         // getScheduleWeb('inegi').then( (value){eatingPlace.workingHours = value;});
+        eatingPlace.workingHours = EatingPlace.createWorkingHours('08h30', '20h00');
         break;
       case 'BAR INESC TEC':
         eatingPlace = EatingPlace(
@@ -64,6 +68,7 @@ class BuildRestaurantCard extends StatelessWidget {
             MapCoordinates(1, 1));
         getMealsWeb('inesctec', 0.00).then((value){eatingPlace.meals = value;});
         // getScheduleWeb('inesctec').then( (value){eatingPlace.workingHours = value;});
+        eatingPlace.workingHours = EatingPlace.createWorkingHours('08h30', '20h00');
         break;
     }
     eatingPlacePage = EatingPlacePage(eatingPlace);

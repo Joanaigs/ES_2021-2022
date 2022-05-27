@@ -44,6 +44,19 @@ class EatingPlace{
     return meals[dayOfWeek];
   }
 
+  static  Map<DayOfWeek, List<TimeInterval>> createWorkingHours(String start, String end){
+    Map<DayOfWeek, List<TimeInterval>> schedule = {};
+    DayOfWeek.values.forEach((i) {
+      schedule[i] = [];
+    });
+     DayOfWeek.values.forEach((i) {
+       schedule[i].add(TimeInterval(start, end));
+     });
+
+
+    return schedule;
+  }
+
 }
 
 class MapCoordinates {
