@@ -98,6 +98,9 @@ class MyAppState extends State<MyApp> {
               case '/' + Constants.eatAtFeup:
                 return PageTransition.makePageTransition(
                     page: EatAtFeupMainPage(), settings: settings); //eat@feup
+              case '/' + Constants.eatAtFeupPreferences:
+                return PageTransition.makePageTransition(
+                    page: EatAtFeupMainPage(), settings: settings); //eat@feup
               case '/' + Constants.navAbout:
                 return PageTransition.makePageTransition(
                     page: AboutPageView(), settings: settings);
