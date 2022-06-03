@@ -33,18 +33,28 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
         child: ListView(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: EdgeInsets.only(left:25.0, right: 25.0, top:15.0, bottom: 10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(17.0),
                   child: Image.asset(
                     'assets/images/icon.png',
-                    width: 400.0,
-                    height: 80.0,
+                    scale:1.3,
                     fit: BoxFit.cover,
                   ),
                 )),
             Container(
               margin: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
               child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -53,7 +63,9 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
                             builder: (context) =>
                                 EatingPlacesMap('Eating Places Map')));
                   },
+
                   child: ClipRRect(
+
                     child: Image.asset(
                       'assets/images/mapa.jpg',
                       width: 600.0,
