@@ -43,7 +43,7 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
                   ),
                 )),
             Container(
-              margin: EdgeInsets.all(10.0),
+              margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0, bottom: 30.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [

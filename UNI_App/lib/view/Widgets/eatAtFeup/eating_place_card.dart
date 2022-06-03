@@ -75,9 +75,19 @@ class BuildRestaurantCard extends StatelessWidget {
 
     return Container(
       key:Key('restaurant'),
-      margin: EdgeInsets.all(10.0),
+      margin:  EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0, bottom: 20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 3,
+            blurRadius: 5,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(17.0),
           child: Stack(children: <Widget>[
             GestureDetector(
                 onTap: () {
@@ -87,44 +97,31 @@ class BuildRestaurantCard extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/' + photoName,
-                  width: 600.0,
-                  height: 300.0,
+                  width: 500.0,
+                  height: 200.0,
                   fit: BoxFit.cover,
                 )),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => eatingPlacePage));
-              },
-              child:
-              Center(
-                  child: Text(name,
-                      style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        height: 5.5,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 4
-                          ..color = Color.fromARGB(230, 117, 23, 30),
-                      ))),),
             GestureDetector(
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => eatingPlacePage));
                 },
                 child:
-                Center(
+                Center( child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
                     child: Text(name,
+
+                      textAlign: TextAlign.center,
+                      softWrap: true,
                       style: TextStyle(
                         fontFamily: 'Raleway',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2,
+                        fontSize: 40,
                         color: Colors.grey[100],
-                        height: 5.5,
+
                       ),
-                    )))
+                    ))))
           ])
       ),
     );
