@@ -7,6 +7,16 @@ import 'package:uni/model/utils/day_of_week.dart';
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
 
+
+class EatingPlacePage extends StatefulWidget {
+  final EatingPlace eatingPlace;
+
+  const EatingPlacePage(this.eatingPlace);
+
+  @override
+  EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
+}
+
 class EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
 
@@ -206,14 +216,7 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
   }
 }
 
-class EatingPlacePage extends StatefulWidget {
-  final EatingPlace eatingPlace;
 
-  const EatingPlacePage(this.eatingPlace);
-
-  @override
-  EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
-}
 
 class MealsMenu extends StatefulWidget {
   final List<Meal_> meals;
