@@ -11,7 +11,6 @@ class EatAtFeupMainPage extends StatefulWidget {
   _EatAtFeupMainPageState createState() => _EatAtFeupMainPageState();
 }
 
-
 class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
   @override
   Widget getBody(BuildContext context) {
@@ -34,29 +33,44 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
         child: ListView(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10.0),
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>EatingPlacesMap('Eating Places Map')));
-                },
+                margin: EdgeInsets.all(20.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(17.0),
                   child: Image.asset(
-                    'assets/images/mapa.jpg',
-                    width: 600.0,
-                    height: 100.0,
+                    'assets/images/icon.png',
+                    width: 400.0,
+                    height: 80.0,
                     fit: BoxFit.cover,
                   ),
-                )
-              ),
+                )),
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                EatingPlacesMap('Eating Places Map')));
+                  },
+                  child: ClipRRect(
+                    child: Image.asset(
+                      'assets/images/mapa.jpg',
+                      width: 600.0,
+                      height: 100.0,
+                      fit: BoxFit.cover,
+                    ),
+                  )),
             ),
             BuildRestaurantCard(photoName: 'ae.jpg', name: 'AE'),
-            BuildRestaurantCard(photoName:'cantina.jpg', name:'CANTINA'),
-            BuildRestaurantCard(photoName:'grill.png', name:'GRILL'),
-            BuildRestaurantCard(photoName:'biblioteca.jpg', name:'BAR DA BIBLIOTECA'),
-            BuildRestaurantCard(photoName:'minas.jpg', name:'BAR DE MINAS'),
-            BuildRestaurantCard(photoName:'inegi.jpg', name:'RESTAURANTE INEGI'),
-            BuildRestaurantCard(photoName:'inesc.jpg', name:'BAR INESC TEC'),
+            BuildRestaurantCard(photoName: 'cantina.jpg', name: 'CANTINA'),
+            BuildRestaurantCard(photoName: 'grill.png', name: 'GRILL'),
+            BuildRestaurantCard(
+                photoName: 'biblioteca.jpg', name: 'BAR DA BIBLIOTECA'),
+            BuildRestaurantCard(photoName: 'minas.jpg', name: 'BAR DE MINAS'),
+            BuildRestaurantCard(
+                photoName: 'inegi.jpg', name: 'RESTAURANTE INEGI'),
+            BuildRestaurantCard(photoName: 'inesc.jpg', name: 'BAR INESC TEC'),
           ],
         ),
       ),
