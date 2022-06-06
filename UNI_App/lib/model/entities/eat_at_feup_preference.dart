@@ -28,5 +28,16 @@ class EatAtFeupPreference{
     };
   }
 
+  static List<EatAtFeupPreference> getDefaultPreferences(){
+    List<EatAtFeupPreference> result = [];
+    result.add(EatAtFeupPreference(parseFoodType('carne'), true, 0));
+    result.add(EatAtFeupPreference(parseFoodType('peixe'), true, 1));
+    result.add(EatAtFeupPreference(parseFoodType('vegetariano'), true, 2));
+    result.add(EatAtFeupPreference(parseFoodType('dieta'), true, 3));
+    result.add(EatAtFeupPreference(parseFoodType('outro'), true, 4));
+    return result;
+  }
+
+
 
 }

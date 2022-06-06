@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:intl/intl.dart';
+import 'package:uni/model/entities/eat_at_feup_preference.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+import 'package:uni/redux/actions.dart';
 
+import '../../../controller/eat_at_feup/preferences.dart';
+import '../../../model/app_state.dart';
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
 
@@ -19,6 +26,7 @@ class EatingPlacePage extends StatefulWidget {
 
 class EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
+  List<EatAtFeupPreference> preferences;
 
   String dropdownvalue_foodType = 'Tudo';
   String dropdownvalue_typeOfMeal = 'Almoço';
@@ -49,6 +57,15 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
 
   @override
   getBody(BuildContext context) {
+    preferences = StoreProvider.of<AppState>(context).state.content['eatAtFeupPreferences'];
+    if(preferences == null || preferences.isEmpty){
+      print('USING DEAFULT PREFERENCES\n');
+      preferences = EatAtFeupPreference.getDefaultPreferences();
+      StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
+    }
+    for(var pref in preferences){
+      print(foodTypeToString(pref.foodType));
+    }
     final allMeals = eatingPlace.meals;
     var workingHoursText = createWorkingHoursText();
 
@@ -212,6 +229,17 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
         return !m.isLunch;
       }
     }).toList();
+    if (dropdownvalue_foodType == 'Tudo'){
+      meals.sort((m1, m2) {
+        final EatAtFeupPreference p1 = preferences.firstWhere((e){
+          return e.foodType == m1.foodType;
+        });
+        final EatAtFeupPreference p2 = preferences.firstWhere((e){
+          return e.foodType == m2.foodType;
+        });
+        return p1.order - p2.order;
+      });
+    }
     return meals;
   }
 }

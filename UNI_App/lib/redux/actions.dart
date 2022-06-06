@@ -1,5 +1,6 @@
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/course_unit.dart';
+import 'package:uni/model/entities/eat_at_feup_preference.dart';
 import 'package:uni/model/entities/exam.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/model/entities/profile.dart';
@@ -44,10 +45,18 @@ class SetScheduleAction {
   List<Lecture> lectures;
   SetScheduleAction(this.lectures);
 }
+class SetEatAtFeupPreferencesAction {
+  List<EatAtFeupPreference> preferences;
+  SetEatAtFeupPreferencesAction(this.preferences);
+}
 
 class SetScheduleStatusAction {
   RequestStatus status;
   SetScheduleStatusAction(this.status);
+}
+class SetEatAtFeupPreferencesStatusAction {
+  RequestStatus status;
+  SetEatAtFeupPreferencesStatusAction(this.status);
 }
 
 
