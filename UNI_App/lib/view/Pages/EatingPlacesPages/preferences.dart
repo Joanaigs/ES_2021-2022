@@ -18,16 +18,15 @@ import '../EatingPlacesPages/eating_places_map.dart';
 import '../general_page_view.dart';
 import 'eat_at_feup_general_page_view.dart';
 
-
-List<EatAtFeupPreference>  getPreferencesmm() {
-
+List<EatAtFeupPreference> getPreferencesmm() {
   EatAtFeupDatabase preferencesDB = EatAtFeupDatabase();
   // List<EatAtFeupPreference> preferences = await preferencesDB.preferences();
   List<EatAtFeupPreference> preferences;
   preferencesDB.preferences().then((value) => preferences = value);
   return preferences;
 }
-List<EatAtFeupPreference>  getPreferences()  {
+
+List<EatAtFeupPreference> getPreferences() {
   final List<EatAtFeupPreference> preferences = [];
   preferences.add(EatAtFeupPreference(parseFoodType("vegetariano"), true, 0));
   preferences.add(EatAtFeupPreference(parseFoodType("carne"), true, 1));
@@ -42,13 +41,11 @@ class EatAtFeupPreferencesPage extends StatefulWidget {
 }
 
 class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
-
   EatAtFeupDatabase preferencesDB;
 
   List<EatAtFeupPreference> preferences;
 
   final List<int> _items = List<int>.generate(5, (int index) => index);
-
 
   /*
   @override
@@ -69,26 +66,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
     return Scaffold(
       body: Center(
         child: ReorderableListView(
-          buildDefaultDragHandles:false,  //Remove default drag handles
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          onReorder: (int oldIndex, int newIndex) {
-            setState(() {
-              if (oldIndex < newIndex) {
-                newIndex -= 1;
-              }
-              final EatAtFeupPreference item = preferences.removeAt(oldIndex);
-              for(var pref in preferences){
-                if( newIndex <= pref.order &&  pref.order < oldIndex ) {
-                  pref.order++;
-                }else if( oldIndex < pref.order &&  pref.order <= newIndex ) {
-                  pref.order--;
-                }
-              }
-              preferences.insert(newIndex, item);
-              preferences[newIndex].order = newIndex;
-              preferencesDB.saveNewPreferences(preferences);
-            });
-          },
+
           children:
             preferences.map((task) => Container(
               key: ValueKey(task.order),
@@ -115,6 +93,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
    */
   DateTime lastUpdateTime;
   DateFormat updateTimeFormat = DateFormat.jm();
+  // bool _lights = false;
 
   @override
   Widget getScaffold(BuildContext context, Widget body) {
@@ -126,74 +105,116 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
           //   preferences = EatAtFeupPreference.getDefaultPreferences();
           // }
           ReorderableListView rList;
+          ListView sList;
           final List<Widget> widgetList = [];
           widgetList.add(PageTitle(name: 'Minhas Preferências'));
           Future.delayed(Duration(seconds: 2));
           if (preferences.isEmpty) {
             widgetList.add(Center(child: Text('\nNão tem preferências\n')));
           } else {
+            sList = ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              children: preferences.map((task) {
+                bool _lights = task.display;
+                return Container(
+                  decoration: BoxDecoration(
+                      color: Colors.teal,
+                      border: Border.all(width: 1, color: Colors.lightBlue)),
+                  child: SwitchListTile(
+                    contentPadding: const EdgeInsets.all(10),
+                    secondary: getFoodTypeIcon(task.foodType),
+                    title: Text(
+                      '${task.foodType}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    onChanged: (bool value) {
+                      setState(() {
+                        task.display = value;
+                        _lights = value;
+                      });
+                    },
+                    value: _lights,
+                  ),
+                );
+              }).toList(),
+            );
             rList = ReorderableListView(
               shrinkWrap: true,
-              buildDefaultDragHandles:false,  //Remove default drag handles
+              buildDefaultDragHandles: false,
+              //Remove default drag handles
               padding: const EdgeInsets.symmetric(horizontal: 10),
               onReorder: (int oldIndex, int newIndex) {
                 setState(() {
                   if (oldIndex < newIndex) {
                     newIndex -= 1;
                   }
-                  final EatAtFeupPreference item = preferences.removeAt(
-                      oldIndex);
+                  final EatAtFeupPreference item =
+                      preferences.removeAt(oldIndex);
                   for (var pref in preferences) {
                     if (newIndex <= pref.order && pref.order < oldIndex) {
                       pref.order++;
-                    }
-                    else if (oldIndex < pref.order && pref.order <= newIndex) {
+                    } else if (oldIndex < pref.order &&
+                        pref.order <= newIndex) {
                       pref.order--;
                     }
                   }
-                    preferences.insert(newIndex, item);
-                    preferences[newIndex].order = newIndex;
-                }
-                );
-              }, children:  preferences.map((task) => Container(
-              key: ValueKey(task.foodType),
-              decoration: BoxDecoration(
-                  color: Colors.greenAccent,
-                  border: Border.all(width: 1, color: Colors.green)),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(10),
-                leading: getFoodTypeIcon(task.foodType),
-                title: Text(
-                  '${task.foodType}',
-                  style: const TextStyle(fontSize: 14),
-                ),
-                trailing: ReorderableDragStartListener(index:task.order,child: const Icon(Icons.drag_indicator_outlined)),   //Wrap it inside drag start event listener
-              ),
-            ))
-                .toList(),
+                  preferences.insert(newIndex, item);
+                  preferences[newIndex].order = newIndex;
+                });
+              },
+              children: preferences
+                  .map((task) => Container(
+                        key: ValueKey(task.foodType),
+                        decoration: BoxDecoration(
+                            color: Colors.greenAccent,
+                            border: Border.all(width: 1, color: Colors.green)),
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(10),
+                          leading: getFoodTypeIcon(task.foodType),
+                          title: Text(
+                            '${task.foodType}',
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          trailing: ReorderableDragStartListener(
+                              index: task.order,
+                              child: const Icon(Icons
+                                  .drag_indicator_outlined)), //Wrap it inside drag start event listener
+                        ),
+                      ))
+                  .toList(),
             );
             lastUpdateTime = DateTime.now();
             widgetList.add(Column(children: <Widget>[rList]));
+            widgetList.add(Column(children: <Widget>[sList]));
             widgetList.add(Text(
                 'última atualização às ${updateTimeFormat.format(lastUpdateTime)}',
                 textAlign: TextAlign.center));
           }
-          return ListView(children: widgetList);
+          return SingleChildScrollView(
+            child: ListView(
+              children: widgetList,
+              physics: ScrollPhysics(),
+              shrinkWrap: true,
+            ),
+            physics: ScrollPhysics(),
+          );
+          // return ListView(children: widgetList, physics: ScrollPhysics(),);
         });
 
     return Scaffold(
-        appBar: buildAppBar(context),
-        drawer: NavigationDrawer(parentContext: context),
-        body: this.refreshState(context, body),
-        floatingActionButton:
-        Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          SizedBox(
-            height: 20,
-          ),
-          FloatingActionButton(
-              key: Key("create_reservation"),
-              onPressed: () {  },
-              child: const Icon(Icons.add))
-        ]));
+      appBar: buildAppBar(context),
+      drawer: NavigationDrawer(parentContext: context),
+      body: this.refreshState(context, body),
+      // floatingActionButton:
+      // Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+      //   SizedBox(
+      //     height: 20,
+      //   ),
+      //   // FloatingActionButton(
+      //     onPressed: () {  },
+      //     child: const Icon(Icons.add))
+      // ])
+    );
   }
 }

@@ -230,6 +230,12 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
       }
     }).toList();
     if (dropdownvalue_foodType == 'Tudo'){
+      meals = meals.where((m){
+        final EatAtFeupPreference pref = preferences.firstWhere((e){
+          return m.foodType == e.foodType;
+        });
+        return pref.display;
+      }).toList();
       meals.sort((m1, m2) {
         final EatAtFeupPreference p1 = preferences.firstWhere((e){
           return e.foodType == m1.foodType;
