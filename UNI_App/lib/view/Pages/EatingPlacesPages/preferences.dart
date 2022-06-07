@@ -107,26 +107,27 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
           ReorderableListView rList;
           ListView sList;
           final List<Widget> widgetList = [];
-          widgetList.add(PageTitle(name: 'Minhas Preferências'));
+          widgetList.add(PageTitle(name: 'Preferências'));
           Future.delayed(Duration(seconds: 2));
           if (preferences.isEmpty) {
             widgetList.add(Center(child: Text('\nNão tem preferências\n')));
           } else {
             sList = ListView(
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               children: preferences.map((task) {
                 bool _lights = task.display;
                 return Container(
                   decoration: BoxDecoration(
-                      color: Colors.teal,
-                      border: Border.all(width: 1, color: Colors.lightBlue)),
+                      color:  Color(0x0075171e),
+                      border: Border.all(width: 1, color: Color(0xff75171e))),
                   child: SwitchListTile(
                     contentPadding: const EdgeInsets.all(10),
-                    secondary: getFoodTypeIcon(task.foodType),
+                    secondary: Image.asset('assets/images/' + foodTypeToString(task.foodType) + '.png',),
                     title: Text(
-                      '${task.foodType}',
-                      style: const TextStyle(fontSize: 12),
+                      '${foodTypeToString(task.foodType)}',
+                      style: const TextStyle(fontSize: 14),
                     ),
                     onChanged: (bool value) {
                       setState(() {
@@ -140,6 +141,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
               }).toList(),
             );
             rList = ReorderableListView(
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               buildDefaultDragHandles: false,
               //Remove default drag handles
@@ -164,28 +166,33 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                 });
               },
               children: preferences
-                  .map((task) => Container(
-                        key: ValueKey(task.foodType),
+                  .map((preference) => Container(
+                        key: ValueKey(preference.foodType),
                         decoration: BoxDecoration(
-                            color: Colors.greenAccent,
-                            border: Border.all(width: 1, color: Colors.green)),
+                            color: preference.order % 2 == 0 ? Color(0xfff1c8c8) :  Color(
+                                0x00ffffff),
+                            border: Border.all(width: 1, color: Color(
+                                0xff75171e))),
                         child: ListTile(
                           contentPadding: const EdgeInsets.all(10),
-                          leading: getFoodTypeIcon(task.foodType),
+                          leading: Image.asset('assets/images/' + foodTypeToString(preference.foodType) + '.png',
+                            // color: Color(0xff75171e),)
+                          ),
                           title: Text(
-                            '${task.foodType}',
-                            style: const TextStyle(fontSize: 14),
+                            '${foodTypeToString(preference.foodType)}',
+                            style: TextStyle(fontSize: 14, color: (preference.order % 2 == 0) ? Colors.black: Colors.black),
                           ),
                           trailing: ReorderableDragStartListener(
-                              index: task.order,
+                              index: preference.order,
                               child: const Icon(Icons
-                                  .drag_indicator_outlined)), //Wrap it inside drag start event listener
+                                  .drag_indicator_outlined, color: Color(0xff75171e),)), //Wrap it inside drag start event listener
                         ),
                       ))
                   .toList(),
             );
             lastUpdateTime = DateTime.now();
             widgetList.add(Column(children: <Widget>[rList]));
+            widgetList.add(SizedBox(height: 15,));
             widgetList.add(Column(children: <Widget>[sList]));
             widgetList.add(Text(
                 'última atualização às ${updateTimeFormat.format(lastUpdateTime)}',
@@ -199,7 +206,6 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
             ),
             physics: ScrollPhysics(),
           );
-          // return ListView(children: widgetList, physics: ScrollPhysics(),);
         });
 
     return Scaffold(
