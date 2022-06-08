@@ -12,6 +12,7 @@ import 'package:uni/view/Widgets/eatAtFeup/eating_place_card.dart';
 import '../../../controller/eat_at_feup/preferences.dart';
 import '../../../model/app_state.dart';
 import '../../../model/entities/eat_at_feup_preference.dart';
+import '../../../redux/actions.dart';
 import '../../Widgets/navigation_drawer.dart';
 import '../../Widgets/page_title.dart';
 import '../EatingPlacesPages/eating_places_map.dart';
@@ -47,63 +48,19 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
 
   final List<int> _items = List<int>.generate(5, (int index) => index);
 
-  /*
-  @override
-  Widget getBody(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final Color oddItemColor = colorScheme.primary.withOpacity(0.05);
-    final Color evenItemColor = colorScheme.primary.withOpacity(0.15);
-    // getPreferences().then((value) => preferences = value);
-    // if(preferences == null){
-    // }
-    // preferences = [];
-    // preferences.add(EatAtFeupPreference(parseFoodType("vegetariano"), true, 0));
-    // preferences.add(EatAtFeupPreference(parseFoodType("carne"), true, 1));
-
-
-
-
-    return Scaffold(
-      body: Center(
-        child: ReorderableListView(
-
-          children:
-            preferences.map((task) => Container(
-              key: ValueKey(task.order),
-              decoration: BoxDecoration(
-                  color: Colors.greenAccent,
-                  border: Border.all(width: 1, color: Colors.green)),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(10),
-                leading: getFoodTypeIcon(task.foodType),
-                title: Text(
-                  '${task.foodType}',
-                  style: const TextStyle(fontSize: 14),
-                ),
-                    trailing: ReorderableDragStartListener(index:task.order,child: const Icon(Icons.drag_indicator_outlined)),   //Wrap it inside drag start event listener
-              ),
-            ))
-                .toList(),
-          // ],
-        ),
-      ),
-    );
-  }
-
-   */
   DateTime lastUpdateTime;
   DateFormat updateTimeFormat = DateFormat.jm();
-  // bool _lights = false;
 
   @override
   Widget getScaffold(BuildContext context, Widget body) {
     body = StoreConnector<AppState, List<EatAtFeupPreference>>(
         converter: (store) => store.state.content['eatAtFeupPreferences'],
         builder: (context, preferences) {
-          // preferences.clear();
-          // if(preferences.length != 5){
-          //   preferences = EatAtFeupPreference.getDefaultPreferences();
-          // }
+          //preferences = preferences ?? EatAtFeupPreference.getDefaultPreferences();
+          if(preferences == null || preferences.isEmpty){
+            preferences = EatAtFeupPreference.getDefaultPreferences();
+            StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
+          }
           ReorderableListView rList;
           ListView sList;
           final List<Widget> widgetList = [];
@@ -169,7 +126,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                   .map((preference) => Container(
                         key: ValueKey(preference.foodType),
                         decoration: BoxDecoration(
-                            color: preference.order % 2 == 0 ? Color(0xfff1c8c8) :  Color(
+                            color: preference.display ? Color(0xfff1c8c8) :  Color(
                                 0x00ffffff),
                             border: Border.all(width: 1, color: Color(
                                 0xff75171e))),

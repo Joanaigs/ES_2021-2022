@@ -59,7 +59,6 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
   getBody(BuildContext context) {
     preferences = StoreProvider.of<AppState>(context).state.content['eatAtFeupPreferences'];
     if(preferences == null || preferences.isEmpty){
-      print('USING DEAFULT PREFERENCES\n');
       preferences = EatAtFeupPreference.getDefaultPreferences();
       StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
     }
