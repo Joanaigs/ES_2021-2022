@@ -112,6 +112,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
           if (preferences.isEmpty) {
             widgetList.add(Center(child: Text('\nNão tem preferências\n')));
           } else {
+            widgetList.add(Center(child: Text('\nOrdene as suas preferências arrastando as caixas\n')));
             sList = ListView(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -172,7 +173,10 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                             color: Color(0x00ffffff),
                             border: Border.all(width: 1, color: Color(
                                 0xff75171e))),
-                        child: ListTile(
+                        child: Column(
+                        children: [
+                          Text('\nAtive ou desative as suas preferências\n'),
+                          ListTile(
                           contentPadding: const EdgeInsets.all(10),
                           leading: Image.asset('assets/images/' + foodTypeToString(preference.foodType) + '.png',
                             // color: Color(0xff75171e),)
@@ -185,7 +189,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                               index: preference.order,
                               child: const Icon(Icons
                                   .drag_indicator_outlined, color: Color(0xff75171e),)), //Wrap it inside drag start event listener
-                        ),
+                        )]),
                       ))
                   .toList(),
             );
