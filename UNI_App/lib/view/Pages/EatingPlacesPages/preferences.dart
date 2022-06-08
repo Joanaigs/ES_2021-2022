@@ -169,8 +169,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                   .map((preference) => Container(
                         key: ValueKey(preference.foodType),
                         decoration: BoxDecoration(
-                            color: preference.order % 2 == 0 ? Color(0xfff1c8c8) :  Color(
-                                0x00ffffff),
+                            color: Color(0x00ffffff),
                             border: Border.all(width: 1, color: Color(
                                 0xff75171e))),
                         child: ListTile(
@@ -180,7 +179,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                           ),
                           title: Text(
                             '${foodTypeToString(preference.foodType)}',
-                            style: TextStyle(fontSize: 14, color: (preference.order % 2 == 0) ? Colors.black: Colors.black),
+                            style: TextStyle(fontSize: 14, color: Colors.black),
                           ),
                           trailing: ReorderableDragStartListener(
                               index: preference.order,
