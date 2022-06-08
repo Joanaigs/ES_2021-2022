@@ -56,7 +56,6 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
     body = StoreConnector<AppState, List<EatAtFeupPreference>>(
         converter: (store) => store.state.content['eatAtFeupPreferences'],
         builder: (context, preferences) {
-          //preferences = preferences ?? EatAtFeupPreference.getDefaultPreferences();
           if(preferences == null || preferences.isEmpty){
             preferences = EatAtFeupPreference.getDefaultPreferences();
             StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
@@ -69,6 +68,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
           if (preferences.isEmpty) {
             widgetList.add(Center(child: Text('\nNão tem preferências\n')));
           } else {
+            widgetList.add(Center(child: Text('\nOrdene as suas preferências arrastando as caixas\n')));
             sList = ListView(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -126,8 +126,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                   .map((preference) => Container(
                         key: ValueKey(preference.foodType),
                         decoration: BoxDecoration(
-                            color: preference.display ? Color(0xfff1c8c8) :  Color(
-                                0x00ffffff),
+                            color: Color(0x00ffffff),
                             border: Border.all(width: 1, color: Color(
                                 0xff75171e))),
                         child: ListTile(
@@ -137,7 +136,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                           ),
                           title: Text(
                             '${foodTypeToString(preference.foodType)}',
-                            style: TextStyle(fontSize: 14, color: (preference.order % 2 == 0) ? Colors.black: Colors.black),
+                            style: TextStyle(fontSize: 14, color: Colors.black),
                           ),
                           trailing: ReorderableDragStartListener(
                               index: preference.order,
@@ -150,6 +149,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
             lastUpdateTime = DateTime.now();
             widgetList.add(Column(children: <Widget>[rList]));
             widgetList.add(SizedBox(height: 15,));
+            widgetList.add(Center(child: Text('\nAtive ou desative as suas preferências\n')));
             widgetList.add(Column(children: <Widget>[sList]));
             widgetList.add(Text(
                 'última atualização às ${updateTimeFormat.format(lastUpdateTime)}',
@@ -169,15 +169,6 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
       appBar: buildAppBar(context),
       drawer: NavigationDrawer(parentContext: context),
       body: this.refreshState(context, body),
-      // floatingActionButton:
-      // Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-      //   SizedBox(
-      //     height: 20,
-      //   ),
-      //   // FloatingActionButton(
-      //     onPressed: () {  },
-      //     child: const Icon(Icons.add))
-      // ])
     );
   }
 }

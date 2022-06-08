@@ -28,14 +28,14 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
   List<EatAtFeupPreference> preferences;
 
-  String dropdownvalue_foodType = 'Tudo';
+  String dropdownvalue_foodType = 'Preferência';
   String dropdownvalue_typeOfMeal = 'Almoço';
 
   String dropdownvalue_dayOfWeek =
       toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
 
   static var foodTypeItems = [
-    'Tudo',
+    'Preferência',
     'Carne',
     'Peixe',
     'Vegetariano',
@@ -215,20 +215,20 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
     List<Meal_> meals =
         allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
       if (dropdownvalue_typeOfMeal == 'Almoço') {
-        if (dropdownvalue_foodType != 'Tudo') {
+        if (dropdownvalue_foodType != 'Preferência') {
           return m.isLunch &&
               (foodTypeToString(m.foodType) == dropdownvalue_foodType);
         }
         return m.isLunch;
       } else {
-        if (dropdownvalue_foodType != 'Tudo') {
+        if (dropdownvalue_foodType != 'Preferência') {
           return !m.isLunch &&
               (m.foodType == parseFoodType(dropdownvalue_foodType));
         }
         return !m.isLunch;
       }
     }).toList();
-    if (dropdownvalue_foodType == 'Tudo'){
+    if (dropdownvalue_foodType == 'Preferência'){
       meals = meals.where((m){
         final EatAtFeupPreference pref = preferences.firstWhere((e){
           return m.foodType == e.foodType;
