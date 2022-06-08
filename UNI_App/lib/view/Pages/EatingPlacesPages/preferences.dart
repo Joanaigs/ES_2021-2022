@@ -112,6 +112,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
           if (preferences.isEmpty) {
             widgetList.add(Center(child: Text('\nNão tem preferências\n')));
           } else {
+            widgetList.add(Center(child: Text('\nOrdene as suas preferências arrastando as caixas\n')));
             sList = ListView(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -192,6 +193,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
             lastUpdateTime = DateTime.now();
             widgetList.add(Column(children: <Widget>[rList]));
             widgetList.add(SizedBox(height: 15,));
+            widgetList.add(Center(child: Text('\nAtive ou desative as suas preferências\n')));
             widgetList.add(Column(children: <Widget>[sList]));
             widgetList.add(Text(
                 'última atualização às ${updateTimeFormat.format(lastUpdateTime)}',
