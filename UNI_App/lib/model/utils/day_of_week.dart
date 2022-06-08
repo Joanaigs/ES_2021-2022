@@ -8,6 +8,17 @@ enum DayOfWeek {
   sunday
 }
 
+String parseTypeOfMeal(){
+  DateTime dt15=  DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 15, 0, 0);
+  DateTime now=DateTime.now();
+  if(now.compareTo(dt15) < 0){
+    return 'Almoço';
+  }
+  else{
+    return 'Jantar';
+  }
+}
+
 DayOfWeek parseDayOfWeek(String str){
   str = str.replaceAll(' ', '').toLowerCase();
   if(str == 'segunda-feira'  || str == 'monday') {

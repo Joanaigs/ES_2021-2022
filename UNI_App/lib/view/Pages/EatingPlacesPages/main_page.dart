@@ -11,7 +11,6 @@ class EatAtFeupMainPage extends StatefulWidget {
   _EatAtFeupMainPageState createState() => _EatAtFeupMainPageState();
 }
 
-
 class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
   @override
   Widget getBody(BuildContext context) {
@@ -34,29 +33,56 @@ class _EatAtFeupMainPageState extends EatAtFeupGeneralPageViewState {
         child: ListView(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10.0),
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>EatingPlacesMap('Eating Places Map')));
-                },
+                margin: EdgeInsets.only(left:25.0, right: 25.0, top:15.0, bottom: 10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(17.0),
                   child: Image.asset(
-                    'assets/images/mapa.jpg',
-                    width: 600.0,
-                    height: 100.0,
+                    'assets/images/icon.png',
+                    scale:1.3,
                     fit: BoxFit.cover,
                   ),
-                )
+                )),
+            Container(
+              margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0, bottom: 30.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                EatingPlacesMap('Eating Places Map')));
+                  },
+
+                  child: ClipRRect(
+
+                    child: Image.asset(
+                      'assets/images/mapa.jpg',
+                      width: 600.0,
+                      height: 100.0,
+                      fit: BoxFit.cover,
+                    ),
+                  )),
             ),
             BuildRestaurantCard(photoName: 'ae.jpg', name: 'AE'),
-            BuildRestaurantCard(photoName:'cantina.jpg', name:'CANTINA'),
-            BuildRestaurantCard(photoName:'grill.png', name:'GRILL'),
-            BuildRestaurantCard(photoName:'biblioteca.jpg', name:'BAR DA BIBLIOTECA'),
-            BuildRestaurantCard(photoName:'minas.jpg', name:'BAR DE MINAS'),
-            BuildRestaurantCard(photoName:'inegi.jpg', name:'RESTAURANTE INEGI'),
-            BuildRestaurantCard(photoName:'inesc.jpg', name:'BAR INESC TEC'),
+            BuildRestaurantCard(photoName: 'cantina.jpg', name: 'CANTINA'),
+            BuildRestaurantCard(photoName: 'grill.png', name: 'GRILL'),
+            BuildRestaurantCard(
+                photoName: 'biblioteca.jpg', name: 'BAR DA BIBLIOTECA'),
+            BuildRestaurantCard(photoName: 'minas.jpg', name: 'BAR DE MINAS'),
+            BuildRestaurantCard(
+                photoName: 'inegi.jpg', name: 'RESTAURANTE INEGI'),
+            BuildRestaurantCard(photoName: 'inesc.jpg', name: 'BAR INESC TEC'),
           ],
         ),
       ),
