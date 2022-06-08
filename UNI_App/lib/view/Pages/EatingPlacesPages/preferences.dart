@@ -45,9 +45,6 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
   EatAtFeupDatabase preferencesDB;
 
   List<EatAtFeupPreference> preferences;
-
-  final List<int> _items = List<int>.generate(5, (int index) => index);
-
   DateTime lastUpdateTime;
   DateFormat updateTimeFormat = DateFormat.jm();
 
@@ -56,6 +53,7 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
     body = StoreConnector<AppState, List<EatAtFeupPreference>>(
         converter: (store) => store.state.content['eatAtFeupPreferences'],
         builder: (context, preferences) {
+          //preferences.clear();
           if(preferences == null || preferences.isEmpty){
             preferences = EatAtFeupPreference.getDefaultPreferences();
             StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
@@ -73,23 +71,68 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              children: preferences.map((task) {
-                bool _lights = task.display;
+              children: preferences.map((preference) {
+                bool _lights = preference.display;
                 return Container(
                   decoration: BoxDecoration(
                       color:  Color(0x0075171e),
                       border: Border.all(width: 1, color: Color(0xff75171e))),
                   child: SwitchListTile(
                     contentPadding: const EdgeInsets.all(10),
-                    secondary: Image.asset('assets/images/' + foodTypeToString(task.foodType) + '.png',),
+                    secondary: Image.asset('assets/images/' + foodTypeToString(preference.foodType) + '.png',),
                     title: Text(
-                      '${foodTypeToString(task.foodType)}',
+                      '${foodTypeToString(preference.foodType)}',
                       style: const TextStyle(fontSize: 14),
                     ),
                     onChanged: (bool value) {
                       setState(() {
-                        task.display = value;
                         _lights = value;
+                        if(!value){
+                          int newIndex = 4;
+                          final int oldIndex = preference.order;
+
+                          final EatAtFeupPreference item =
+                          preferences.removeAt(oldIndex);
+                          for (var pref in preferences) {
+                            if (newIndex <= pref.order && pref.order < oldIndex) {
+                              pref.order++;
+                            } else if (oldIndex < pref.order &&
+                                pref.order <= newIndex) {
+                              pref.order--;
+                            }
+                          }
+                          preferences.insert(newIndex, item);
+                          preferences[newIndex].order = newIndex;
+                        }
+                        else{
+                          final int oldIndex = preference.order;
+                          int newIndex;
+                          preferences.sort((pref1, pref2){
+                            return pref1.order - pref2.order;
+                          });
+                          for (int i = 0; i < preferences.length - 1; i++) {
+                            if(preferences[i].display && !preferences[i + 1].display){
+                              newIndex = i + 1;
+                              break;
+                            }
+                            newIndex = 0;
+                          }
+
+                          final EatAtFeupPreference item = preferences.removeAt(oldIndex);
+                          for (var pref in preferences) {
+                            if (newIndex <= pref.order && pref.order < oldIndex) {
+                              pref.order++;
+                            } else if (oldIndex < pref.order &&
+                                pref.order <= newIndex) {
+                              pref.order--;
+                            }
+                          }
+                          preferences.insert(newIndex, item);
+                          preferences[newIndex].order = newIndex;
+
+                        }
+                        preference.display = value;
+
                       });
                     },
                     value: _lights,
@@ -138,10 +181,12 @@ class _EatAtFeupPreferencesState extends GeneralEatingPlacePageState {
                             '${foodTypeToString(preference.foodType)}',
                             style: TextStyle(fontSize: 14, color: Colors.black),
                           ),
-                          trailing: ReorderableDragStartListener(
+                          trailing: preference.display ? ReorderableDragStartListener(
                               index: preference.order,
-                              child: const Icon(Icons
-                                  .drag_indicator_outlined, color: Color(0xff75171e),)), //Wrap it inside drag start event listener
+                              child: Icon(Icons
+                                  .drag_indicator_outlined, color: preference.display ? Color(0xff75171e) : Colors.blueGrey))
+                          : Icon(Icons
+                              .drag_indicator_outlined, color: preference.display ? Color(0xff75171e) : Colors.blueGrey), //Wrap it inside drag start event listener
                         ),
                       ))
                   .toList(),
