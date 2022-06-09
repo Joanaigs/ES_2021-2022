@@ -183,13 +183,7 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
             SizedBox(height: 10),
             Container(child: MealsMenu(_meals)),
             SizedBox(height: 10),
-            Text(
-              'Horas Populares',
-              style:
-                  //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
-                  Theme.of(context).textTheme.headline6.apply(
-                      fontSizeDelta: 5, backgroundColor: Colors.grey.shade300),
-            )
+
           ]),
         ));
   }
@@ -274,18 +268,30 @@ class MealsMenuState extends State<MealsMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: ScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: widget.meals.length,
-      itemBuilder: (context, index) {
+    dynamic res;
+    if(widget.meals.isNotEmpty) {
+      res = (context, index) {
         final item = widget.meals[index];
         return ListTile(
           title: Text(item.description),
           subtitle: Text(item.cost.toStringAsFixed(2) + '€'),
           leading: getFoodTypeIcon(item.foodType),
         );
-      },
+      };
+    }
+    else{
+      res = (context, index) {
+        return
+        ListTile(title: Center(child: Text('Ementa indisponível para este horário.'),
+        )
+        );
+      };
+    }
+    return ListView.builder(
+      physics: ScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: widget.meals.isNotEmpty ? widget.meals.length : 1,
+      itemBuilder: res,
     );
   }
 }

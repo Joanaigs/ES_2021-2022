@@ -58,7 +58,7 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             6, 'RESTAURANTE INEGI', 'inegi.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        getMealsWeb('inegi', 0.00).then((value){eatingPlace.meals = value;});
+        getMealsWeb('inegi', 4.00).then((value){eatingPlace.meals = value;});
         // getScheduleWeb('inegi').then( (value){eatingPlace.workingHours = value;});
         eatingPlace.workingHours = EatingPlace.createWorkingHours('08h30', '20h00');
         break;
@@ -66,7 +66,7 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             7, 'BAR INESC TEC', 'inesc.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        getMealsWeb('inesctec', 0.00).then((value){eatingPlace.meals = value;});
+        getMealsWeb('inesctec', 4.00).then((value){eatingPlace.meals = value;});
         // getScheduleWeb('inesctec').then( (value){eatingPlace.workingHours = value;});
         eatingPlace.workingHours = EatingPlace.createWorkingHours('08h30', '20h00');
         break;

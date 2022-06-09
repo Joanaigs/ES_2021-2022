@@ -29,9 +29,9 @@ class EatingPlace{
 
     for(var day in DayOfWeek.values){
       if(day == DayOfWeek.sunday || day == DayOfWeek.tuesday) continue;
-      testMeals[day].add(Meal_(FoodType.Carne, 'Porco assado', true, 2.75));
+      testMeals[day].add(Meal_(FoodType.Carne, 'Porco assado', true, 3.75));
       testMeals[day].add(Meal_(FoodType.Carne, 'Frango assado', false, 2.75));
-      testMeals[day].add(Meal_(FoodType.Peixe, 'Robalo assado', true, 2.75));
+      testMeals[day].add(Meal_(FoodType.Peixe, 'Robalo assado', true, 3.25));
       testMeals[day].add(Meal_(FoodType.Vegetariano, 'Grão assado', true, 2.75));
       testMeals[day].add(Meal_(FoodType.Dieta, 'Peru assado', true, 2.75));
     }
