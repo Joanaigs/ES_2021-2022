@@ -12,7 +12,7 @@ void main() {
           child:EatAtFeupMainPage());
       await tester.pumpWidget(widget);
 
-      expect(find.byType(Container), findsNWidgets(6));
+      expect(find.byType(Container), findsNWidgets(9));
     });
   });
 }
