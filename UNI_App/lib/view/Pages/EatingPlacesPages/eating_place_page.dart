@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:intl/intl.dart';
+import 'package:uni/model/entities/eat_at_feup_preference.dart';
 import 'package:uni/model/entities/eating_place.dart';
 import 'package:uni/model/entities/meal_.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+import 'package:uni/redux/actions.dart';
 
+import '../../../controller/eat_at_feup/preferences.dart';
+import '../../../model/app_state.dart';
 import 'eating_places_map.dart';
 import 'general_eating_place_page.dart';
 
-class EatingPlacePageState extends GeneralEatingPlacePageState {
+
+class EatingPlacePage extends StatefulWidget {
   final EatingPlace eatingPlace;
 
+  const EatingPlacePage(this.eatingPlace);
 
-  String dropdownvalue_foodType = 'Tudo';
+  @override
+  EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
+}
+
+class EatingPlacePageState extends GeneralEatingPlacePageState {
+  final EatingPlace eatingPlace;
+  List<EatAtFeupPreference> preferences;
+
+
+  String dropdownvalue_foodType = 'Preferência';
   String dropdownvalue_typeOfMeal = parseTypeOfMeal();
 
   String dropdownvalue_dayOfWeek =
       toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
 
   static var foodTypeItems = [
-    'Tudo',
+    'Preferência',
     'Carne',
     'Peixe',
     'Vegetariano',
@@ -40,6 +58,14 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
 
   @override
   getBody(BuildContext context) {
+    preferences = StoreProvider.of<AppState>(context).state.content['eatAtFeupPreferences'];
+    if(preferences == null || preferences.isEmpty){
+      preferences = EatAtFeupPreference.getDefaultPreferences();
+      StoreProvider.of<AppState>(context).dispatch(SetEatAtFeupPreferencesAction(preferences));
+    }
+    for(var pref in preferences){
+      print(foodTypeToString(pref.foodType));
+    }
     final allMeals = eatingPlace.meals;
     var workingHoursText = createWorkingHoursText();
 
@@ -191,31 +217,41 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
     List<Meal_> meals =
         allMeals[parseDayOfWeek(dropdownvalue_dayOfWeek)].where((m) {
       if (dropdownvalue_typeOfMeal == 'Almoço') {
-        if (dropdownvalue_foodType != 'Tudo') {
+        if (dropdownvalue_foodType != 'Preferência') {
           return m.isLunch &&
               (foodTypeToString(m.foodType) == dropdownvalue_foodType);
         }
         return m.isLunch;
       } else {
-        if (dropdownvalue_foodType != 'Tudo') {
+        if (dropdownvalue_foodType != 'Preferência') {
           return !m.isLunch &&
               (m.foodType == parseFoodType(dropdownvalue_foodType));
         }
         return !m.isLunch;
       }
     }).toList();
+    if (dropdownvalue_foodType == 'Preferência'){
+      meals = meals.where((m){
+        final EatAtFeupPreference pref = preferences.firstWhere((e){
+          return m.foodType == e.foodType;
+        });
+        return pref.display;
+      }).toList();
+      meals.sort((m1, m2) {
+        final EatAtFeupPreference p1 = preferences.firstWhere((e){
+          return e.foodType == m1.foodType;
+        });
+        final EatAtFeupPreference p2 = preferences.firstWhere((e){
+          return e.foodType == m2.foodType;
+        });
+        return p1.order - p2.order;
+      });
+    }
     return meals;
   }
 }
 
-class EatingPlacePage extends StatefulWidget {
-  final EatingPlace eatingPlace;
 
-  const EatingPlacePage(this.eatingPlace);
-
-  @override
-  EatingPlacePageState createState() => EatingPlacePageState(eatingPlace);
-}
 
 class MealsMenu extends StatefulWidget {
   final List<Meal_> meals;

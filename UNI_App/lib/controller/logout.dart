@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart' show DefaultCacheManager;
 import 'package:uni/controller/local_storage/app_bus_stop_database.dart';
 import 'package:uni/controller/local_storage/app_courses_database.dart';
+import 'package:uni/controller/local_storage/app_eat_at_feup_database.dart';
 import 'package:uni/controller/local_storage/app_exams_database.dart';
 import 'package:uni/controller/local_storage/app_last_user_info_update_database.dart';
 import 'package:uni/controller/local_storage/app_lectures_database.dart';
@@ -28,6 +29,7 @@ Future logout(BuildContext context) async {
   AppUserDataDatabase().deleteUserData();
   AppLastUserInfoUpdateDatabase().deleteLastUpdate();
   AppBusStopDatabase().deleteBusStops();
+  EatAtFeupDatabase().deletePreferences();
 
   final path = (await getApplicationDocumentsDirectory()).path;
   ( File('$path/profile_pic.png')).delete();

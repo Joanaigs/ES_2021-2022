@@ -18,6 +18,7 @@ class NavigationDrawerState extends State<NavigationDrawer> {
   NavigationDrawerState({@required this.parentContext}) {}
 
   Map drawerItems = {};
+  Map drawerExpandableItems = {};
 
   @override
   void initState() {
@@ -28,9 +29,16 @@ class NavigationDrawerState extends State<NavigationDrawer> {
       Constants.navSchedule: _onSelectPage,
       Constants.navExams: _onSelectPage,
       Constants.navStops: _onSelectPage,
-      Constants.eatAtFeup: _onSelectPage,
+      Constants.eatAtFeup: null,
       Constants.navAbout: _onSelectPage,
       Constants.navBugReport: _onSelectPage,
+    };
+
+    drawerExpandableItems = {
+      Constants.eatAtFeup: {
+        Constants.eatAtFeup: _onSelectPage,
+        Constants.eatAtFeupPreferences: _onSelectPage,
+      },
     };
   }
 
@@ -100,8 +108,40 @@ class NavigationDrawerState extends State<NavigationDrawer> {
           dense: true,
           contentPadding: EdgeInsets.all(0.0),
           selected: d == getCurrentRoute(),
-          key:Key('nav'),
+          key: Key('nav'),
           onTap: () => drawerItems[d](d),
+        ));
+  }
+
+  Widget createDrawerNavigationOptionExpanded(String d, Map children) {
+    return Container(
+        decoration: _getSelectionDecoration(d),
+        child: ExpansionTile(
+          title: Container(
+            padding: EdgeInsets.only(bottom: 3.0, left: 5.0),
+            child: Text(d,
+                style: TextStyle(
+                    fontSize: 18.0,
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.normal)),
+          ),
+          children: children.keys
+              .map((child) => ListTile(
+            title: Container(
+              padding: EdgeInsets.only(bottom: 3.0, left: 20.0),
+              child: Text(child,
+                  style: TextStyle(
+                      fontSize: 17.0,
+                      color: Theme.of(context).accentColor,
+                      fontWeight: FontWeight.normal)),
+            ),
+            dense: true,
+            onTap: () => children[child](child),
+            key: Key('nav_' + d + '_' + child),
+          ))
+              .toList(),
+          initiallyExpanded: children.keys.contains(getCurrentRoute()),
+          key: Key('nav_' + d),
         ));
   }
 
@@ -110,7 +150,13 @@ class NavigationDrawerState extends State<NavigationDrawer> {
     final List<Widget> drawerOptions = [];
 
     for (var key in drawerItems.keys) {
-      drawerOptions.add(createDrawerNavigationOption(key));
+      if (drawerExpandableItems.containsKey(key)) {
+        drawerOptions
+            .add(createDrawerNavigationOptionExpanded(key, drawerExpandableItems[key]));
+      }
+      else {
+        drawerOptions.add(createDrawerNavigationOption(key));
+      }
     }
 
     return Drawer(

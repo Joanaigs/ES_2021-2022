@@ -64,6 +64,10 @@ AppState appReducers(AppState state, dynamic action) {
     return setUserFaculties(state, action);
   } else if(action is SetRestaurantsAction){
     return setRestaurantsAction(state, action);
+  } else if (action is SetEatAtFeupPreferencesAction) {
+    return setEatAtFeupPreferences(state, action);
+  } else if (action is SetEatAtFeupPreferencesStatusAction) {
+    return setEatAtFeupPreferencesStatus(state, action);
   }
   return state;
 }
@@ -217,4 +221,19 @@ AppState setExamFilter(AppState state, SetExamFilter action) {
 AppState setUserFaculties(AppState state, SetUserFaculties action) {
   Logger().i('setting user faculty(ies) ' + action.faculties.toString());
   return state.cloneAndUpdateValue('userFaculties', action.faculties);
+}
+
+AppState setEatAtFeupPreferences(
+    AppState state, SetEatAtFeupPreferencesAction action) {
+  Logger().i(
+      'setting eat at feup preferences: ' + action.preferences.length.toString());
+  return state.cloneAndUpdateValue(
+      'eatAtFeupPreferences', action.preferences);
+}
+
+AppState setEatAtFeupPreferencesStatus(
+    AppState state, SetEatAtFeupPreferencesStatusAction action) {
+  Logger().i('setting eat at feup preferences status: ' + action.status.toString());
+  return state.cloneAndUpdateValue(
+      'eatAtFeupPreferencesStatus', action.status);
 }

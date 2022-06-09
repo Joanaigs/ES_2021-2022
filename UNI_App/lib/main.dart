@@ -11,6 +11,7 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/redux/actions.dart';
 import 'package:uni/redux/reducers.dart';
 import 'package:uni/utils/constants.dart' as Constants;
+import 'package:uni/view/Pages/EatingPlacesPages/preferences.dart';
 import 'package:uni/view/Pages/about_page_view.dart';
 import 'package:uni/view/Pages/bug_report_page_view.dart';
 import 'package:uni/view/Pages/bus_stop_next_arrivals_page.dart';
@@ -98,6 +99,9 @@ class MyAppState extends State<MyApp> {
               case '/' + Constants.eatAtFeup:
                 return PageTransition.makePageTransition(
                     page: EatAtFeupMainPage(), settings: settings); //eat@feup
+              case '/' + Constants.eatAtFeupPreferences:
+                return PageTransition.makePageTransition(
+                    page: EatAtFeupPreferencesPage(), settings: settings); //eat@feup
               case '/' + Constants.navAbout:
                 return PageTransition.makePageTransition(
                     page: AboutPageView(), settings: settings);

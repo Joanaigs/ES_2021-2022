@@ -8,6 +8,7 @@ import 'package:uni/controller/load_info.dart';
 import 'package:uni/controller/load_static/terms_and_conditions.dart';
 import 'package:uni/controller/local_storage/app_bus_stop_database.dart';
 import 'package:uni/controller/local_storage/app_courses_database.dart';
+import 'package:uni/controller/local_storage/app_eat_at_feup_database.dart';
 import 'package:uni/controller/local_storage/app_exams_database.dart';
 import 'package:uni/controller/local_storage/app_last_user_info_update_database.dart';
 import 'package:uni/controller/local_storage/app_lectures_database.dart';
@@ -28,6 +29,7 @@ import 'package:uni/controller/schedule_fetcher/schedule_fetcher_html.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/course.dart';
 import 'package:uni/model/entities/course_unit.dart';
+import 'package:uni/model/entities/eat_at_feup_preference.dart';
 import 'package:uni/model/entities/exam.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/model/entities/profile.dart';
@@ -281,6 +283,7 @@ ThunkAction<AppState> getUserSchedule(
     action.complete();
   };
 }
+
 
 ThunkAction<AppState> getRestaurantsFromFetcher(Completer<Null> action){
   return (Store<AppState> store) async{
@@ -551,3 +554,64 @@ ThunkAction<AppState> updateStateBasedOnLocalTime() {
     store.dispatch(SetLastUserInfoUpdateTime(savedTime));
   };
 }
+
+ThunkAction<AppState> updateStateBasedOnLocalEatAtFeupPrefereneces() {
+  return (Store<AppState> store) async {
+    final EatAtFeupDatabase db = EatAtFeupDatabase();
+    final List<EatAtFeupPreference> preferences = await db.preferences();
+    store.dispatch(SetEatAtFeupPreferencesAction(preferences));
+  };
+}
+
+Future<List<EatAtFeupPreference>> extractEatAtFeupPreferences(Store<AppState>  store) async{
+  return store.state.content['eatAtFeupPreferences'];
+}
+
+ThunkAction<AppState> getEatAtFeupPreferences(
+    Completer<Null> action) {
+  return (Store<AppState> store) async {
+    try {
+      await store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.busy));
+
+      final List<EatAtFeupPreference> preferences =
+      await extractEatAtFeupPreferences(store);
+
+      //sort??
+      if(preferences == null){
+        action.complete();
+        return;
+      }
+      EatAtFeupDatabase db = EatAtFeupDatabase();
+      await db.saveNewPreferences(preferences);
+
+      // Updates local database according to the information fetched -- EatAtFeupPreferences
+      await store.dispatch(SetEatAtFeupPreferencesAction(preferences));
+      await store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.successful));
+    } catch (e) {
+      Logger().e('Failed to get Eat At Feup Preferences: ${e.toString()}');
+      store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.failed));
+    }
+    action.complete();
+  };
+}
+
+/*
+ThunkAction<AppState> addOfficeReservations(
+    Completer<Null> action, EatAtFeupPreference preference) {
+  return (Store<AppState> store) async {
+    await store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.busy));
+    EatAtFeupDatabase db = EatAtFeupDatabase();
+
+    final List<EatAtFeupPreference> preferences =
+    await extractEatAtFeupPreferences(store);
+
+    preferences.add(preference);
+
+    await store.dispatch(SetEatAtFeupPreferencesAction(preferences));
+    await db.insertPreferences(preferences);
+  };
+}
+*/
+
+
+
