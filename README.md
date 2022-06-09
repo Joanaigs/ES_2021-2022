@@ -1,8 +1,7 @@
 # 2LEIC02T4
-<div>
-    <img src="https://i.imgur.com/6PUjSP1.png">
-<div>
 
+
+![](https://i.imgur.com/zAw7S5x.png)
 
 
 
@@ -79,7 +78,8 @@ Such product would be very valuable to college community, since that improves th
     
 # Requirements
 ## Use Case Model
-![Use Case Diagram](https://user-images.githubusercontent.com/78430365/161042218-ca2c2faa-7b06-418c-a20a-ab207ac4a75d.jpg)
+![](https://i.imgur.com/hSoAcYZ.png)
+
 
 
 
@@ -133,7 +133,9 @@ Such product would be very valuable to college community, since that improves th
 - [As a user, with an eating restriction, I want to know the different types of meals available, so that I can eat accordingly to my restrictions.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/6)
 - [As a user, I want to see the working hours of an eating place, so that I know when I can go there.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/7)
 - [As a user, I want to see lunch or dinner meals, so that I know whats available at different hours of the day.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/8) 
-    
+- [As a user, I want to choose which food types are displayed and their order.](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/14)
+
+
 ## Domain Model
     
 There are eating places, which have a name, a location, a menu and a working schedule. They can accept card payments or not. The menu has a description, a cost and takes into account some restrictions like: meat, fish, diet, or vegetarian. There are busy periods that represent the typical affluence each day of the eating place. The meals can be served at lunch or dinner, depending on the place.
@@ -188,9 +190,11 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
     - In Process: ![](https://i.imgur.com/dHyjnlP.png)
     - End:![](https://i.imgur.com/4ohUbir.png)
 
-- **Retrospectives:** While it did not appear to be a large increment, everything that had been planned was done and it represented a decent portion of the remaining features to be implemented. Some details were not taken into account (e.g. show "Lunch" or "Dinner" based on the current time) but will be fixed in the next iteration.  
-    
+- **Retrospectives:** While it did not appear to be a large increment, everything that had been planned was done and it represented a decent portion of the remaining features to be implemented. Some details were not taken into account (e.g. show "Lunch" or "Dinner" based on the current time) but will be fixed in the next iteration.
+
 ### Iteration 3 planning and retrospectives:
 - **Plans:** 
     - Begining:![](https://i.imgur.com/R9wiU2E.png)
     - In Process: ![](https://i.imgur.com/FqLgvkJ.png)
+    - End:![](https://i.imgur.com/VnfQVkQ.png)
+- **Retrospectives:** In this interaction the issue [4](https://github.com/LEIC-ES-2021-22/2LEIC02T4/issues/4) was not possible to be developed due to the fact that the Google API doesn't support this operation yet. Despite this, there was still a big increment by making the app more appealing and by implementing the last feature: providing to the user the option of choosing their preferences, so that the content on each eating place's page was according to their likings. We also fixed the "Lunch" or "Dinner" option, based on the current time, that was not done in the last iteration.
