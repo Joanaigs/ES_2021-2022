@@ -9,12 +9,12 @@ void main() {
   group('EatingPageCard', () {
     String photo="ae.jpg";
     String name="AE";
-    testWidgets('When given an restaurant', (WidgetTester tester) async {
+    testWidgets('When given a restaurant', (WidgetTester tester) async {
       final widget = makeTestableWidget(
           child: BuildRestaurantCard(photoName: photo, name: name));
       await tester.pumpWidget(widget);
 
-      expect(find.byType(Container), findsOneWidget);
+      expect(find.byType(Container), findsNWidgets(2));
     });
   });
 }
