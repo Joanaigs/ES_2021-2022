@@ -45,18 +45,18 @@ class SetScheduleAction {
   List<Lecture> lectures;
   SetScheduleAction(this.lectures);
 }
-class SetEatAtFeupPreferencesAction {
-  List<EatAtFeupPreference> preferences;
-  SetEatAtFeupPreferencesAction(this.preferences);
-}
-
 class SetScheduleStatusAction {
   RequestStatus status;
   SetScheduleStatusAction(this.status);
 }
+
 class SetEatAtFeupPreferencesStatusAction {
   RequestStatus status;
   SetEatAtFeupPreferencesStatusAction(this.status);
+}
+class SetEatAtFeupPreferencesAction {
+  List<EatAtFeupPreference> preferences;
+  SetEatAtFeupPreferencesAction(this.preferences);
 }
 
 

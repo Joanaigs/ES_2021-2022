@@ -566,6 +566,16 @@ ThunkAction<AppState> updateStateBasedOnLocalEatAtFeupPrefereneces() {
 Future<List<EatAtFeupPreference>> extractEatAtFeupPreferences(Store<AppState>  store) async{
   return store.state.content['eatAtFeupPreferences'];
 }
+ThunkAction<AppState> setEatAtFeupPreferences(Completer<Null> action, List<EatAtFeupPreference> preferences){
+  return (Store<AppState> store) async {
+    await store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.busy));
+    EatAtFeupDatabase db = EatAtFeupDatabase();
+
+    await store.dispatch(SetEatAtFeupPreferencesAction(preferences));
+    await db.saveNewPreferences(preferences);
+  };
+}
+
 
 ThunkAction<AppState> getEatAtFeupPreferences(
     Completer<Null> action) {
@@ -576,7 +586,7 @@ ThunkAction<AppState> getEatAtFeupPreferences(
       final List<EatAtFeupPreference> preferences =
       await extractEatAtFeupPreferences(store);
 
-      //sort??
+      //
       if(preferences == null){
         action.complete();
         return;
@@ -595,8 +605,8 @@ ThunkAction<AppState> getEatAtFeupPreferences(
   };
 }
 
-/*
-ThunkAction<AppState> addOfficeReservations(
+
+ThunkAction<AppState> eheh(
     Completer<Null> action, EatAtFeupPreference preference) {
   return (Store<AppState> store) async {
     await store.dispatch(SetEatAtFeupPreferencesStatusAction(RequestStatus.busy));
@@ -611,7 +621,7 @@ ThunkAction<AppState> addOfficeReservations(
     await db.insertPreferences(preferences);
   };
 }
-*/
+
 
 
 

@@ -43,7 +43,7 @@ class BuildRestaurantCard extends StatelessWidget {
       case 'GRILL':
         eatingPlace = EatingPlace(
             4, 'GRILL', 'grill.jpg', workingHours, false, MapCoordinates(1, 1));
-        getMealsWeb('grill', 4.00).then((value){eatingPlace.meals = value;});
+        getMealsWeb('grill', 3.40).then((value){eatingPlace.meals = value;});
         getScheduleWeb('grill').then( (value){eatingPlace.workingHours = value;});
 
         break;
@@ -51,8 +51,11 @@ class BuildRestaurantCard extends StatelessWidget {
         eatingPlace = EatingPlace(
             5, 'BAR DE MINAS', 'minas.jpg', workingHours, false,
             MapCoordinates(1, 1));
-        eatingPlace.meals=EatingPlace.getTestMeals();
-        eatingPlace.workingHours = EatingPlace.createWorkingHours('08h00', '20h00');
+        getMealsWeb('cafeteria', 4.00).then((value){eatingPlace.meals = value;});
+        getScheduleWeb('cafeteria').then( (value){eatingPlace.workingHours = value;});
+        //
+        // eatingPlace.meals=EatingPlace.getTestMeals();
+        // eatingPlace.workingHours = EatingPlace.createWorkingHours('08h00', '20h00');
         break;
       case 'RESTAURANTE INEGI':
         eatingPlace = EatingPlace(

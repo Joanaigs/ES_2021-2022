@@ -23,13 +23,7 @@ class EatAtFeupDatabase extends AppDatabase {
       : super(
       'eatAtFeupPreferences.db',
       ['''CREATE TABLE eatAtFeupPreferences(foodType TEXT, display INTEGER, 
-          order_ INTEGER);
-          INSERT INTO eatAtFeupPreferences VALUES('carne', 1, 0);
-          INSERT INTO eatAtFeupPreferences VALUES('peixe', 1, 1);
-          INSERT INTO eatAtFeupPreferences VALUES('vegetariano', 1, 2);
-          INSERT INTO eatAtFeupPreferences VALUES('dieta', 1, 3);
-          INSERT INTO eatAtFeupPreferences VALUES('outros', 1, 4);
-          ''']
+          order_ INTEGER)''']
   );
 
   /// Replaces all of the data in this database with [preferences].
@@ -38,7 +32,7 @@ class EatAtFeupDatabase extends AppDatabase {
     await insertPreferences(preferences);
   }
 
-  /// Returns a list containing all of the lectures stored in this database.
+  /// Returns a list containing all of the preferences stored in this database.
   Future<List<EatAtFeupPreference>> preferences() async {
     // Get a reference to the database
     final Database db = await this.getDatabase();
@@ -55,9 +49,6 @@ class EatAtFeupDatabase extends AppDatabase {
         maps[i]['order_'],
       );
     });
-    // List<EatAtFeupPreference> res = [];
-    // res.add(EatAtFeupPreference(parseFoodType('carne'), true, 0));
-    // return res;
   }
 
   /// Adds all items from [preferences] to this database.
@@ -78,7 +69,7 @@ class EatAtFeupDatabase extends AppDatabase {
     // Get a reference to the database
     final Database db = await this.getDatabase();
 
-    await db.delete('eatAtFeupPreferences');
+    await db.rawDelete('DELETE FROM eatAtFeupPreferences');
   }
 
 /// Migrates [db] from [oldVersion] to [newVersion].
