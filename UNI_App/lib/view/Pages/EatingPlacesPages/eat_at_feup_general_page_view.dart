@@ -111,7 +111,7 @@ abstract class EatAtFeupGeneralPageViewState extends State<StatefulWidget> {
             actions: <Widget>[
               IconButton(
                 icon: Image.asset('assets/images/icon.png'),
-                iconSize: 100,
+                iconSize: 120,
                 onPressed: () {  },
               ),
         getTopRightButton(context),

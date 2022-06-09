@@ -28,8 +28,9 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
   final EatingPlace eatingPlace;
   List<EatAtFeupPreference> preferences;
 
+
   String dropdownvalue_foodType = 'Preferência';
-  String dropdownvalue_typeOfMeal = 'Almoço';
+  String dropdownvalue_typeOfMeal = parseTypeOfMeal();
 
   String dropdownvalue_dayOfWeek =
       toString(parseDayOfWeek(DateFormat('EEEE').format(DateTime.now())));
@@ -110,6 +111,7 @@ class EatingPlacePageState extends GeneralEatingPlacePageState {
               //stack não foi necessária..
               Text(
                 workingHoursText,
+                textAlign: TextAlign.center,
                 style:
                     //TextStyle(backgroundColor: Colors.grey, fontSize: 24),
                     Theme.of(context).textTheme.headline6.apply(

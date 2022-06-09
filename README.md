@@ -180,7 +180,7 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
     - In Process: ![](https://i.imgur.com/zXZkmSj.png)
     - End:![](https://i.imgur.com/EdQz7xL.png)
 
-- **Retrospectives:** Everything went well because everyone collaborated with eachother. All the goals were met. However, for the next iteration we will focus more on the correct GitHub Flow.
+- **Retrospectives:** Everything went well because everyone collaborated with each other. All the goals were met. However, for the next iteration we will focus more on the correct GitHub Flow.
     
 ### Iteration 2 planning and retrospectives:
 - **Plans:** 
@@ -188,4 +188,9 @@ In the `user's phone`, the user accesses `Eat@Feup` (developed in the Flutter fr
     - In Process: ![](https://i.imgur.com/dHyjnlP.png)
     - End:![](https://i.imgur.com/4ohUbir.png)
 
-- **Retrospectives:** 
+- **Retrospectives:** While it did not appear to be a large increment, everything that had been planned was done and it represented a decent portion of the remaining features to be implemented. Some details were not taken into account (e.g. show "Lunch" or "Dinner" based on the current time) but will be fixed in the next iteration.  
+    
+### Iteration 3 planning and retrospectives:
+- **Plans:** 
+    - Begining:![](https://i.imgur.com/R9wiU2E.png)
+    - In Process: ![](https://i.imgur.com/FqLgvkJ.png)
